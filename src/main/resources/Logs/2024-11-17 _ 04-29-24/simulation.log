@@ -1,0 +1,430 @@
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=1, retrievalRate=63, frequency=22} User{fName='Nerty', lName='Pattison', username='astomatous', password='cc979dd194fb8d069f53cc43f4d527ecfda8f45860196184318f82ed94b99fab', email='gwilliams@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=2, retrievalRate=35, frequency=10} User{fName='Frayda', lName='Romeo', username='magel', password='c6b438b0c071b0875f3579207f8391b6a60e1319b25832a0ad3fe4bc0a5ae7ea', email='gbaker@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=3, retrievalRate=41, frequency=14} User{fName='Tammy', lName='Oshinski', username='corotto', password='f5d36c673cea1d80af3d33404d506e0c3e7aeaa0b8c1a21e085fa3caa8928b3b', email='fgonzalez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=4, retrievalRate=38, frequency=10} User{fName='Delila', lName='Almeida', username='carltoncarly', password='73bd4486e69489d3bf9c723cd0cad950d82cfd5b0e9a1070be934c2e11f2e685', email='pnelson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=5, retrievalRate=39, frequency=23} User{fName='Alvira', lName='Senior', username='recto', password='a58e03220bf0a56686e193d23b60914a4b904184624a00a5608836d0400cd753', email='hrivera@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=6, retrievalRate=42, frequency=17} User{fName='Trista', lName='Liederman', username='lx', password='cd435e7f9a03786ca3cd999b6266ce41f584ed2c18f0f5089d19891753a3f7b9', email='fflores@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=7, retrievalRate=38, frequency=17} User{fName='Hannah', lName='Philippa', username='baroja', password='1d45adac4616bb214f4788af0a64779a1d0ee43a58a16c5dd5b328c09c70f353', email='tperez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=8, retrievalRate=48, frequency=19} User{fName='Liza', lName='Femi', username='trichoid', password='30c293f26f86c91cda51b20570f557c2fb93a0adc3b12a00fa8238c767db2a2f', email='rbaker@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=9, retrievalRate=32, frequency=10} User{fName='Tiffani', lName='Halle', username='touslesmois', password='870dc23d21836b97b58a7753922edc8512764e83c02586f3d8f14c11f760550b', email='pedwards@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=10, retrievalRate=35, frequency=29} User{fName='Margarita', lName='Sussna', username='quietism', password='2b74d84b1a1f657426e81de449af1474de881fb5b92a00c67a94cb2f407a5550', email='wparker@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=11, retrievalRate=63, frequency=21} User{fName='Abigale', lName='Annelise', username='zendah', password='3046f751cdc6f2ebb9dac47dea910d8ec6bbb8060b3b17399aad9ac96eac8dd1', email='jthomas@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=12, retrievalRate=27, frequency=29} User{fName='Kailey', lName='Dett', username='acotyledon', password='0d1ea4c256cd50a2a7ccbfd22b3d9959f6fd30bd840b9ff3c7c65ee4e21df06d', email='proberts@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=13, retrievalRate=48, frequency=26} User{fName='Clo', lName='Woolson', username='aubin', password='ef74385116d34838bfff626124bd5f35786e40b6c57ebd85e14ef4dd5cae1d4c', email='lbell@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=14, retrievalRate=50, frequency=16} User{fName='Britte', lName='Blondie', username='haystack', password='8d3514d5506b831af3ad83ce0b2442e49b3d4318ba81ecf8ade73f7f8284b083', email='awatson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=15, retrievalRate=33, frequency=25} User{fName='Jaquenette', lName='Diao', username='everson', password='cd26b35b473b475ed553e7b512e9a29f51f25db903c9d365decb9e2785f2782f', email='lgarcia@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=16, retrievalRate=39, frequency=10} User{fName='Kalila', lName='Swayne', username='rancher', password='8de656aa471a38187d5ed4cbfaa56bad6cd1dd974193d6734bff07d097f07a98', email='bjackson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=17, retrievalRate=34, frequency=22} User{fName='Cher', lName='Tish', username='transduction', password='5c7d4ca8541273a2d6793b5d75f4cbb8c07cf2385088e102427515e70a18169d', email='aross@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=18, retrievalRate=40, frequency=22} User{fName='Petunia', lName='Benedicta', username='corneliuscornell', password='bf962e39ec4bb94f0643a12a307eba14062674f83d71456608d789968912c9a7', email='uadams@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=19, retrievalRate=72, frequency=23} User{fName='Tandy', lName='Torhert', username='synesthesia', password='f3a22c1ce8e0a5a96393703806e4ad0b63031f0782c1b2d87dd175fc46a9d63d', email='mcook@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=20, retrievalRate=63, frequency=21} User{fName='Tiffi', lName='Korenblat', username='pinsky', password='05b9115df05a2a467841772eccc969822d884c9e71841050fe9e0893cce7d11b', email='fcarter@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=21, retrievalRate=40, frequency=13} User{fName='Thomasine', lName='Kacey', username='flatfish', password='db26ce04fc0e235ae037a334d7e939ea6dedc4ff234fc5e5578fda274d578550', email='yflores@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=22, retrievalRate=69, frequency=19} User{fName='Zorine', lName='Cordelia', username='semidiurnal', password='09b55bee214afb6db7078395f726ac1544a6fc39c952a4319291edb39928d5e7', email='erobinson@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=23, retrievalRate=48, frequency=22} User{fName='Kaia', lName='Anderson', username='grandeur', password='a744d93f2c6e8830a70b434113ecdebdaf568ba8c0557c63bd0914528760ae53', email='oflores@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=24, retrievalRate=31, frequency=20} User{fName='Lauren', lName='Siloum', username='nysa', password='5e579e0158115248e7190e8c3f01b469d28ff8391d542d179f4c3eabc2ca4200', email='swalker@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=25, retrievalRate=39, frequency=22} User{fName='Rafaelia', lName='Dreeda', username='heft', password='6b789b1a4397905f393eecf92033ce02d665f20edc97b432bf948532b915aecb', email='ythompson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=26, retrievalRate=58, frequency=11} User{fName='Cordula', lName='Hightower', username='patten', password='5bc5f7d10c706393b828db4a427c034cf2befc2662c02275cbfbbdf20a6fe6d9', email='gwilson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=27, retrievalRate=30, frequency=13} User{fName='Natassia', lName='Elissa', username='vanvanadate', password='af16847054594066cb5dcf501ed219d6ec043688bd7a1d1beef984b09de0b134', email='orogers@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=28, retrievalRate=50, frequency=23} User{fName='Carly', lName='Strauss', username='rafferty', password='982d3cec0c8e060d5b7175d368c2eb3171c291a20c97f83e29b386275174f4dc', email='aparker@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=29, retrievalRate=61, frequency=24} User{fName='Chastity', lName='Derwon', username='sympathize', password='12dd9774cc96e18b5b1b5d4a4b1e0724c4b3e3f37a3eed1af6a1dac7cfdbc3e3', email='gfoster@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=30, retrievalRate=25, frequency=16} User{fName='Karlee', lName='Cassandry', username='flossieflossy', password='766a98e0f7078828ada283d44489a652618fc3927096efb92ed082df3722a564', email='thenderson@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=31, retrievalRate=44, frequency=10} User{fName='Jerrylee', lName='Fuhrman', username='hesterhesther', password='654611bb0284f926374730d91e73d5c7085fc8910ba5f8555dbbed15c56dc13b', email='ymiller@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=32, retrievalRate=27, frequency=11} User{fName='Sherline', lName='Tasiana', username='impacted', password='909802b269dee093387e26c6c7ace636f180eac29f58c7d8009b637c4babf1ce', email='gmiller@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=33, retrievalRate=40, frequency=29} User{fName='Krista', lName='Coopersmith', username='scheme', password='d5948e71d76097cbaa54d55ae21efaa228c882f2e720bad05828765c5f5995ab', email='oevans@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=34, retrievalRate=30, frequency=17} User{fName='Giselle', lName='Tarah', username='trigonometry', password='3748fbd132cd645a37562a4dd529c91442bfa156adcf96a311c1e1ff98f46636', email='bcook@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=35, retrievalRate=44, frequency=21} User{fName='Torie', lName='Tiernan', username='cunnilingus', password='c1ca3b7dadb0fa05aff9b51a3e272b2e6548b70eacd95e684f11b9424cfa86b0', email='ugarcia@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=36, retrievalRate=51, frequency=22} User{fName='Cordi', lName='Katzen', username='domingo', password='fe7ca4ea0a8715222bf5f4d6c6d1bb962ddc1189f072c6c7e2d20688b1083e81', email='yallen@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=37, retrievalRate=37, frequency=16} User{fName='Lisha', lName='Janiuszck', username='churchy', password='bf962e39ec4bb94f0643a12a307eba14062674f83d71456608d789968912c9a7', email='jclark@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=38, retrievalRate=42, frequency=19} User{fName='Leone', lName='Rosemonde', username='montemayor', password='2b66e9f343f40c09cecf823a0c6df7e3c244a74feb220ac8dd50b2d66c757329', email='mwatson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=39, retrievalRate=67, frequency=10} User{fName='Marjorie', lName='Hekker', username='lately', password='9c1911155f0b57a0b7c438eda83e9621ea5cae5e5190adcf6bd7a2e8ae8fa0a6', email='ttorres@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=40, retrievalRate=70, frequency=24} User{fName='Caryl', lName='Zoha', username='appoint', password='407ee89291d19e741788564655cc3e45ef5c6dce6678c83028c60ddb4d5e8de4', email='ahall@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=41, retrievalRate=60, frequency=12} User{fName='Mallorie', lName='Kristy', username='fob', password='49137e714810a6d7072111b40194c28ec1b1d6d5e891c5ceec50fe21eb03e6e5', email='kmartinez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=42, retrievalRate=49, frequency=22} User{fName='Peggi', lName='Brabazon', username='dufrene', password='449fee23fdae049a3771efb67a479b937ee3310aa8d1480d8b70cde303c4fc58', email='mrogers@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=43, retrievalRate=41, frequency=15} User{fName='Clea', lName='Ticknor', username='ahimsa', password='be178c0543eb17f5f3043021c9e5fcf30285e557a4fc309cce97ff9ca6182912', email='rthomas@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=44, retrievalRate=69, frequency=15} User{fName='Jsandye', lName='Fricke', username='coonskin', password='6a6206e77ae34f1ff223623d58f62abcf71edbf934d2e7be8dec38094d61a0dc', email='ehall@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=45, retrievalRate=61, frequency=26} User{fName='Ebony', lName='Terhune', username='thermionic', password='1fecbb595f20bbc595de1a7d5e4dbec3ad728aa6e15b99b3966bce3c17c85acc', email='nmitchell@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=46, retrievalRate=44, frequency=19} User{fName='Chrysa', lName='Tressia', username='bihari', password='806956355a14acbf0e5b8a937c4969de8497a467a4444f6824d52354f9ab6de8', email='ytorres@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=47, retrievalRate=68, frequency=18} User{fName='Katuscha', lName='Read', username='militarize', password='809dfd482e188ccf15e8d7d08de0c5bc8baf7489a17a71c8592ae5a5731854f3', email='khernandez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=48, retrievalRate=34, frequency=19} User{fName='Merridie', lName='Longwood', username='ingratitude', password='1aee478a6578ffe3a55deb2bc9ba1bb04c732224229c63bb68402358e8ee1b1e', email='bmurphy@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=49, retrievalRate=67, frequency=29} User{fName='Shandee', lName='Danyette', username='varro', password='3bfaf7682094d482efb878617e14b9a0326568bc7a64e024a31dfdc1d52a5744', email='vhoward@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=50, retrievalRate=47, frequency=13} User{fName='Iolanthe', lName='Galloway', username='ghazi', password='c40727c66d04b725818d4579040bcc69d5cfd9b430889a1af92f02e2cdb1bde2', email='ubennett@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=51, retrievalRate=40, frequency=29} User{fName='Karyl', lName='Ashlan', username='gangway', password='7db4d408c93a7ed1f0d8914648cbaeacaa504495aba495315112a59d1b222f83', email='gharris@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=52, retrievalRate=48, frequency=16} User{fName='Reggie', lName='Menell', username='preussen', password='3e84fad05bbb080fbeff83c729ae69fba93abb460273c395e2a76c9c2c130f69', email='grodriguez@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=53, retrievalRate=26, frequency=12} User{fName='Fredra', lName='Ellingston', username='makhachkala', password='83ed5207a41179600b50c409a460cfc229c60cb91bf06480d705c923c864e501', email='mflores@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=54, retrievalRate=51, frequency=11} User{fName='Agnese', lName='Fauch', username='birdhouse', password='b89dab808c585f889185b815fb5a704b2fcbcff4b2a32e03d584a6988d68784f', email='tmurphy@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=55, retrievalRate=47, frequency=28} User{fName='Fanya', lName='Drislane', username='khalif', password='0bc07441d695c947e7025bfa8ca2aa8bc812b4fa952dbec2ec693b26d421dd74', email='uhall@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=56, retrievalRate=69, frequency=23} User{fName='Magdalene', lName='Frankel', username='fin', password='1630d24fd3db4fb4f2a286d33120320d84c93c3d45a6eb088cdda3b1f6d06103', email='broberts@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=57, retrievalRate=52, frequency=26} User{fName='Zita', lName='Bond', username='acidosis', password='7954d6463914386775169f7d0fe01ca17da7084e25a6b67466a0cf367527af9c', email='cnelson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=58, retrievalRate=48, frequency=11} User{fName='Gui', lName='Ivett', username='lead', password='71f74e53b3b9486bea349f892cc4332a672a20dd450cc83c8ef3110452375843', email='lwood@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=59, retrievalRate=52, frequency=12} User{fName='Charyl', lName='Maddie', username='tollhouse', password='1125e6d8d4025572410963d57d0d9cb8f8f09aae099735aa62546878bbe38939', email='eanderson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=60, retrievalRate=57, frequency=19} User{fName='Sukey', lName='Laureen', username='analogize', password='305238273bb0fac2a73b43256e38d1515fdf61ec1d30ef161446c3588b93a97b', email='nlewis@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=61, retrievalRate=41, frequency=20} User{fName='Avril', lName='Audre', username='cellule', password='1c443cabb9dba1a497d14cf112033c555c575af775abb873842e5dbc31434b5d', email='cflores@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=62, retrievalRate=33, frequency=13} User{fName='Netta', lName='Shanie', username='stringhalt', password='88d4266fd4e6338d13b845fcf289579d209c897823b9217da3e161936f031589', email='udiaz@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=63, retrievalRate=30, frequency=20} User{fName='Janeva', lName='Oina', username='amadeus', password='79063e8037fff16d297a1fe65136f1251126cddb2cc9870ecf8d653835538e85', email='hbarnes@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=64, retrievalRate=63, frequency=15} User{fName='Jacky', lName='Ronna', username='galarza', password='a2bdc78162b620e9e831d1943a8320b320affa98a52441155013b6d6f0f95246', email='ndavis@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=65, retrievalRate=26, frequency=29} User{fName='Melony', lName='Humble', username='garbo', password='50828327cbf487d99d22c77ef8f980e5d7c8b93e2a1d1b084e2dc6760240e738', email='ccook@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=66, retrievalRate=40, frequency=18} User{fName='Genna', lName='Tsai', username='triley', password='94d7567d89f137264d4d487a6b583c07831c3689f8021c742f8f2b9844bb0f9f', email='jgarcia@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=67, retrievalRate=47, frequency=22} User{fName='Bunni', lName='Desirea', username='dragone', password='bbe81278780d62460410002d6f99e90c2210dc848cf788bfc5102081670f2632', email='lrichardson@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=68, retrievalRate=61, frequency=27} User{fName='Phil', lName='Radke', username='codling', password='f9de8545cac4782227db7303c8ee243f62f5cbc3eddc5583ab8376f8d4004bb4', email='tharris@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=69, retrievalRate=68, frequency=29} User{fName='Brenna', lName='Temp', username='renascence', password='d694873cc6e81f5ffa2745613af5d91ed03b160da64ca0296581133300013796', email='wflores@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=70, retrievalRate=38, frequency=26} User{fName='Cynthy', lName='Ramburt', username='radcliff', password='b7dfa266adb6db500f72b90657c0d379939ea1b17ad72459455d617569622e4c', email='ethompson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=71, retrievalRate=42, frequency=14} User{fName='Reggi', lName='Theola', username='pity', password='407ee89291d19e741788564655cc3e45ef5c6dce6678c83028c60ddb4d5e8de4', email='tsanders@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=72, retrievalRate=36, frequency=15} User{fName='Sandi', lName='Bertle', username='hod', password='d74c508172ffbef851f81191a11814638e548e49470676d92ba5ec1c917d8b47', email='ucarter@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=73, retrievalRate=43, frequency=16} User{fName='Elane', lName='Sears', username='misunderstanding', password='1c3d8c1cc1f56cbf3d959af9878c999048f7fc032ac22e12c4f1c6643b6ba620', email='wsanchez@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=74, retrievalRate=68, frequency=26} User{fName='Genvieve', lName='Kathe', username='rento', password='55e052349a76a2c9792b62669f1f0806cdec5042c28cb0ce5cc420954a2537f8', email='mmorris@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=75, retrievalRate=67, frequency=14} User{fName='Ardisj', lName='Vite', username='dunning', password='30bb463b12cb9998b397e623aab630ccfbd4517092dc40d5a1df7eec9994879b', email='fhernandez@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=76, retrievalRate=62, frequency=12} User{fName='Meaghan', lName='Tichonn', username='swagman', password='d9da0b2c7a7bf2f65cf8924837d3cd741e3d64abbbcc5cdbe167ab4f26ca2bfa', email='hbrown@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=77, retrievalRate=48, frequency=10} User{fName='Tamqrah', lName='Chrysler', username='turkmen', password='fcb73c9d56bac0f15a582541d671409894d15e346608c2ee307c2ab0597ec4f2', email='uhoward@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=78, retrievalRate=60, frequency=11} User{fName='Kassi', lName='Screens', username='pharsalus', password='c3449cd99d19554da590a1d8a779f7c583577738f0bc8af1956d5f74bd51194a', email='msanders@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=79, retrievalRate=45, frequency=16} User{fName='Sonni', lName='Aurthur', username='marchant', password='3997b2354f9aca78f444f63d67245a828872790f62ab001944e5d52571af13d3', email='onelson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=80, retrievalRate=61, frequency=21} User{fName='Melamie', lName='Mufi', username='floribunda', password='c2713b62c903791bdefc5a6a99df04d4330de491bbc7a0ca6a5007337e4a6028', email='hrichardson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=81, retrievalRate=72, frequency=14} User{fName='Linzy', lName='Stacey', username='boutonniere', password='39f62184bf38d3195ebe4f4fd3babc6ca175482c3afd0685ace5f194d6671a06', email='jcooper@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=82, retrievalRate=71, frequency=12} User{fName='Alexine', lName='Scottie', username='emersonemery', password='24cfb44d899764efd72b7f4ca9822f9f96d5c82d7811f4abd1a838b792ac4dbf', email='gwilliams@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=83, retrievalRate=46, frequency=18} User{fName='Liana', lName='Karwan', username='hahnert', password='d5db06cbaf3d29391eed7a83b23dbb4a15cf3492c5e8c20abaf1abb44c1435ae', email='hrichardson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=84, retrievalRate=33, frequency=27} User{fName='Marilyn', lName='Peppard', username='zadazadack', password='aeaa2cec33e27d65690e726e1710d3f4a99a2bf0ae9a3bd9087488f1dfb4d38d', email='wgriffin@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=85, retrievalRate=69, frequency=27} User{fName='Gwynne', lName='Elfrida', username='samalla', password='8ffaaf97add883ad7d0225541ef2250def2abe58e0c419083a60afc1c15ae39c', email='phayes@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=86, retrievalRate=32, frequency=24} User{fName='Teri', lName='Barnard', username='southwards', password='8305b93c4c9c500521caad8de4d37e4502cfe4d02a7fdeb68f2fcfc03723d64a', email='nnelson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=87, retrievalRate=67, frequency=27} User{fName='Andra', lName='Urias', username='valentin', password='51b504953d4d26efffce6ccecbd7c2d9f9efb7e4b0f804dbad986ee4f8224059', email='jlewis@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=88, retrievalRate=68, frequency=11} User{fName='Mariya', lName='Tempa', username='massie', password='31651957b57dbcaac543a97f7bb0a8adfb5d21b676a63a43ddb1c96cc30446cc', email='bramirez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=89, retrievalRate=69, frequency=16} User{fName='Marieann', lName='Lenard', username='surcease', password='5d1d44f5438e8cacd597fb7b3db97bcd8dd380845c03315175202dc96aa3320a', email='fcook@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=90, retrievalRate=74, frequency=10} User{fName='Reggie', lName='Kira', username='pinkster', password='764037136ae37157eb3c5c7805dafbe09840dc08b8f716f9e1e79fa22e700a2b', email='crogers@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=91, retrievalRate=72, frequency=24} User{fName='Tiertza', lName='Lundin', username='morula', password='1602b4048b35882a346c6887360d0343cde72797314f81a36065c71320562615', email='kgarcia@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=92, retrievalRate=58, frequency=12} User{fName='Sascha', lName='Githens', username='bluecoat', password='a60946cfbced6c968698c327d1640b9153ea014020e96c619e71436ecdccc494', email='tsimmons@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=93, retrievalRate=45, frequency=19} User{fName='Maurizia', lName='Lindberg', username='reyna', password='27d300fe53b3b94f115cfd63be02d868bcb8f755e56893709418084c1bfab1cd', email='ubennett@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=94, retrievalRate=31, frequency=19} User{fName='Desirae', lName='Astra', username='welldone', password='c8ce96a5ba0d15da2f247baa360670438c5f6cb2115514d8992c2e8c7c8ea7c0', email='gallen@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=95, retrievalRate=26, frequency=17} User{fName='Kelley', lName='Edora', username='waziristan', password='a0ec927b1044a5e945fbd9cf4370b4be1bc1ebc93bca51bc37f02a8814196bde', email='wsanders@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=96, retrievalRate=26, frequency=18} User{fName='Wilow', lName='Bertold', username='suffolk', password='5b2e4c7665e0ad06b170df8d639952553c2a0ae193e0a78c1bc028a4a2db9484', email='mcooper@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=97, retrievalRate=48, frequency=16} User{fName='Merralee', lName='Swift', username='agathy', password='fa15cfb46dea233177530c9f6f24847ee3dada123c2abe897c80629bf4c28392', email='ascott@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=98, retrievalRate=35, frequency=25} User{fName='Theo', lName='Valenta', username='earthquake', password='40a7e9acb06295d6ccc4de8b5790aa4cea3456f9bb1dd3e91f192ba5ca98bf97', email='plopez@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=99, retrievalRate=30, frequency=21} User{fName='Josselyn', lName='Barnard', username='monoxide', password='95fbeb8f769d2c0079d1d11348877da944aaefaba6ecf9f7f7dab6344ece8605', email='dallen@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=100, retrievalRate=29, frequency=24} User{fName='Therine', lName='Madge', username='neopythagoreanism', password='1d281b33068fbb45b5294466d44acbae05cd679f5947041c911d577d6d2bbd88', email='gwatson@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=101, retrievalRate=59, frequency=23} User{fName='Kristien', lName='Pirnot', username='panlogism', password='b1ebc709911cb51a7b0c9b4f6c94cb50a1c858dffd5c8b9904239f4b714f74a5', email='ewashington@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=102, retrievalRate=68, frequency=13} User{fName='Cati', lName='Mayeda', username='mcgaw', password='55c64d0fcd6f9d5f7c828093857e3fdfda68478bb4e9bd24d481ef391c7804e8', email='plee@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=103, retrievalRate=30, frequency=22} User{fName='Mari', lName='Kinnard', username='stinkwood', password='0d1ea4c256cd50a2a7ccbfd22b3d9959f6fd30bd840b9ff3c7c65ee4e21df06d', email='fperry@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=104, retrievalRate=64, frequency=28} User{fName='Anabal', lName='Dustie', username='antipas', password='eaa191a36b4315afe08cc6182fef69d0b1ec5f26c71d6bdfc3132085e5d472bb', email='kross@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=105, retrievalRate=66, frequency=20} User{fName='Buffy', lName='Geiss', username='subscribe', password='b2ef6b273ee0b510734ac57df2636f72c780ccb5a13266b604b56b5425a7cb33', email='cmorris@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=106, retrievalRate=63, frequency=27} User{fName='Meara', lName='Pellegrini', username='bunch', password='350434bad068a7a4be855bc362d7a4ad6e631e7f5f0d916a2a0452070066d317', email='khoward@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=107, retrievalRate=53, frequency=13} User{fName='Millicent', lName='Xanthus', username='mountford', password='d9ee788d82d739279ecb223f22df5971e59efe1b9e86afaaf71fe4b17b7f6e53', email='csimmons@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=108, retrievalRate=40, frequency=20} User{fName='Vitoria', lName='Grindlay', username='meshwork', password='6fa599fe7b02fec029e98dfa0f64c6ec946cc0ebc57916355dcaaf27bcac5a16', email='glong@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=109, retrievalRate=68, frequency=15} User{fName='Angelle', lName='Teodor', username='beutner', password='819210ab9e708d5ddda881f84499d098546ff89e58c55d1a795e1a4c9dd0b2b0', email='lbrooks@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=110, retrievalRate=36, frequency=29} User{fName='Avrit', lName='Karina', username='gloss', password='7572326b43b6fa45a62ebe7d7c3868ba8cc5a980aca604e1a2f42c17114ce7c0', email='ogreen@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=111, retrievalRate=50, frequency=14} User{fName='Valina', lName='Mareah', username='nicolle', password='2205560e354b9a9f2fdbdc661d502bc7671173bcca7761435c6b57475df667e3', email='jjones@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=112, retrievalRate=63, frequency=25} User{fName='Julissa', lName='Chin', username='unpeg', password='7ca840127ca5a1264a588d4da8c0aa751780f33d73db484fe9251d68c60f5427', email='adavis@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=113, retrievalRate=66, frequency=19} User{fName='Ruthe', lName='Dalt', username='veiled', password='c80f63014c517106d469cfbb0203f1077fea7d872b304aff0d0de875802cb33a', email='wnelson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=114, retrievalRate=63, frequency=12} User{fName='Florie', lName='Derrek', username='bollard', password='c0ee0bec526a7114cb176543ad6472809c0935c45e0e4add0c34015d99a964db', email='ahenderson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=115, retrievalRate=37, frequency=23} User{fName='Alexina', lName='Tannen', username='unalloyed', password='c9de0fbb09b791669b0f0beb842f398d4f127a15a300c4bb09de33130069e08e', email='lturner@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=116, retrievalRate=34, frequency=13} User{fName='Ealasaid', lName='Westerfield', username='voluntary', password='401cb0a3c9577a6aede136e6d5d4c9b87b955ef3c98010ff91390acd06d4b2aa', email='dsmith@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=117, retrievalRate=70, frequency=28} User{fName='Jerrine', lName='Bette', username='bicapsular', password='d17108747e922613fe66bf5b0ec450801f513b92e91d7838f0b739df9f68ba98', email='fdiaz@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=118, retrievalRate=45, frequency=28} User{fName='Amelita', lName='Affer', username='ellipticity', password='445929267209c034d1e324834c17e0c8305df3dcb21d1710a639ac6ca08c648b', email='ctaylor@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=119, retrievalRate=60, frequency=20} User{fName='Kettie', lName='Skell', username='cumin', password='d8c486f3530042ead4c30d4cf60ac77fdf683fd15796096408b183941c335746', email='bmitchell@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=120, retrievalRate=27, frequency=18} User{fName='Madge', lName='Lorri', username='domenech', password='2ac81299578013795576682809a4a16d1ecca67118a797ea576c113c41786849', email='wsmith@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=121, retrievalRate=31, frequency=26} User{fName='Kizzee', lName='Pellet', username='varnish', password='50cd57a690ca220dbf82d077b4ec2c9a7f5bb6434930de2856a6e314c6f1b840', email='lhill@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=122, retrievalRate=58, frequency=22} User{fName='Cara', lName='Cousins', username='kirshbaum', password='87bbe879c7a5f5784a70384bb49fa9513a6a3fbe4c2d388635e3c87611c03fae', email='groberts@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=123, retrievalRate=60, frequency=15} User{fName='Leodora', lName='Deaner', username='fleabitten', password='4a663bd875b62f82716c5687a3452f7c2513ad239e40a1e8a3cf43361759d3ce', email='tpowell@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=124, retrievalRate=25, frequency=12} User{fName='Kary', lName='Redfield', username='diestock', password='72bb0d667f8ddae0e323ffc1ac3e7abda4a41a635d7f9d10990212a31b9e20af', email='jbailey@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=125, retrievalRate=64, frequency=25} User{fName='Inger', lName='Pegeen', username='arsis', password='ff1b4a27562d8ffc821b4d7368818ad7c759cfc2068b7adf0d2712315d67359a', email='ygonzales@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=126, retrievalRate=66, frequency=13} User{fName='Guillemette', lName='Frederica', username='aerobiosis', password='e7869dc4d61dfa3c9191f0017c3a86366c25ec5f3c6676c93f76f53dfa1a51fd', email='erobinson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=127, retrievalRate=36, frequency=18} User{fName='Doroteya', lName='Garvey', username='ischia', password='bd582ae432692458aef5c1e015db2fea76680058a4996ddd2bcbd3847bdfd0da', email='vrichardson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=128, retrievalRate=47, frequency=15} User{fName='Claretta', lName='Goren', username='crestfallen', password='1d58d6066b67c134c757b92d978d8d8aca2cc9adf2d78594e7652230a0e308dc', email='wwood@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=129, retrievalRate=47, frequency=21} User{fName='Zita', lName='Tarah', username='goldsmith', password='94ce18dded2e761fa5ec7e0843f8f57edc8d2465a58ecae91331bcff21cfaf5e', email='srichardson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=130, retrievalRate=74, frequency=29} User{fName='Denni', lName='Ozan', username='springwood', password='809c398466693e00e01e0e22d5a7096bf63011aa58dc4db9b46d18b870a0ea26', email='opowell@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=131, retrievalRate=64, frequency=24} User{fName='Petrina', lName='Rabush', username='math', password='a58e8cf90692dc568b0f32d3ba45c13798dcc7698be8de56df522d6328034926', email='bcampbell@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=132, retrievalRate=30, frequency=24} User{fName='Kordula', lName='Dniren', username='stopwatch', password='dd5830654c891fbec6bc8a0b5508a8bc42530b23e7cef2198599e84c9270fd77', email='kbryant@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=133, retrievalRate=61, frequency=28} User{fName='Issi', lName='Chemosh', username='imaginative', password='45a6c3c86f3a1a6eca7a1e25b4de37aa4d53e62cf55752b7bfb941bd11ba2400', email='ataylor@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=134, retrievalRate=30, frequency=25} User{fName='Arlana', lName='Dougal', username='crannog', password='27d9812ed83c1d618bf297e8a45a85d361bf9969eb9c75cf3ac9d6fb16e43338', email='probinson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=135, retrievalRate=64, frequency=21} User{fName='Angil', lName='Marney', username='guttering', password='d14b6c9eeebdd0d6db62dccd34678ab88e04e48a55e3029f5595ecf791c0381b', email='pcox@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=136, retrievalRate=66, frequency=12} User{fName='Roch', lName='Bohun', username='translocate', password='9f79fd6cdc880e3914ac75b50d71222d29d4e5e8680bc14e18e5ef28c1981484', email='odavis@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Customer{CustomerId=137, retrievalRate=62, frequency=24} User{fName='Angie', lName='Skip', username='rusel', password='9ee6c0facbe8d06e39da87ff43bf3a4ce510aff2015518e84194fcdf6bae17cf', email='rclark@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: ==================================================
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 8, 14, 17, 19, 24, 27, 28, 32, 39, 40, 41, 43, 49, 46, 56, 55, 57, 59], id=138, Event Creation Frequency=292} User{fName='Domini', lName='Forcier', username='etamine', password='b1483029f303734b2255d7989d68b2f22619872bc53fd9247b960b46a679d52f', email='ahenderson@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 14, 22, 24, 26, 27, 31, 39, 41, 59, 46, 55, 56], id=139, Event Creation Frequency=292} User{fName='Anjanette', lName='Melisande', username='catenary', password='a535b4f00b50e1d148f58a2e598ee9fd541824395ba0ea078d46365bd29ad9cd', email='dgonzalez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 14, 16, 21, 22, 24, 27, 28, 31, 32, 39, 42, 43, 51, 46, 52, 56], id=140, Event Creation Frequency=292} User{fName='Caralie', lName='Tonye', username='mayst', password='0f7bfe6859999fd0ee6e4a7b725d466cebebec7ca75ddd7ef0f2e6d648db6d8f', email='jturner@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 15, 16, 18, 24, 25, 26, 27, 28, 32, 34, 39, 40, 41, 46, 52, 55, 56, 57], id=141, Event Creation Frequency=292} User{fName='Tova', lName='Conyers', username='polar', password='c780513e13bc9d2137eb766e9e1c912050fdf3d1f42095db5f5cbc038f522c90', email='osanders@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[8, 16, 24, 28, 31, 32, 34, 39, 40, 41, 43, 49, 58, 56, 55, 57], id=142, Event Creation Frequency=292} User{fName='Blythe', lName='Bing', username='kibitzer', password='aec6e9200847dcb045214f9a0e17921cf539b3e0718f2a2f76b6b6f8117e793b', email='dgonzalez@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[14, 16, 24, 27, 28, 32, 41, 42, 43, 52, 53, 59, 56, 46, 55, 57], id=143, Event Creation Frequency=292} User{fName='Babbie', lName='Lelia', username='alfalfa', password='c19b4c4566117c72340308a7dd89b825c23e643ead70a2bd194f2a69616e180f', email='cbennett@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[10, 16, 24, 27, 28, 31, 32, 34, 41, 43, 46, 59, 49, 56, 58, 57], id=144, Event Creation Frequency=292} User{fName='Carri', lName='Web', username='nuncio', password='45c0bec2d2a90934c82311948d1106741c5d9227785955e9f3ce3078ca4e53b8', email='rwatson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 12, 13, 14, 24, 26, 27, 32, 39, 41, 42, 43, 46, 52, 53, 56, 55], id=145, Event Creation Frequency=292} User{fName='Benedetta', lName='Ernaline', username='nazler', password='198becaf9c45016fec5d9bcd2e8d748de6b44a26cd4cc35ea72b670e665dff79', email='ntaylor@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[16, 24, 27, 28, 29, 31, 32, 35, 37, 39, 40, 41, 47, 46, 49, 57, 56, 59], id=146, Event Creation Frequency=292} User{fName='Marthena', lName='Lazor', username='oui', password='6c60158cf3b504d644792e806dc645fb3d3a10204027f0ae3d6021ab87d22a3e', email='rrichardson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[8, 12, 14, 16, 23, 27, 28, 31, 32, 39, 40, 41, 54, 52, 46, 53, 56, 55, 57, 59], id=147, Event Creation Frequency=292} User{fName='Madelina', lName='Barron', username='telespectroscope', password='8548d75fcb3a2a275a1ba868a36f6a26e528f16b07aa7d8006616ad090a9b349', email='fwilson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 5, 9, 16, 21, 24, 27, 28, 33, 39, 40, 41, 42, 43, 46, 49, 52, 56, 57, 59], id=148, Event Creation Frequency=292} User{fName='Rita', lName='Tiffie', username='postcard', password='3419a744b6efbe446c11abc1f73de07ec4e5e7bc39df17042f25031aefe0478a', email='yanderson@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[1, 3, 24, 27, 28, 32, 39, 40, 41, 43, 50, 52, 49, 46, 56], id=149, Event Creation Frequency=292} User{fName='Dianne', lName='Mallon', username='hamblin', password='f424040f5afd8846f2948293acf1f499a502d081f49937bb4cf252d146a3d19e', email='jkwilson@gmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 20, 22, 24, 26, 27, 28, 30, 31, 32, 34, 39, 40, 41, 43, 46, 56, 49, 57], id=150, Event Creation Frequency=292} User{fName='Stafani', lName='Ferris', username='krefeld', password='bb87adf8aa783887f0874a55a7fce06d5fc60f5886a767c88f75fe5a7611074a', email='vbennett@live.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[6, 11, 16, 22, 24, 26, 27, 28, 31, 32, 39, 40, 41, 43, 44, 45, 52, 58, 46, 53, 56, 55], id=151, Event Creation Frequency=292} User{fName='Pooh', lName='Kathrine', username='panettone', password='8ce17c16d87a0874ac562bfd9a951a3611280a2c1166d37ffd1c8a8633399961', email='wbryant@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[3, 8, 10, 14, 21, 24, 26, 28, 31, 32, 39, 41, 42, 43, 46, 57, 52, 56, 55], id=152, Event Creation Frequency=292} User{fName='Perry', lName='Moor', username='bald', password='079cdc52e64462dfac5124edf6b1b923250911071b3b9abbe00ab1f5ae837b57', email='gcooper@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[4, 7, 27, 28, 32, 34, 39, 41, 42, 43, 48, 46, 53, 49, 57], id=153, Event Creation Frequency=292} User{fName='Cosette', lName='Jules', username='mansour', password='c485bb80788020a03efa2dce31420f590850c302be20d1dc377cdcc16fc43f72', email='ybutler@hotmail.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Vendor{eventIds=[2, 12, 16, 21, 24, 27, 31, 36, 38, 39, 41, 42, 43, 46, 53, 52, 58, 49, 55, 59, 57], id=154, Event Creation Frequency=292} User{fName='Gayle', lName='Chally', username='wesle', password='abe6a5ad606909657e482cea9c0218a9ff124d42d8b43a30b2480918c9df263c', email='sbennett@yahoo.com', simulated=true}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: ==================================================
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=1, vendor=149, pool tickets=1501, sold tickets=377, available tickets=2086, poolSize=1735, totalTickets=3964}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=2, vendor=154, pool tickets=1036, sold tickets=376, available tickets=1772, poolSize=1250, totalTickets=3184}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=3, vendor=149, pool tickets=1721, sold tickets=369, available tickets=1114, poolSize=1797, totalTickets=3204}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=4, vendor=153, pool tickets=1152, sold tickets=377, available tickets=1992, poolSize=1330, totalTickets=3521}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=5, vendor=148, pool tickets=1588, sold tickets=366, available tickets=1471, poolSize=1775, totalTickets=3425}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=6, vendor=151, pool tickets=1486, sold tickets=365, available tickets=2121, poolSize=1743, totalTickets=3972}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=7, vendor=153, pool tickets=1624, sold tickets=348, available tickets=1700, poolSize=1846, totalTickets=3672}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=8, vendor=138, pool tickets=1190, sold tickets=373, available tickets=1955, poolSize=1290, totalTickets=3518}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=9, vendor=148, pool tickets=1492, sold tickets=358, available tickets=1165, poolSize=1661, totalTickets=3015}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=10, vendor=152, pool tickets=1693, sold tickets=334, available tickets=1383, poolSize=1722, totalTickets=3410}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=11, vendor=151, pool tickets=962, sold tickets=370, available tickets=1909, poolSize=1211, totalTickets=3241}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=12, vendor=145, pool tickets=1834, sold tickets=361, available tickets=892, poolSize=1908, totalTickets=3087}
+Nov 17, 2024 4:30:13 AM entity.Util endProgram
+INFO: Event{id=13, vendor=145, pool tickets=1298, sold tickets=339, available tickets=2085, poolSize=1477, totalTickets=3722}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=14, vendor=140, pool tickets=930, sold tickets=377, available tickets=1844, poolSize=1017, totalTickets=3151}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=15, vendor=141, pool tickets=952, sold tickets=375, available tickets=2400, poolSize=1197, totalTickets=3727}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=16, vendor=148, pool tickets=1109, sold tickets=393, available tickets=2482, poolSize=1203, totalTickets=3984}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=17, vendor=138, pool tickets=1496, sold tickets=305, available tickets=1596, poolSize=1604, totalTickets=3397}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=18, vendor=141, pool tickets=1393, sold tickets=384, available tickets=1308, poolSize=1569, totalTickets=3085}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=19, vendor=138, pool tickets=1394, sold tickets=341, available tickets=2038, poolSize=1608, totalTickets=3773}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=20, vendor=150, pool tickets=832, sold tickets=357, available tickets=2742, poolSize=1051, totalTickets=3931}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=21, vendor=148, pool tickets=1247, sold tickets=360, available tickets=2087, poolSize=1401, totalTickets=3694}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=22, vendor=140, pool tickets=1065, sold tickets=339, available tickets=1787, poolSize=1148, totalTickets=3191}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=23, vendor=147, pool tickets=1746, sold tickets=373, available tickets=1679, poolSize=1988, totalTickets=3798}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=24, vendor=145, pool tickets=1209, sold tickets=354, available tickets=1797, poolSize=1306, totalTickets=3360}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=25, vendor=141, pool tickets=1215, sold tickets=355, available tickets=2428, poolSize=1407, totalTickets=3998}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=26, vendor=151, pool tickets=1369, sold tickets=364, available tickets=2218, poolSize=1493, totalTickets=3951}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=27, vendor=144, pool tickets=1150, sold tickets=332, available tickets=2366, poolSize=1225, totalTickets=3848}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=28, vendor=146, pool tickets=1833, sold tickets=375, available tickets=1654, poolSize=1955, totalTickets=3862}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=29, vendor=146, pool tickets=1565, sold tickets=341, available tickets=1728, poolSize=1773, totalTickets=3634}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=30, vendor=150, pool tickets=1585, sold tickets=338, available tickets=1339, poolSize=1742, totalTickets=3262}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=31, vendor=152, pool tickets=1788, sold tickets=361, available tickets=1486, poolSize=1820, totalTickets=3635}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=32, vendor=142, pool tickets=1368, sold tickets=378, available tickets=1938, poolSize=1413, totalTickets=3684}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=33, vendor=148, pool tickets=1211, sold tickets=362, available tickets=2368, poolSize=1446, totalTickets=3941}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=34, vendor=150, pool tickets=1384, sold tickets=369, available tickets=1329, poolSize=1430, totalTickets=3082}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=35, vendor=146, pool tickets=1786, sold tickets=334, available tickets=960, poolSize=1956, totalTickets=3080}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=36, vendor=154, pool tickets=1151, sold tickets=376, available tickets=1927, poolSize=1373, totalTickets=3454}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=37, vendor=146, pool tickets=1402, sold tickets=374, available tickets=1788, poolSize=1628, totalTickets=3564}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=38, vendor=154, pool tickets=891, sold tickets=358, available tickets=2161, poolSize=1050, totalTickets=3410}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=39, vendor=142, pool tickets=1069, sold tickets=345, available tickets=2318, poolSize=1156, totalTickets=3732}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=40, vendor=150, pool tickets=959, sold tickets=357, available tickets=2373, poolSize=1042, totalTickets=3689}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=41, vendor=152, pool tickets=997, sold tickets=356, available tickets=2105, poolSize=1095, totalTickets=3458}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=42, vendor=154, pool tickets=1576, sold tickets=358, available tickets=1444, poolSize=1669, totalTickets=3378}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=43, vendor=141, pool tickets=1737, sold tickets=350, available tickets=1865, poolSize=1857, totalTickets=3952}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=44, vendor=144, pool tickets=1149, sold tickets=347, available tickets=2318, poolSize=1264, totalTickets=3814}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=45, vendor=138, pool tickets=1074, sold tickets=355, available tickets=2140, poolSize=1275, totalTickets=3569}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=47, vendor=147, pool tickets=1316, sold tickets=380, available tickets=2063, poolSize=1513, totalTickets=3759}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=51, vendor=153, pool tickets=1727, sold tickets=333, available tickets=1221, poolSize=1862, totalTickets=3281}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=48, vendor=139, pool tickets=999, sold tickets=364, available tickets=2216, poolSize=1188, totalTickets=3579}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=54, vendor=149, pool tickets=1615, sold tickets=350, available tickets=1201, poolSize=1778, totalTickets=3166}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=50, vendor=146, pool tickets=1526, sold tickets=377, available tickets=1293, poolSize=1595, totalTickets=3196}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=53, vendor=143, pool tickets=1488, sold tickets=358, available tickets=1504, poolSize=1561, totalTickets=3350}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=46, vendor=152, pool tickets=1696, sold tickets=322, available tickets=1326, poolSize=1779, totalTickets=3344}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=58, vendor=154, pool tickets=1443, sold tickets=346, available tickets=1367, poolSize=1629, totalTickets=3156}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=49, vendor=145, pool tickets=1003, sold tickets=352, available tickets=2440, poolSize=1046, totalTickets=3795}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=52, vendor=140, pool tickets=1724, sold tickets=370, available tickets=1773, poolSize=1818, totalTickets=3867}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=56, vendor=142, pool tickets=1710, sold tickets=372, available tickets=1733, poolSize=1803, totalTickets=3815}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=55, vendor=150, pool tickets=1840, sold tickets=335, available tickets=1623, poolSize=1901, totalTickets=3798}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=57, vendor=148, pool tickets=965, sold tickets=373, available tickets=1821, poolSize=1067, totalTickets=3159}
+Nov 17, 2024 4:30:14 AM entity.Util endProgram
+INFO: Event{id=59, vendor=151, pool tickets=1456, sold tickets=384, available tickets=1545, poolSize=1535, totalTickets=3385}

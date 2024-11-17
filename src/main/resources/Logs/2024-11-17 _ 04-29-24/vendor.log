@@ -1,0 +1,34 @@
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:147 event: Event{id=47, vendor=147, pool tickets=1513, sold tickets=0, available tickets=2246, poolSize=1513, totalTickets=3759}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:146 event: Event{id=50, vendor=146, pool tickets=1595, sold tickets=0, available tickets=1601, poolSize=1595, totalTickets=3196}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:141 event: Event{id=43, vendor=141, pool tickets=1857, sold tickets=0, available tickets=2095, poolSize=1857, totalTickets=3952}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:138 event: Event{id=45, vendor=138, pool tickets=1275, sold tickets=0, available tickets=2294, poolSize=1275, totalTickets=3569}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:152 event: Event{id=46, vendor=152, pool tickets=1779, sold tickets=0, available tickets=1565, poolSize=1779, totalTickets=3344}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:144 event: Event{id=44, vendor=144, pool tickets=1264, sold tickets=0, available tickets=2550, poolSize=1264, totalTickets=3814}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:154 event: Event{id=58, vendor=154, pool tickets=1629, sold tickets=0, available tickets=1527, poolSize=1629, totalTickets=3156}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:139 event: Event{id=48, vendor=139, pool tickets=1188, sold tickets=0, available tickets=2391, poolSize=1188, totalTickets=3579}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:149 event: Event{id=54, vendor=149, pool tickets=1778, sold tickets=0, available tickets=1388, poolSize=1778, totalTickets=3166}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:153 event: Event{id=51, vendor=153, pool tickets=1862, sold tickets=0, available tickets=1419, poolSize=1862, totalTickets=3281}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:143 event: Event{id=53, vendor=143, pool tickets=1561, sold tickets=0, available tickets=1789, poolSize=1561, totalTickets=3350}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:145 event: Event{id=49, vendor=145, pool tickets=1046, sold tickets=0, available tickets=2749, poolSize=1046, totalTickets=3795}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:140 event: Event{id=52, vendor=140, pool tickets=1818, sold tickets=0, available tickets=2049, poolSize=1818, totalTickets=3867}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:142 event: Event{id=56, vendor=142, pool tickets=1803, sold tickets=0, available tickets=2012, poolSize=1803, totalTickets=3815}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:150 event: Event{id=55, vendor=150, pool tickets=1901, sold tickets=0, available tickets=1897, poolSize=1901, totalTickets=3798}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:148 event: Event{id=57, vendor=148, pool tickets=1067, sold tickets=0, available tickets=2092, poolSize=1067, totalTickets=3159}
+Nov 17, 2024 4:29:26 AM entity.Vendor run
+INFO: New Event Created by Vendor:151 event: Event{id=59, vendor=151, pool tickets=1535, sold tickets=0, available tickets=1850, poolSize=1535, totalTickets=3385}

@@ -1,0 +1,188 @@
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 138 added 117 tickets to Event 8. Pool size: 1290 before: 1105 after: 1222 available tickets: 2111
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 104 tickets to Event 18. Pool size: 1569 before: 1387 after: 1491 available tickets: 1412
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 139 added 172 tickets to Event 14. Pool size: 1017 before: 839 after: 1011 available tickets: 1962
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 111 tickets to Event 34. Pool size: 1430 before: 1253 after: 1364 available tickets: 1541
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 140 added 147 tickets to Event 22. Pool size: 1148 before: 995 after: 1142 available tickets: 1896
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 140 added 142 tickets to Event 28. Pool size: 1955 before: 1778 after: 1920 available tickets: 1765
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 145 added 145 tickets to Event 27. Pool size: 1225 before: 1068 after: 1213 available tickets: 2478
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 144 added 153 tickets to Event 24. Pool size: 1306 before: 1147 after: 1300 available tickets: 1901
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 127 tickets to Event 31. Pool size: 1820 before: 1646 after: 1773 available tickets: 1688
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 140 added 120 tickets to Event 43. Pool size: 1857 before: 1690 after: 1810 available tickets: 1975
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 149 added 154 tickets to Event 50. Pool size: 1595 before: 1399 after: 1553 available tickets: 1447
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 148 added 169 tickets to Event 57. Pool size: 1067 before: 881 after: 1050 available tickets: 1923
+Nov 17, 2024 4:29:46 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 157 tickets to Event 55. Pool size: 1901 before: 1734 after: 1891 available tickets: 1740
+Nov 17, 2024 4:29:47 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 191 tickets to Event 16. Pool size: 1203 before: 999 after: 1190 available tickets: 2590
+Nov 17, 2024 4:29:47 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 116 tickets to Event 44. Pool size: 1264 before: 1089 after: 1205 available tickets: 2434
+Nov 17, 2024 4:29:47 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 100 tickets to Event 49. Pool size: 1046 before: 842 after: 942 available tickets: 2649
+Nov 17, 2024 4:29:47 AM entity.VendorEventAssociation run
+INFO: Vendor 144 added 166 tickets to Event 56. Pool size: 1803 before: 1627 after: 1793 available tickets: 1846
+Nov 17, 2024 4:29:47 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 153 tickets to Event 59. Pool size: 1535 before: 1339 after: 1492 available tickets: 1697
+Nov 17, 2024 4:29:48 AM entity.VendorEventAssociation run
+INFO: Vendor 143 added 116 tickets to Event 32. Pool size: 1413 before: 1208 after: 1324 available tickets: 2155
+Nov 17, 2024 4:29:48 AM entity.VendorEventAssociation run
+INFO: Vendor 138 added 163 tickets to Event 40. Pool size: 1042 before: 843 after: 1006 available tickets: 2484
+Nov 17, 2024 4:29:48 AM entity.VendorEventAssociation run
+INFO: Vendor 145 added 102 tickets to Event 42. Pool size: 1669 before: 1480 after: 1582 available tickets: 1607
+Nov 17, 2024 4:29:48 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 118 tickets to Event 41. Pool size: 1095 before: 894 after: 1012 available tickets: 2245
+Nov 17, 2024 4:29:49 AM entity.VendorEventAssociation run
+INFO: Vendor 147 added 143 tickets to Event 39. Pool size: 1156 before: 982 after: 1125 available tickets: 2433
+Nov 17, 2024 4:29:49 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 148 tickets to Event 52. Pool size: 1818 before: 1616 after: 1764 available tickets: 1901
+Nov 17, 2024 4:29:50 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 160 tickets to Event 58. Pool size: 1629 before: 1439 after: 1599 available tickets: 1367
+Nov 17, 2024 4:29:51 AM entity.VendorEventAssociation run
+INFO: Vendor 150 added 138 tickets to Event 20. Pool size: 1051 before: 814 after: 952 available tickets: 2742
+Nov 17, 2024 4:29:51 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 164 tickets to Event 35. Pool size: 1956 before: 1741 after: 1905 available tickets: 960
+Nov 17, 2024 4:29:51 AM entity.VendorEventAssociation run
+INFO: Vendor 150 added 106 tickets to Event 46. Pool size: 1779 before: 1600 after: 1706 available tickets: 1459
+Nov 17, 2024 4:29:52 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 130 tickets to Event 15. Pool size: 1197 before: 957 after: 1087 available tickets: 2400
+Nov 17, 2024 4:29:52 AM entity.VendorEventAssociation run
+INFO: Vendor 152 added 101 tickets to Event 32. Pool size: 1413 before: 1298 after: 1399 available tickets: 2054
+Nov 17, 2024 4:29:53 AM entity.VendorEventAssociation run
+INFO: Vendor 138 added 197 tickets to Event 17. Pool size: 1604 before: 1404 after: 1601 available tickets: 1596
+Nov 17, 2024 4:29:54 AM entity.VendorEventAssociation run
+INFO: Vendor 148 added 104 tickets to Event 21. Pool size: 1401 before: 1156 after: 1260 available tickets: 2189
+Nov 17, 2024 4:29:55 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 108 tickets to Event 6. Pool size: 1743 before: 1487 after: 1595 available tickets: 2121
+Nov 17, 2024 4:29:55 AM entity.VendorEventAssociation run
+INFO: Vendor 139 added 104 tickets to Event 26. Pool size: 1493 before: 1245 after: 1349 available tickets: 2354
+Nov 17, 2024 4:29:55 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 183 tickets to Event 47. Pool size: 1513 before: 1252 after: 1435 available tickets: 2063
+Nov 17, 2024 4:29:55 AM entity.VendorEventAssociation run
+INFO: Vendor 140 added 198 tickets to Event 51. Pool size: 1862 before: 1632 after: 1830 available tickets: 1221
+Nov 17, 2024 4:29:56 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 110 tickets to Event 43. Pool size: 1857 before: 1742 after: 1852 available tickets: 1865
+Nov 17, 2024 4:29:57 AM entity.VendorEventAssociation run
+INFO: Vendor 145 added 118 tickets to Event 14. Pool size: 1017 before: 884 after: 1002 available tickets: 1844
+Nov 17, 2024 4:29:57 AM entity.VendorEventAssociation run
+INFO: Vendor 147 added 187 tickets to Event 54. Pool size: 1778 before: 1510 after: 1697 available tickets: 1201
+Nov 17, 2024 4:29:58 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 162 tickets to Event 2. Pool size: 1250 before: 966 after: 1128 available tickets: 1772
+Nov 17, 2024 4:29:58 AM entity.VendorEventAssociation run
+INFO: Vendor 142 added 140 tickets to Event 41. Pool size: 1095 before: 923 after: 1063 available tickets: 2105
+Nov 17, 2024 4:29:58 AM entity.VendorEventAssociation run
+INFO: Vendor 149 added 128 tickets to Event 52. Pool size: 1818 before: 1688 after: 1816 available tickets: 1773
+Nov 17, 2024 4:29:58 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 175 tickets to Event 48. Pool size: 1188 before: 934 after: 1109 available tickets: 2216
+Nov 17, 2024 4:29:58 AM entity.VendorEventAssociation run
+INFO: Vendor 143 added 102 tickets to Event 57. Pool size: 1067 before: 948 after: 1050 available tickets: 1821
+Nov 17, 2024 4:29:59 AM entity.VendorEventAssociation run
+INFO: Vendor 142 added 156 tickets to Event 8. Pool size: 1290 before: 1109 after: 1265 available tickets: 1955
+Nov 17, 2024 4:29:59 AM entity.VendorEventAssociation run
+INFO: Vendor 138 added 191 tickets to Event 3. Pool size: 1797 before: 1501 after: 1692 available tickets: 1216
+Nov 17, 2024 4:29:59 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 133 tickets to Event 29. Pool size: 1773 before: 1512 after: 1645 available tickets: 1728
+Nov 17, 2024 4:29:59 AM entity.VendorEventAssociation run
+INFO: Vendor 152 added 111 tickets to Event 28. Pool size: 1955 before: 1821 after: 1932 available tickets: 1654
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 126 tickets to Event 7. Pool size: 1846 before: 1582 after: 1708 available tickets: 1700
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 145 added 169 tickets to Event 12. Pool size: 1908 before: 1617 after: 1786 available tickets: 1010
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 118 tickets to Event 12. Pool size: 1908 before: 1786 after: 1904 available tickets: 892
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 152 added 102 tickets to Event 21. Pool size: 1401 before: 1218 after: 1320 available tickets: 2087
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 148 tickets to Event 37. Pool size: 1628 before: 1320 after: 1468 available tickets: 1788
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 136 tickets to Event 26. Pool size: 1493 before: 1321 after: 1457 available tickets: 2218
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 104 tickets to Event 24. Pool size: 1306 before: 1188 after: 1292 available tickets: 1797
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 144 added 102 tickets to Event 31. Pool size: 1820 before: 1665 after: 1767 available tickets: 1586
+Nov 17, 2024 4:30:00 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 113 tickets to Event 56. Pool size: 1803 before: 1675 after: 1788 available tickets: 1733
+Nov 17, 2024 4:30:01 AM entity.VendorEventAssociation run
+INFO: Vendor 150 added 102 tickets to Event 3. Pool size: 1797 before: 1686 after: 1788 available tickets: 1114
+Nov 17, 2024 4:30:01 AM entity.VendorEventAssociation run
+INFO: Vendor 145 added 160 tickets to Event 13. Pool size: 1477 before: 1203 after: 1363 available tickets: 2085
+Nov 17, 2024 4:30:01 AM entity.VendorEventAssociation run
+INFO: Vendor 147 added 150 tickets to Event 53. Pool size: 1561 before: 1270 after: 1420 available tickets: 1639
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 149 added 143 tickets to Event 1. Pool size: 1735 before: 1425 after: 1568 available tickets: 2086
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 199 tickets to Event 4. Pool size: 1330 before: 1039 after: 1238 available tickets: 1992
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 138 added 127 tickets to Event 19. Pool size: 1608 before: 1351 after: 1478 available tickets: 2038
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 199 tickets to Event 38. Pool size: 1050 before: 762 after: 961 available tickets: 2161
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 108 tickets to Event 16. Pool size: 1203 before: 1083 after: 1191 available tickets: 2482
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 142 added 115 tickets to Event 39. Pool size: 1156 before: 1041 after: 1156 available tickets: 2318
+Nov 17, 2024 4:30:02 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 109 tickets to Event 49. Pool size: 1046 before: 871 after: 980 available tickets: 2540
+Nov 17, 2024 4:30:03 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 101 tickets to Event 34. Pool size: 1430 before: 1233 after: 1334 available tickets: 1440
+Nov 17, 2024 4:30:04 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 154 tickets to Event 45. Pool size: 1275 before: 972 after: 1126 available tickets: 2140
+Nov 17, 2024 4:30:04 AM entity.VendorEventAssociation run
+INFO: Vendor 146 added 152 tickets to Event 59. Pool size: 1535 before: 1373 after: 1525 available tickets: 1545
+Nov 17, 2024 4:30:05 AM entity.VendorEventAssociation run
+INFO: Vendor 149 added 111 tickets to Event 40. Pool size: 1042 before: 895 after: 1006 available tickets: 2373
+Nov 17, 2024 4:30:05 AM entity.VendorEventAssociation run
+INFO: Vendor 148 added 163 tickets to Event 42. Pool size: 1669 before: 1467 after: 1630 available tickets: 1444
+Nov 17, 2024 4:30:05 AM entity.VendorEventAssociation run
+INFO: Vendor 145 added 135 tickets to Event 53. Pool size: 1561 before: 1395 after: 1530 available tickets: 1504
+Nov 17, 2024 4:30:05 AM entity.VendorEventAssociation run
+INFO: Vendor 143 added 133 tickets to Event 46. Pool size: 1779 before: 1616 after: 1749 available tickets: 1326
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 148 added 179 tickets to Event 5. Pool size: 1775 before: 1457 after: 1636 available tickets: 1471
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 109 tickets to Event 22. Pool size: 1148 before: 1011 after: 1120 available tickets: 1787
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 104 tickets to Event 18. Pool size: 1569 before: 1336 after: 1440 available tickets: 1308
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 138 added 112 tickets to Event 27. Pool size: 1225 before: 1064 after: 1176 available tickets: 2366
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 148 added 127 tickets to Event 33. Pool size: 1446 before: 1131 after: 1258 available tickets: 2368
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 111 tickets to Event 34. Pool size: 1430 before: 1317 after: 1428 available tickets: 1329
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 149 added 154 tickets to Event 50. Pool size: 1595 before: 1410 after: 1564 available tickets: 1293
+Nov 17, 2024 4:30:06 AM entity.VendorEventAssociation run
+INFO: Vendor 142 added 117 tickets to Event 55. Pool size: 1901 before: 1768 after: 1885 available tickets: 1623
+Nov 17, 2024 4:30:08 AM entity.VendorEventAssociation run
+INFO: Vendor 152 added 175 tickets to Event 10. Pool size: 1722 before: 1423 after: 1598 available tickets: 1513
+Nov 17, 2024 4:30:08 AM entity.VendorEventAssociation run
+INFO: Vendor 154 added 154 tickets to Event 36. Pool size: 1373 before: 1040 after: 1194 available tickets: 1927
+Nov 17, 2024 4:30:08 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 116 tickets to Event 44. Pool size: 1264 before: 1067 after: 1183 available tickets: 2318
+Nov 17, 2024 4:30:08 AM entity.VendorEventAssociation run
+INFO: Vendor 153 added 100 tickets to Event 49. Pool size: 1046 before: 943 after: 1043 available tickets: 2440
+Nov 17, 2024 4:30:09 AM entity.VendorEventAssociation run
+INFO: Vendor 151 added 121 tickets to Event 11. Pool size: 1211 before: 867 after: 988 available tickets: 1909
+Nov 17, 2024 4:30:09 AM entity.VendorEventAssociation run
+INFO: Vendor 144 added 130 tickets to Event 10. Pool size: 1722 before: 1590 after: 1720 available tickets: 1383
+Nov 17, 2024 4:30:10 AM entity.VendorEventAssociation run
+INFO: Vendor 148 added 189 tickets to Event 9. Pool size: 1661 before: 1324 after: 1513 available tickets: 1165
+Nov 17, 2024 4:30:10 AM entity.VendorEventAssociation run
+INFO: Vendor 147 added 131 tickets to Event 23. Pool size: 1988 before: 1637 after: 1768 available tickets: 1679
+Nov 17, 2024 4:30:10 AM entity.VendorEventAssociation run
+INFO: Vendor 150 added 181 tickets to Event 30. Pool size: 1742 before: 1431 after: 1612 available tickets: 1339
+Nov 17, 2024 4:30:10 AM entity.VendorEventAssociation run
+INFO: Vendor 141 added 163 tickets to Event 25. Pool size: 1407 before: 1072 after: 1235 available tickets: 2428
+Nov 17, 2024 4:30:10 AM entity.VendorEventAssociation run
+INFO: Vendor 143 added 116 tickets to Event 32. Pool size: 1413 before: 1279 after: 1395 available tickets: 1938
+Nov 17, 2024 4:30:12 AM entity.VendorEventAssociation run
+INFO: Vendor 139 added 100 tickets to Event 31. Pool size: 1820 before: 1692 after: 1792 available tickets: 1486
