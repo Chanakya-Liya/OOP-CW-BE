@@ -1,0 +1,48 @@
+{
+  "Simulation": {
+      "event":{
+        "EventCountMin": 30,
+        "EventCountMax": 45,
+        "PoolSizeMin": 1000,
+        "PoolSizeMax": 2000,
+        "TotalEventTicketsMin": 3000,
+        "TotalEventTicketsMax": 4000,
+        "EventCreationFrequencyMin": 120,
+        "EventCreationFrequencyMax": 300
+      },
+      "customer": {
+        "CustomerCountMin": 1000,
+        "CustomerCountMax": 3000,
+        "RetrievalRateMin": 25,
+        "RetrievalRateMax": 75,
+        "FrequencyMin": 10,
+        "FrequencyMax": 30
+      },
+      "vendor": {
+        "VendorCountMin": 15,
+        "VendorCountMax": 30,
+        "ReleaseRateMin": 100,
+        "ReleaseRateMax": 200,
+        "FrequencyMin": 20,
+        "FrequencyMax": 45
+      }
+  },
+  "ThreadTesting" : {
+     "event": {
+       "EventCount" : 10,
+       "PoolSize": 100,
+       "TotalTicketCount": 400,
+       "EventCreationFrequency": 60
+     },
+    "customer": {
+      "CustomerCount": 5,
+      "RetrievalRate": 10,
+      "Frequency": 1
+    },
+    "vendor": {
+      "VendorCount": 5,
+      "ReleaseRate": 40,
+      "Frequency": 2
+    }
+  }
+}
