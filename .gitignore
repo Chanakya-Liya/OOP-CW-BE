@@ -35,4 +35,4 @@ build/
 
 docker-compose.yml
 src/main/resources/application.yml
-src/main/resources/Logs
+src/main/resources/Logs/*
