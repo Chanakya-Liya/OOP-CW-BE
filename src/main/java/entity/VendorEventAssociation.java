@@ -22,10 +22,11 @@ public class VendorEventAssociation implements Runnable {
     private int releaseRate;
     private int frequency;
     private static final Logger logger = Logger.getLogger(VendorEventAssociation.class.getName());
+    private static Util util = new Util();
 
     static {
         try {
-            String filePath = Util.getEventLog();
+            String filePath = util.getEventLog();
             FileHandler fileHandler = new FileHandler(filePath, true); // "true" to append to the file
             fileHandler.setFormatter(new SimpleFormatter());  // Sets a simple text format for logs
             logger.addHandler(fileHandler);

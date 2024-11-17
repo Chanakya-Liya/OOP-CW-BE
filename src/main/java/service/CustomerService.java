@@ -1,11 +1,15 @@
 package service;
 
 import entity.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import repository.CustomerRepository;
 
 import java.util.List;
 
+@Service
 public class CustomerService {
+    @Autowired
     private CustomerRepository customerRepository;
 
     public List<Customer> getAllCustomers() {
@@ -18,6 +22,10 @@ public class CustomerService {
 
     public Customer addCustomer(Customer customer) {
         return customerRepository.save(customer);
+    }
+
+    public void addCustomers(List<Customer> customers) {
+        customerRepository.saveAll(customers);
     }
 
     public void deleteCustomerById(long id) {

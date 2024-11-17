@@ -2,7 +2,8 @@ package entity;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
-import repository.CustomerRepository;
+import org.springframework.stereotype.Component;
+import service.CustomerService;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,14 +12,12 @@ import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+@Component
 public class Util {
     private final static ArrayList<Customer> customers = new ArrayList<>();
     private final static ArrayList<Vendor> vendors = new ArrayList<>();
@@ -50,36 +49,40 @@ public class Util {
             logger.warning("Failed to set up file handler for logger : " + e.getMessage());
         }
     }
+    @Autowired
+    private CustomerService customerService;
 
-    public static ArrayList<Customer> getCustomers() {
+    public ArrayList<Customer> getCustomers() {
         return customers;
     }
 
-    public static ArrayList<Vendor> getVendors() {
+    public ArrayList<Vendor> getVendors() {
         return vendors;
     }
 
-    public static ArrayList<Event> getEvents() {
+    public  ArrayList<Event> getEvents() {
         return events;
     }
 
-    public static String getCustomerLog() {
+    public String getCustomerLog() {
         return CustomerLog;
     }
 
-    public static String getEventLog() {
+    public String getEventLog() {
         return EventLog;
     }
 
-    public static String getVendorLog() {
+    public String getVendorLog() {
         return VendorLog;
     }
 
-    public static int getStartOption() {
+    public int getStartOption() {
         return startOption;
     }
 
-    public static String generateRandomString(String stringRequired) throws IOException {
+
+
+    public String generateRandomString(String stringRequired) throws IOException {
         String fNameFile = "src/main/java/entity/Static/fName.txt";
         String lNameFIle = "src/main/java/entity/Static/lName.txt";
         String passwordFile = "src/main/java/entity/Static/passwords.txt";
@@ -116,7 +119,7 @@ public class Util {
         return null;
     }
 
-    public static int generateRandomInt(int start, int end){
+    public int generateRandomInt(int start, int end){
         if(start == end){
             return end;
         }
@@ -124,7 +127,7 @@ public class Util {
         return random.nextInt(start, end);
     }
 
-    public static void generateSimulatedUsers(){
+    public void generateSimulatedUsers(){
         try {
             System.out.println("Welcome to the ticket vendor simulation CLI");
             System.out.println("Make sure you have altered the config file to your liking before starting");
@@ -150,7 +153,7 @@ public class Util {
         }
     }
 
-    public static void generateForSimulation(boolean isStartUp) throws IOException {
+    public void generateForSimulation(boolean isStartUp) throws IOException {
         int EventCountMin = readJsonFile("Simulation", "event", "EventCountMin");
         int EventCountMax = readJsonFile("Simulation", "event", "EventCountMax");
         int PoolSizeMin = readJsonFile("Simulation", "event", "PoolSizeMin");
@@ -181,12 +184,12 @@ public class Util {
         }else{
             System.out.println(simulatedCustomers);
             simulateCustomersForSimulationTesting(simulatedCustomers, RetrievalRateMin, RetrievalRateMax, CustomerFrequencyMin, CustomerFrequencyMax);
-            simulateVendors(simulatedVendors);
+            simulateVendorsForThreadTesting(simulatedVendors);
         }
         simulateEventsForSimulationTesting(simulatedEvents, PoolSizeMin, PoolSizeMax,TotalEventTicketsMin, TotalEventTicketsMax, ReleaseRateMin, ReleaseRateMax, VendorFrequencyMin, VendorFrequencyMax);
     }
 
-    public static void generateForThreadTesting(boolean isStartUp) throws IOException {
+    public void generateForThreadTesting(boolean isStartUp) throws IOException {
         int simulatedEvents = readJsonFile("ThreadTesting", "event", "EventCount");
         int PoolSize = readJsonFile("ThreadTesting", "event", "PoolSize");
         int TotalEventTickets = readJsonFile("ThreadTesting", "event", "TotalTicketCount");
@@ -203,12 +206,12 @@ public class Util {
             simulatedEvents = 1;
         }else{
             simulateCustomersForThreadTesting(simulatedCustomers, CustomerFrequency, RetrievalRate);
-            simulateVendors(simulatedVendors);
+            simulateVendorsForThreadTesting(simulatedVendors);
         }
         simulateEventsForThreadTesting(simulatedEvents, PoolSize, TotalEventTickets, ReleaseRate, VendorFrequency);
     }
 
-    public static int validateUserInput(String prompt, int min, int max){
+    public int validateUserInput(String prompt, int min, int max){
         Scanner scanner = new Scanner(System.in);
         int option;
 
@@ -231,31 +234,34 @@ public class Util {
         return option;
     }
 
-    public static void simulateCustomersForThreadTesting(int simulateCustomers, int customerFrequency, int customerRetrieve) throws IOException {
+    public void simulateCustomersForThreadTesting(int simulateCustomers, int customerFrequency, int customerRetrieve) throws IOException {
         for(int i = 0; i < simulateCustomers; i++){
-            Customer customer = new Customer(Util.generateRandomString("fname"), Util.generateRandomString("lname"), Util.generateRandomString("username"), Util.generateRandomString("password"), Util.generateRandomString("email"), true, customerRetrieve, customerFrequency);
+            Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, customerRetrieve, customerFrequency);
             customers.add(customer);
         }
     }
 
-    public static void simulateCustomersForSimulationTesting(int simulateCustomers, int customerRetrieveMin, int customerRetrieveMax, int customerFrequencyMin, int customerFrequencyMax) throws IOException {
+    public void simulateCustomersForSimulationTesting(int simulateCustomers, int customerRetrieveMin, int customerRetrieveMax, int customerFrequencyMin, int customerFrequencyMax) throws IOException {
         for(int i = 0; i < simulateCustomers; i++){
-            Customer customer = new Customer(Util.generateRandomString("fname"), Util.generateRandomString("lname"), Util.generateRandomString("username"), Util.generateRandomString("password"), Util.generateRandomString("email"), true, Util.generateRandomInt(customerRetrieveMin, customerRetrieveMax), Util.generateRandomInt(customerFrequencyMin, customerFrequencyMax));
+            Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, generateRandomInt(customerRetrieveMin, customerRetrieveMax), generateRandomInt(customerFrequencyMin, customerFrequencyMax));
             customers.add(customer);
         }
     }
 
-    public static void simulateVendors(int simulateVendors) throws IOException {
+    public void simulateVendorsForThreadTesting(int simulateVendors) throws IOException {
         for(int i = 0; i < simulateVendors; i++){
-            Vendor vendor = new Vendor(Util.generateRandomString("fname"), Util.generateRandomString("lname"), Util.generateRandomString("username"), Util.generateRandomString("password"), Util.generateRandomString("email"), true);
+            Vendor vendor = new Vendor(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true);
             vendors.add(vendor);
         }
     }
 
-    public static void simulateEventsForThreadTesting(int simulatedEvent, int poolSize, int totalEventTickets, int releaseRate, int frequency){
+    public void simulateEventsForThreadTesting(int simulatedEvent, int poolSize, int totalEventTickets, int releaseRate, int frequency){
+        List<Event> eventsToSave = new ArrayList<>();
+        List<VendorEventAssociation> associationsToSave = new ArrayList<>();
         for(int i = 0; i < simulatedEvent; i++){
             boolean flag = true;
             Event event = new Event(poolSize, totalEventTickets);
+            eventsToSave.add(event);
             int vendorCount = generateRandomInt(-5,vendors.size());
             ArrayList<Integer> addedVendors = new ArrayList<>();
             if(vendorCount <= 0){
@@ -271,6 +277,7 @@ public class Util {
                     event.setVendor(vendors.get(vendorPosition));
                 }
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendors.get(vendorPosition), event, releaseRate, frequency);
+                associationsToSave.add(vendorEventAssociation);
                 Thread eventThread = new Thread(vendorEventAssociation);
                 eventThread.start();
                 vendors.get(vendorPosition).setEvents(event);
@@ -281,7 +288,7 @@ public class Util {
         }
     }
 
-    public static void simulateEventsForSimulationTesting(int simulatedEvent, int poolSizeMin, int poolSizeMax, int totalEventTicketsMin, int totalEventTicketsMax, int releaseRateMin, int releaseRateMax, int frequencyMin, int frequencyMax){
+    public void simulateEventsForSimulationTesting(int simulatedEvent, int poolSizeMin, int poolSizeMax, int totalEventTicketsMin, int totalEventTicketsMax, int releaseRateMin, int releaseRateMax, int frequencyMin, int frequencyMax){
         for(int i = 0; i < simulatedEvent; i++){
             boolean flag = true;
             Event event = new Event(generateRandomInt(poolSizeMin, poolSizeMax), generateRandomInt(totalEventTicketsMin, totalEventTicketsMax));
@@ -310,7 +317,7 @@ public class Util {
         }
     }
 
-    public static int readJsonFile(String type, String option ,String config) {
+    public int readJsonFile(String type, String option ,String config) {
         try (FileReader reader = new FileReader("src/main/java/entity/Config/config.json")) {
             JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
             return root.getAsJsonObject(type).getAsJsonObject(option).get(config).getAsInt();
@@ -319,7 +326,7 @@ public class Util {
         }
     }
 
-    public static void validateConfig() {
+    public void validateConfig() {
         ArrayList<String> errors = new ArrayList<>();
         try{
             // Validate Simulation event configuration
@@ -385,7 +392,7 @@ public class Util {
     }
 
     // Helper method to validate min/max ranges
-    private static void validateMinMax(String category, String section, String minKey, String maxKey, ArrayList<String> errors) {
+    private void validateMinMax(String category, String section, String minKey, String maxKey, ArrayList<String> errors) {
         int min = readJsonFile(category, section, minKey);
         int max = readJsonFile(category, section, maxKey);
 
@@ -396,7 +403,7 @@ public class Util {
     }
 
     // Helper method to validate specific values
-    private static void validateSpecificValue(String category, String section, String key, ArrayList<String> errors) {
+    private void validateSpecificValue(String category, String section, String key, ArrayList<String> errors) {
         int value = readJsonFile(category, section, key);
 
         // Add specific checks here if needed (e.g., ensuring values are positive)
@@ -406,7 +413,7 @@ public class Util {
         }
     }
 
-    private static void validateSpecificConditions(String category, String sectionOne, String lowerKey,  String sectionTw0, String higherKey, ArrayList<String> errors) {
+    private void validateSpecificConditions(String category, String sectionOne, String lowerKey,  String sectionTw0, String higherKey, ArrayList<String> errors) {
         int min = readJsonFile(category, sectionOne, lowerKey);
         int max = readJsonFile(category, sectionTw0, higherKey);
 
@@ -416,7 +423,7 @@ public class Util {
         }
     }
 
-    public static void endProgram(){
+    public void endProgram(){
         while(true){
             System.out.println("1. Exit Program");
             System.out.println("2. To View All Events");

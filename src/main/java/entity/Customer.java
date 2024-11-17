@@ -14,10 +14,11 @@ public class Customer extends User implements Runnable {
     private int retrievalRate;
     private int frequency;
     private static final Logger logger = Logger.getLogger(Customer.class.getName());
+    private static Util util = new Util();
 
     static {
         try {
-            String filePath = Util.getCustomerLog();
+            String filePath = util.getCustomerLog();
             FileHandler fileHandler = new FileHandler(filePath, 200 * 1024 * 1024, 1,  true); // "true" to append to the file
             fileHandler.setFormatter(new SimpleFormatter());  // Sets a simple text format for logs
             logger.addHandler(fileHandler);
@@ -57,7 +58,7 @@ public class Customer extends User implements Runnable {
 
     public int getTotalTicket(){
         int totalTickets = 0;
-        for(Event event : Util.getEvents()){
+        for(Event event : util.getEvents()){
             totalTickets += event.getTotalTickets();
         }
         return totalTickets;
@@ -70,13 +71,13 @@ public class Customer extends User implements Runnable {
                 for(int i = 0; i < retrievalRate; i++){
                     boolean flag = true;
                     while(flag) {
-                        int eventId = Util.generateRandomInt(0, Util.getEvents().size());
-                        Event selectedEvent = Util.getEvents().get(eventId);
+                        int eventId = util.generateRandomInt(0, util.getEvents().size());
+                        Event selectedEvent = util.getEvents().get(eventId);
                         String messageTemplate = "event id: %d ticket sold customer with id: %d, available tickets: %d";
                         synchronized (selectedEvent){
-                            if(!Util.getEvents().get(eventId).getPoolTickets().isEmpty()){
-                                Util.getEvents().get(eventId).removeTicketFromPool();
-                                String message = String.format(messageTemplate, Util.getEvents().get(eventId).getId(), super.getId(), Util.getEvents().get(eventId).getPoolTickets().size());
+                            if(!util.getEvents().get(eventId).getPoolTickets().isEmpty()){
+                                util.getEvents().get(eventId).removeTicketFromPool();
+                                String message = String.format(messageTemplate, util.getEvents().get(eventId).getId(), super.getId(), util.getEvents().get(eventId).getPoolTickets().size());
                                 logger.info(message);
                                 flag = false;
                             }

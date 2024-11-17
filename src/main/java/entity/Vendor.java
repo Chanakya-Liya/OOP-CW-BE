@@ -13,13 +13,14 @@ import java.util.logging.SimpleFormatter;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Vendor extends User implements Runnable{
     private int eventCreationFrequency;
-    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private ArrayList<Event> events = new ArrayList<>();
     private static final Logger logger = Logger.getLogger(Vendor.class.getName());
+    private static Util util = new Util();
 
     static {
         try {
-            String filePath = Util.getVendorLog();
+            String filePath = util.getVendorLog();
             FileHandler fileHandler = new FileHandler(filePath, true); // "true" to append to the file
             fileHandler.setFormatter(new SimpleFormatter());  // Sets a simple text format for logs
             logger.addHandler(fileHandler);
@@ -27,16 +28,16 @@ public class Vendor extends User implements Runnable{
         } catch (IOException e) {
             logger.warning("Failed to set up file handler for logger: " + e.getMessage());
         }catch(InvalidPathException e){
-            logger.warning("Failed to set up file handler for logger hehe: " + e.getMessage());
+            logger.warning("Failed to set up file handler for logger : " + e.getMessage());
         }
     }
 
     public Vendor(String fName, String lName, String username, String password, String email, boolean simulated) {
         super(fName, lName, username, password, email, simulated);
-        if(Util.getStartOption() == 1){
-            eventCreationFrequency = Util.generateRandomInt(Util.readJsonFile("Simulation", "event", "EventCreationFrequencyMin"), Util.readJsonFile("Simulation", "event", "EventCreationFrequencyMax"));
+        if(util.getStartOption() == 1){
+            this.eventCreationFrequency = util.generateRandomInt(util.readJsonFile("Simulation", "event", "EventCreationFrequencyMin"), util.readJsonFile("Simulation", "event", "EventCreationFrequencyMax"));
         }else{
-            eventCreationFrequency = Util.readJsonFile("ThreadTesting", "event", "EventCreationFrequency");
+            this.eventCreationFrequency = util.readJsonFile("ThreadTesting", "event", "EventCreationFrequency");
         }
     }
 
@@ -56,15 +57,16 @@ public class Vendor extends User implements Runnable{
 
     @Override
     public void run(){
+
         while(true){
             try{
-                if(Util.getStartOption() == 1){
-                    Util.generateForSimulation(false);
+                if(util.getStartOption() == 1){
+                    util.generateForSimulation(false);
                 }else{
-                    Util.generateForThreadTesting(false);
+                    util.generateForThreadTesting(false);
                 }
-                Util.getEvents().getLast().setVendor(this);
-                logger.info("New Event Created by Vendor:" + super.getId() + " event: " + Util.getEvents().getLast());
+                util.getEvents().getLast().setVendor(this);
+                logger.info("New Event Created by Vendor:" + super.getId() + " event: " + util.getEvents().getLast());
             }catch (IOException e){
                 logger.warning("Error occurred while trying to create an event: " + e);
             }
