@@ -1,14 +1,12 @@
 package CLI;
-import com.example.Api_Server.entity.Customer;
-import com.example.Api_Server.entity.Event;
-import com.example.Api_Server.entity.Vendor;
+import com.example.Api_Server.entity.*;
 import com.example.Api_Server.repository.VendorRepository;
-import com.example.Api_Server.service.CustomerService;
-import com.example.Api_Server.service.VendorService;
-import com.example.Api_Server.service.EventService;
-import com.example.Api_Server.service.VendorEventAssociationService;
+import com.example.Api_Server.service.*;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.*;
@@ -19,6 +17,7 @@ import java.util.logging.SimpleFormatter;
 
 @Component
 public class Util {
+    @Getter
     private static int startOption;
 
     @Autowired
@@ -33,6 +32,8 @@ public class Util {
     private EventService eventService;
     @Autowired
     private VendorEventAssociationService vendorEventAssociationService;
+    @Autowired
+    private TicketService ticketService;
 
 
     @Autowired
@@ -41,31 +42,22 @@ public class Util {
         this.configManager = configManager;
     }
 
-    @Autowired
-    private LoggingConfig loggingConfig;
     private static final Logger logger;
     static {
         logger = Logger.getLogger(Util.class.getName());
 
         try {
-            FileHandler fileHandler = new FileHandler(new LoggingConfig().getSimulationLog(), true); // "true" to append to the file
-            fileHandler.setFormatter(new SimpleFormatter());  // Sets a simple text format for logs
-            logger.addHandler(fileHandler);
-            logger.setUseParentHandlers(false); // Disables logging to console
-        } catch (IOException e) {
-            logger.warning("Failed to set up file handler for logger: " + e.getMessage());
-        }catch(InvalidPathException e) {
+            File logFile = new File(new LoggingConfig().getSimulationLog());
+            if(!logFile.exists()) {
+                FileHandler fileHandler = new FileHandler(new LoggingConfig().getSimulationLog(), true); // "true" to append to the file
+                fileHandler.setFormatter(new SimpleFormatter());
+                logger.addHandler(fileHandler);
+                logger.setUseParentHandlers(false);
+            }
+        } catch (IOException | InvalidPathException e) {
             logger.warning("Failed to set up file handler for logger: " + e.getMessage());
         }
     }
-
-
-    public static int getStartOption() {
-        return startOption;
-    }
-
-
-
 
 
     public void generateSimulatedUsers(){
@@ -82,12 +74,12 @@ public class Util {
                 generateForSimulation();
             }else if(startOption == 2){
                 generateForThreadTesting();
-
             }else if(startOption == 3){
                 System.out.println("Exiting Program");
                 System.exit(1);
             }
-
+            System.out.println("Simulation loaded successfully");
+            customerService.init();
         } catch (Exception e) {
             logger.severe("Error generating simulated users: " + e.getMessage());  // Use severe for critical errors
             System.err.println("An error occurred. Please check the logs for details.");  // User-friendly message
@@ -123,12 +115,13 @@ public class Util {
         int simulatedEvents = dataGenerator.generateRandomInt(EventCountMin, EventCountMax);
 
         try{
-            List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, RetrievalRateMin, RetrievalRateMax, CustomerFrequencyMin, CustomerFrequencyMax);
+            List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, RetrievalRateMin, RetrievalRateMax, CustomerFrequencyMin, CustomerFrequencyMax, customerService);
             for(Customer customer : customers){
                 customerService.addCustomer(customer);
             }
             List<Vendor> vendors = dataGenerator.simulateVendors(simulatedVendors, EventCreationFrequencyMin, EventCreationFrequencyMax);
             vendorRepository.saveAll(vendors);
+            System.out.println("Loading simulation...");
             dataGenerator.simulateEventsForSimulationTesting(simulatedEvents, PoolSizeMin, PoolSizeMax,TotalEventTicketsMin, TotalEventTicketsMax, ReleaseRateMin, ReleaseRateMax, VendorFrequencyMin, VendorFrequencyMax, vendors);
         }catch (IOException e){
             throw new IOException();
@@ -149,12 +142,13 @@ public class Util {
         int ReleaseRate = configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate");
         int VendorFrequency = configManager.getIntValue("ThreadTesting", "vendor", "Frequency");
         try{
-            List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, CustomerFrequency, RetrievalRate);
+            List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, CustomerFrequency, RetrievalRate, customerService);
             for(Customer customer: customers){
                 customerService.addCustomer(customer);
             }
             List<Vendor> vendors =  dataGenerator.simulateVendors(simulatedVendors, EventCreationFrequency);
             vendorRepository.saveAll(vendors);
+            System.out.println("Loading simulation...");
             dataGenerator.simulateEventsForThreadTesting(simulatedEvents, PoolSize, TotalEventTickets, ReleaseRate, VendorFrequency, vendors);
         }catch (IOException e){
             throw new IOException();

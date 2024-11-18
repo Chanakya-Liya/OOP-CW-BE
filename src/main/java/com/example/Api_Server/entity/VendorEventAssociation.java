@@ -2,6 +2,7 @@ package com.example.Api_Server.entity;
 import CLI.Util;
 import jakarta.persistence.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.logging.FileHandler;
@@ -30,11 +31,13 @@ public class VendorEventAssociation implements Runnable {
         this.releaseRate = releaseRate;
         this.frequency = frequency;
         try {
-            FileHandler fileHandler = new FileHandler(eventLogPath, true);
-            fileHandler.setFormatter(new SimpleFormatter());
-            logger = Logger.getLogger(Customer.class.getName() + "-" + event.getId()); // Unique logger name for each customer
-            logger.addHandler(fileHandler);
-            logger.setUseParentHandlers(false);
+            File logFile = new File(eventLogPath);
+            if(!logFile.exists()) {
+                FileHandler fileHandler = new FileHandler(eventLogPath, true);
+                fileHandler.setFormatter(new SimpleFormatter());
+                logger.addHandler(fileHandler);
+                logger.setUseParentHandlers(false);
+            }
         } catch (IOException | InvalidPathException e) {
             System.err.println("Failed to set up file handler for Customer logger: " + e.getMessage());
             // Handle error appropriately.  Perhaps provide a default logger so the application can continue.

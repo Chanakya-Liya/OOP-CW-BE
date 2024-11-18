@@ -1,5 +1,6 @@
 package com.example.Api_Server.entity;
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,15 +8,16 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "events")
+@ToString(exclude = {"vendor", "tickets"})
 public class Event{
     private static int nextId = 1;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Ticket> tickets = new ArrayList<>();
     private int poolSize;
     private int totalTickets;
@@ -27,23 +29,23 @@ public class Event{
         for (int i = 0; i < poolSize; i++) {
             addTicket(TicketStatus.POOL);
         }
-
-        for (int i = 0; i < (totalTickets - poolSize); i++) {
-            addTicket(TicketStatus.AVAILABLE);
-        }
     }
 
     public Event(){}
 
     private void addTicket(TicketStatus status) {
         Ticket ticket = new Ticket();
-        ticket.setEvent(this); // Very Important! Set bidirectional relationship
+        ticket.setEvent(this);
         ticket.setStatus(status);
         tickets.add(ticket);
     }
 
     public List<Ticket> getPoolTickets() {
         return tickets.stream().filter(t -> t.getStatus() == TicketStatus.POOL).collect(Collectors.toList());
+    }
+
+    public int getRemainingTicketCount() {
+        return (totalTickets - (int) tickets.stream().filter(t -> t.getStatus() == TicketStatus.SOLD).count());
     }
 
     public List<Ticket> getAvailableTickets() {
@@ -86,19 +88,6 @@ public class Event{
 
     public boolean allTicketsSold() {
         return getPoolTickets().isEmpty() && getAvailableTickets().isEmpty();
-    }
-
-    @Override
-    public String toString() {
-        return "Event{" +
-                "id=" + id +
-                ", vendorId=" + (vendor != null ? vendor.getId() : null) + // Check for null
-                ", pool tickets=" + tickets.stream().filter(t -> t.getStatus() == TicketStatus.POOL).count() +
-                ", sold tickets=" + tickets.stream().filter(t -> t.getStatus() == TicketStatus.SOLD).count() +
-                ", available tickets=" + tickets.stream().filter(t -> t.getStatus() == TicketStatus.AVAILABLE).count() +
-                ", poolSize=" + poolSize +
-                ", totalTickets=" + totalTickets +
-                '}';
     }
 }
 

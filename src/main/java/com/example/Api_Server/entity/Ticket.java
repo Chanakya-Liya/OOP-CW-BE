@@ -1,23 +1,30 @@
 package com.example.Api_Server.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
 @Entity
 @Table(name = "tickets")
 public class Ticket {
+    @Getter
     private static int nextId = 1;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
 
+    @Setter
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
 
@@ -25,36 +32,14 @@ public class Ticket {
 
     }
 
-    public static int getNextId() {
-        return nextId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public TicketStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(TicketStatus status) {
-        this.status = status;
-    }
-
-    public void setEvent(Event event) {
+    public Ticket(Event event) {
         this.event = event;
+        this.status = TicketStatus.AVAILABLE;
+    }
+
+    public void sellTicket(Customer customer) {
+        this.customer = customer;
+        this.status = TicketStatus.SOLD;
     }
 
     @Override

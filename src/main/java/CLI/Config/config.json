@@ -30,13 +30,13 @@
   "ThreadTesting" : {
      "event": {
        "EventCount" : 10,
-       "PoolSize": 100,
-       "TotalTicketCount": 400,
+       "PoolSize": 1000,
+       "TotalTicketCount": 4000,
        "EventCreationFrequency": 60
      },
     "customer": {
-      "CustomerCount": 5,
-      "RetrievalRate": 10,
+      "CustomerCount": 700,
+      "RetrievalRate": 1,
       "Frequency": 1
     },
     "vendor": {
