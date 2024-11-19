@@ -1,6 +1,9 @@
 package com.example.Api_Server.entity;
 import CLI.Util;
+import com.example.Api_Server.service.VendorEventAssociationService;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,88 +18,50 @@ public class VendorEventAssociation implements Runnable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long associationId;
+    @Getter
     @ManyToOne
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
+    @Getter
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
+    @Setter
+    @Getter
     private int releaseRate;
+    @Getter
+    @Setter
     private int frequency;
-    private static Logger logger = Logger.getLogger(VendorEventAssociation.class.getName());
+
+    private static final Logger logger = Logger.getLogger(VendorEventAssociation.class.getName());
+
+    @Setter
+    @Transient
+    private VendorEventAssociationService vendorEventAssociationService;
 
     public VendorEventAssociation(Vendor vendor, Event event, int releaseRate, int frequency, String eventLogPath) {
         this.vendor = vendor;
         this.event = event;
         this.releaseRate = releaseRate;
         this.frequency = frequency;
-        try {
-            File logFile = new File(eventLogPath);
-            if(!logFile.exists()) {
-                FileHandler fileHandler = new FileHandler(eventLogPath, true);
-                fileHandler.setFormatter(new SimpleFormatter());
-                logger.addHandler(fileHandler);
-                logger.setUseParentHandlers(false);
-            }
-        } catch (IOException | InvalidPathException e) {
-            System.err.println("Failed to set up file handler for Customer logger: " + e.getMessage());
-            // Handle error appropriately.  Perhaps provide a default logger so the application can continue.
-        }
     }
 
     public VendorEventAssociation() {}
 
-    public Vendor getVendor() {
-        return vendor;
+    public void logInfo(String msg){
+        logger.info(msg);
     }
 
-    public Event getEvent() {
-        return event;
-    }
-
-    public int getReleaseRate() {
-        return releaseRate;
-    }
-
-    public int getFrequency() {
-        return frequency;
-    }
-
-    public void setReleaseRate(int releaseRate) {
-        this.releaseRate = releaseRate;
-    }
-
-    public void setFrequency(int frequency) {
-        this.frequency = frequency;
+    public void logWarning(String msg){
+        logger.warning(msg);
     }
 
     @Override
     public void run(){
-        while (!event.allTicketsSold()) {  // Continue until all tickets are sold
-            try {
-                synchronized (event) {  // Lock the event while modifying ticket lists
-                    if (event.getPoolTickets().size() + releaseRate <= event.getPoolSize() && !event.getAvailableTickets().isEmpty()) {
-                        int before = event.getPoolTickets().size();
-                        int added = Math.min(releaseRate, event.getAvailableTickets().size());
-                        for (int i = 0; i < releaseRate; i++) {
-                            if (event.getAvailableTickets().isEmpty()) break; // Stop if no tickets are available
-                            event.addTicketToPool();
-                        }
-                        int after = event.getPoolTickets().size();
-                        logger.info("Vendor " + vendor.getId() +
-                                " added " + added + " tickets to Event " + event.getId() +
-                                ". Pool size: " + event.getPoolSize() + " before: " + before + " after: " + after + " available tickets: " + event.getAvailableTickets().size());
-                    }
-                }
-                // Sleep for the specified frequency before the next addition cycle
-                Thread.sleep(frequency * 1000L);
-
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                logger.warning("VendorEventAssociation for Vendor " + vendor.getId() +
-                        " interrupted: " + e.getMessage());
-                return;
-            }
+        if (vendorEventAssociationService != null) {
+            vendorEventAssociationService.performTicketRelease(this);
+        } else {
+            System.err.println("VendorEventAssociationService is not set for vendor event association: " + associationId);
         }
     }
 

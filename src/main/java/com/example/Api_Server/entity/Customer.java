@@ -34,19 +34,6 @@ public class Customer extends User implements Runnable {
         super(fName, lName, username, password, email, simulated);
         this.retrievalRate = retrievalRate;
         this.frequency = frequency;
-
-        try {
-            File logFile = new File(customerLogPath);
-            if(!logFile.exists()) {
-                FileHandler fileHandler = new FileHandler(customerLogPath, true);
-                fileHandler.setFormatter(new SimpleFormatter());
-                logger.addHandler(fileHandler);
-                logger.setUseParentHandlers(false);
-            }
-        } catch (IOException | InvalidPathException e) {
-            System.err.println("Failed to set up file handler for Customer logger: " + e.getMessage());
-            // Handle error appropriately.  Perhaps provide a default logger so the application can continue.
-        }
     }
 
     public Customer() {
@@ -64,10 +51,6 @@ public class Customer extends User implements Runnable {
         } else {
             System.err.println("CustomerService is not set for customer: " + getId());
         }
-    }
-
-    public void performTicketRetrieval(){
-        customerService.performTicketRetrieval(this);
     }
 
     @Override

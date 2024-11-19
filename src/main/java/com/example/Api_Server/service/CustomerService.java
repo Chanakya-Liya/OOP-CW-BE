@@ -18,6 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
 @Service
@@ -58,35 +61,42 @@ public class CustomerService {
         ticketRepository.save(ticket);
     }
 
+    @Transactional
     public void performTicketRetrieval(Customer customer) {
-        int totalTickets = ticketService.getTotalTickets();
-        while (totalTickets > 0) {
+        while (true) {
             try {
                 for (int i = 0; i < customer.getRetrievalRate(); i++) {
                     boolean flag = true;
-                    while (flag && totalTickets > 0) {
+                    while (flag && ticketService.getTotalTickets() > 0) {
                         int eventId = dataGenerator.generateRandomInt(1, eventService.getCount() + 1);
-                        Optional<Event> selectedEventOptional = eventRepository.findById((long) eventId);
+                        synchronized (eventRepository){
+                            Optional<Event> selectedEventOptional = eventRepository.findById((long) eventId);
 
-                        if (selectedEventOptional.isPresent()) {
-                            Event selectedEvent = selectedEventOptional.get();
-                            synchronized (selectedEvent) {
-                                if (!selectedEvent.getPoolTickets().isEmpty()) {
+                            if (selectedEventOptional.isPresent()) {
+                                Event selectedEvent = selectedEventOptional.get();
+                                synchronized (selectedEvent) {
+                                    if (!selectedEvent.getPoolTickets().isEmpty()) {
+                                        Ticket ticket;
+                                        do{
+                                            ticket = selectedEvent.getPoolTickets().removeFirst();
+                                        }while(ticket.getStatus() == TicketStatus.SOLD);
 
-                                    String messageTemplate = "event id: %d ticket sold to customer with id: %d, available tickets: %d";
-                                    String message = String.format(messageTemplate, selectedEvent.getId(), customer.getId(), selectedEvent.getPoolTickets().size());
-                                    customer.logInfo(message);
-                                    Ticket ticket = selectedEvent.getPoolTickets().getFirst();
-                                    ticket.setStatus(TicketStatus.SOLD);
-                                    ticket.setCustomer(customer);
-                                    updateTicket(ticket);
-                                    flag = false;
-                                    totalTickets = ticketService.getTotalTickets();
+                                        ticket.setStatus(TicketStatus.SOLD);
+                                        ticket.setCustomer(customer);
+                                        updateTicket(ticket);
+
+                                        // Log and update state
+//                                        String messageTemplate = "event id: %d ticket(id: %d) sold to customer with id: %d, available tickets: %d";
+//                                        String message = String.format(messageTemplate, selectedEvent.getId(), ticket.getId(), customer.getId(), selectedEvent.getPoolTickets().size());
+                                        String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), selectedEvent.getId());
+                                        customer.logInfo(message);
+
+                                        flag = false;
+                                    }
                                 }
+                            } else {
+                                logger.info("Event not found for ID: " + eventId);
                             }
-
-                        } else {
-                            logger.info("Event not found for ID: " + eventId);
                         }
                     }
                 }
@@ -94,7 +104,7 @@ public class CustomerService {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
-                break; // Exit the loop if interrupted
+                break;
             }
         }
         System.out.println("Customer " + customer.getId() + " thread ended.");

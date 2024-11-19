@@ -151,12 +151,8 @@ public class DataGenerator {
                 vendor.addEvent(event);  // Manage the bidirectional relationship
                 vendorRepository.save(vendor);  // Persist the vendor change immediately
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, releaseRate, frequency, loggingConfig.getEventLog());
-                vendorEventAssociation = vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save the association immediately
-                // Start the thread *after* persisting
-                Thread eventThread = new Thread(vendorEventAssociation);
-                eventThread.start();
+                vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save the association immediately
             }
-//            eventService.startEventThreads();
         }
     }
 
@@ -186,12 +182,8 @@ public class DataGenerator {
 
 
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, generateRandomInt(releaseRateMin, releaseRateMax), generateRandomInt(frequencyMin, frequencyMax), loggingConfig.getEventLog());
-                vendorEventAssociation = vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save association
-
-                Thread eventThread = new Thread(vendorEventAssociation);
-                eventThread.start(); // Start thread *after* persistence
+                vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
             }
-            //eventService.startEventThreads(); // Start event threads.
         }
     }
 }

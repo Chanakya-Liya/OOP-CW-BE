@@ -1,5 +1,6 @@
 package com.example.Api_Server.entity;
 import CLI.Util;
+import com.example.Api_Server.service.VendorService;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,23 +26,13 @@ public class Vendor extends User implements Runnable{
     private Set<Event> events = new HashSet<>();
     private static Logger logger = Logger.getLogger(Vendor.class.getName());
 
+    @Transient
+    private VendorService vendorService;
+
 
     public Vendor(String fName, String lName, String username, String password, String email, boolean simulated, int eventCreationFrequency, String vendorLogPath) {
         super(fName, lName, username, password, email, simulated);
         this.eventCreationFrequency = eventCreationFrequency;
-        try {
-            File logFile = new File(vendorLogPath);
-            if(!logFile.exists()) {
-                FileHandler fileHandler = new FileHandler(vendorLogPath, true);
-                fileHandler.setFormatter(new SimpleFormatter());
-                logger.addHandler(fileHandler);
-                logger.setUseParentHandlers(false);
-            }
-
-        } catch (IOException | InvalidPathException e) {
-            System.err.println("Failed to set up file handler for Customer logger: " + e.getMessage());
-            // Handle error appropriately.  Perhaps provide a default logger so the application can continue.
-        }
     }
 
     public Vendor(){}
@@ -51,13 +42,21 @@ public class Vendor extends User implements Runnable{
         event.setVendor(this);
     }
 
+    public void logInfo(String msg){
+        logger.info(msg);
+    }
+
     public void setEvents(Event event) {
         events.add(event);
     }
 
     @Override
     public void run(){
-        System.out.println("Vendor Running: " + getId());
+        if (vendorService != null) {
+            vendorService.addEvents(this);
+        } else {
+            System.err.println("VendorService is not set for vendor: " + getId());
+        }
     }
 
     @Override

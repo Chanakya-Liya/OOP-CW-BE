@@ -1,5 +1,8 @@
 package CLI;
 
+import com.example.Api_Server.entity.Customer;
+import com.example.Api_Server.entity.Vendor;
+import com.example.Api_Server.entity.VendorEventAssociation;
 import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -25,7 +28,9 @@ public class LoggingConfig {
         try {
             createDirectory(DirectoryPath);
             setupLogger(Util.class, simulationLog);
-
+            setupLogger(Customer.class, CustomerLog);
+            setupLogger(VendorEventAssociation.class, EventLog);;
+            setupLogger(Vendor.class, VendorLog);
         } catch (IOException e) {
             // ... handle exceptions
         }
@@ -37,20 +42,21 @@ public class LoggingConfig {
     }
 
     private void setupLogger(Class<?> clazz, String logFile) throws IOException {
-        Logger logger = Logger.getLogger(clazz.getName());
-        FileHandler fileHandler = new FileHandler(logFile, true);
-        fileHandler.setFormatter(new SimpleFormatter());
-        logger.addHandler(fileHandler);
-        logger.setUseParentHandlers(false);
+        File logfile = new File(logFile);
+        if(!logfile.exists()) {
+            Logger logger = Logger.getLogger(clazz.getName());
+            FileHandler fileHandler = new FileHandler(logFile, true);
+            fileHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fileHandler);
+            logger.setUseParentHandlers(false);
+        }
     }
 
     public String getCustomerLog() {
         return CustomerLog;
     }
 
-    public String getEventLog() {
-        return EventLog;
-    }
+    public String getEventLog() { return EventLog; }
 
     public String getVendorLog() {
         return VendorLog;

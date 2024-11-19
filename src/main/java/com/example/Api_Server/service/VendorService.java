@@ -30,8 +30,6 @@ public class VendorService {
     @Autowired
     private VendorRepository vendorRepository;
     @Autowired
-    private Util util;
-    @Autowired
     private LoggingConfig loggingConfig;
     @Autowired
     private ConfigManager configManager;
@@ -85,14 +83,12 @@ public class VendorService {
                     int frequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
 
                     dataGenerator.simulateEventsForSimulationTesting(1, poolSizeMin, poolSizeMax, totalTicketsMin, totalTicketsMax, releaseRateMin, releaseRateMax, frequencyMin, frequencyMax, getAll());
-                    // util.generateForSimulation(false, vendor); // Pass vendor object
                 } else {
 
                     dataGenerator.simulateEventsForThreadTesting(1, configManager.getIntValue("ThreadTesting", "event", "PoolSize"), configManager.getIntValue("ThreadTesting", "event", "TotalTicketCount"), configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate"), configManager.getIntValue("ThreadTesting", "vendor", "Frequency"), getAll());
-                    // util.generateForThreadTesting(false, vendor); // Pass vendor object
                 }
 
-                logger.info("New Event Created by Vendor: " + vendor.getId() ); //+ " event: " + lastEvent);
+                vendor.logInfo("New Event Created by Vendor: " + vendor.getId() ); //+ " event: " + lastEvent);
 
 
 
@@ -112,7 +108,6 @@ public class VendorService {
 
     @PostConstruct
     public void init() {
-
         List<Vendor> vendors = vendorRepository.findAll();
         for (Vendor vendor : vendors) {
             if (vendor.isSimulated()) {

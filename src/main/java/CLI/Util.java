@@ -1,5 +1,6 @@
 package CLI;
 import com.example.Api_Server.entity.*;
+import com.example.Api_Server.repository.VendorEventAssociationRepository;
 import com.example.Api_Server.repository.VendorRepository;
 import com.example.Api_Server.service.*;
 import lombok.Getter;
@@ -33,7 +34,11 @@ public class Util {
     @Autowired
     private VendorEventAssociationService vendorEventAssociationService;
     @Autowired
+    private VendorService vendorService;
+    @Autowired
     private TicketService ticketService;
+    @Autowired
+    private VendorEventAssociationRepository vendorEventAssociationRepository;
 
 
     @Autowired
@@ -80,6 +85,8 @@ public class Util {
             }
             System.out.println("Simulation loaded successfully");
             customerService.init();
+            vendorEventAssociationService.init();
+            vendorService.init();
         } catch (Exception e) {
             logger.severe("Error generating simulated users: " + e.getMessage());  // Use severe for critical errors
             System.err.println("An error occurred. Please check the logs for details.");  // User-friendly message

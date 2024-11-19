@@ -33,7 +33,7 @@ public class Event{
 
     public Event(){}
 
-    private void addTicket(TicketStatus status) {
+    public void addTicket(TicketStatus status) {
         Ticket ticket = new Ticket();
         ticket.setEvent(this);
         ticket.setStatus(status);
