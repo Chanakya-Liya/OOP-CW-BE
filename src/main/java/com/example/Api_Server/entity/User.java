@@ -1,11 +1,13 @@
 package com.example.Api_Server.entity;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+@Getter
 @Entity
 @Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -73,41 +75,17 @@ abstract class User {
         return false; // Password doesn't meet the criteria
     }
 
-    public int getId() { return id; }
-
-    public String getfName() {
-        return fName;
-    }
-
-    public String getlName() {
-        return lName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public void setPassword(String password) {
         this.password = hashPassword(password);
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public boolean isSimulated() { return simulated; }
 
     @Override
     public String toString() {

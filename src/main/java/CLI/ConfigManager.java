@@ -32,44 +32,53 @@ public class ConfigManager {
             validateMinMax("Simulation", "event", "TotalEventTicketsMin", "TotalEventTicketsMax", errors);
             validateMinMax("Simulation", "event", "EventCreationFrequencyMin", "EventCreationFrequencyMax", errors);
             validateMinMax("Simulation", "event", "PoolSizeMax", "TotalEventTicketsMin", errors);
-            validateSpecificValue("Simulation", "event", "EventCountMin", errors);
-            validateSpecificValue("Simulation", "event", "PoolSizeMin", errors);
-            validateSpecificValue("Simulation", "event", "TotalEventTicketsMin", errors);
-            validateSpecificValue("Simulation", "event", "EventCreationFrequencyMin", errors);
+            validateMinValue("Simulation", "event", "EventCountMin", errors);
+            validateMinValue("Simulation", "event", "PoolSizeMin", errors);
+            validateMinValue("Simulation", "event", "TotalEventTicketsMin", errors);
+            validateMinValue("Simulation", "event", "EventCreationFrequencyMin", errors);
+            validateMaxValue("Simulation", "event", "EventCountMax", 30, errors);
+            validateMaxValue("Simulation", "event", "PoolSizeMax", 700, errors);
+            validateMaxValue("Simulation", "event", "TotalEventTicketsMax", 5000, errors);
+
 
             // Validate Simulation customer configuration
             validateMinMax("Simulation", "customer", "CustomerCountMin", "CustomerCountMax", errors);
             validateMinMax("Simulation", "customer", "RetrievalRateMin", "RetrievalRateMax", errors);
             validateMinMax("Simulation", "customer", "FrequencyMin", "FrequencyMax", errors);
-            validateSpecificValue("Simulation", "customer", "CustomerCountMin", errors);
-            validateSpecificValue("Simulation", "customer", "RetrievalRateMin", errors);
-            validateSpecificValue("Simulation", "customer", "FrequencyMin", errors);
+            validateMinValue("Simulation", "customer", "CustomerCountMin", errors);
+            validateMinValue("Simulation", "customer", "RetrievalRateMin", errors);
+            validateMinValue("Simulation", "customer", "FrequencyMin", errors);
+            validateMaxValue("Simulation", "customer", "CustomerCountMax", 500, errors);
+            validateMaxValue("Simulation", "customer", "RetrievalRateMax", 50, errors);
+
 
             // Validate Simulation vendor configuration
             validateMinMax("Simulation", "vendor", "VendorCountMin", "VendorCountMax", errors);
             validateMinMax("Simulation", "vendor", "ReleaseRateMin", "ReleaseRateMax", errors);
             validateMinMax("Simulation", "vendor", "FrequencyMin", "FrequencyMax", errors);
-            validateSpecificValue("Simulation", "vendor", "VendorCountMin", errors);
-            validateSpecificValue("Simulation", "vendor", "ReleaseRateMin", errors);
-            validateSpecificValue("Simulation", "vendor", "FrequencyMin", errors);
+            validateMinValue("Simulation", "vendor", "VendorCountMin", errors);
+            validateMinValue("Simulation", "vendor", "ReleaseRateMin", errors);
+            validateMinValue("Simulation", "vendor", "FrequencyMin", errors);
             validateSpecificConditions("Simulation", "vendor", "ReleaseRateMin", "event", "PoolSizeMax", errors);
+            validateMaxValue("Simulation", "vendor", "VendorCountMax", 60, errors);
+            validateMaxValue("Simulation", "vendor", "ReleaseRateMax", 250, errors);
 
             // Validate ThreadTesting event configuration
-            validateSpecificValue("ThreadTesting", "event", "EventCount", errors);
-            validateSpecificValue("ThreadTesting", "event", "PoolSize", errors);
-            validateSpecificValue("ThreadTesting", "event", "TotalTicketCount", errors);
-            validateSpecificValue("ThreadTesting", "event", "EventCreationFrequency", errors);
+            validateMinValue("ThreadTesting", "event", "EventCount", errors);
+            validateMinValue("ThreadTesting", "event", "PoolSize", errors);
+            validateMinValue("ThreadTesting", "event", "TotalTicketCount", errors);
+            validateMinValue("ThreadTesting", "event", "EventCreationFrequency", errors);
             validateMinMax("ThreadTesting", "event", "PoolSize", "TotalTicketCount", errors);
 
             // Validate ThreadTesting customer configuration
-            validateSpecificValue("ThreadTesting", "customer", "CustomerCount", errors);
-            validateSpecificValue("ThreadTesting", "customer", "RetrievalRate", errors);
-            validateSpecificValue("ThreadTesting", "customer", "Frequency", errors);
+            validateMinValue("ThreadTesting", "customer", "CustomerCount", errors);
+            validateMinValue("ThreadTesting", "customer", "RetrievalRate", errors);
+            validateMinValue("ThreadTesting", "customer", "Frequency", errors);
 
             // Validate ThreadTesting vendor configuration
-            validateSpecificValue("ThreadTesting", "vendor", "VendorCount", errors);
-            validateSpecificValue("ThreadTesting", "vendor", "ReleaseRate", errors);
-            validateSpecificValue("ThreadTesting", "vendor", "Frequency", errors);
+            validateMinValue("ThreadTesting", "vendor", "VendorCount", errors);
+            validateMinValue("ThreadTesting", "vendor", "ReleaseRate", errors);
+            validateMinValue("ThreadTesting", "vendor", "Frequency", errors);
             validateSpecificConditions("ThreadTesting", "vendor", "ReleaseRate", "event", "PoolSize", errors);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -100,13 +109,22 @@ public class ConfigManager {
     }
 
     // Helper method to validate specific values
-    private void validateSpecificValue(String category, String section, String key, ArrayList<String> errors) {
+    private void validateMinValue(String category, String section, String key, ArrayList<String> errors) {
         int value = getIntValue(category, section, key);
 
         // Add specific checks here if needed (e.g., ensuring values are positive)
         if (value < 0) {
             errors.add(String.format("Error in %s -> %s: %s (%d) must be positive",
                     category, section, key, value));
+        }
+    }
+
+    private void validateMaxValue(String category, String section, String key, int maxValue, ArrayList<String> errors) {
+        int value = getIntValue(category, section, key);
+        // Add specific checks here if needed (e.g., ensuring values are positive)
+        if (value > maxValue) {
+            errors.add(String.format("Error in %s -> %s: %s (%d) must be less than %d",
+                    category, section, key, value, maxValue));
         }
     }
 

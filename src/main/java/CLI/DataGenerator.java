@@ -1,3 +1,4 @@
+// DataGenerator.java
 package CLI;
 
 import com.example.Api_Server.entity.Customer;
@@ -5,11 +6,11 @@ import com.example.Api_Server.entity.Event;
 import com.example.Api_Server.entity.Vendor;
 import com.example.Api_Server.entity.VendorEventAssociation;
 import com.example.Api_Server.repository.CustomerRepository;
+import com.example.Api_Server.repository.TicketRepository;
 import com.example.Api_Server.repository.VendorRepository;
 import com.example.Api_Server.service.CustomerService;
 import com.example.Api_Server.service.EventService;
 import com.example.Api_Server.service.VendorEventAssociationService;
-import com.example.Api_Server.service.VendorService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -49,6 +50,8 @@ public class DataGenerator {
     private LoggingConfig loggingConfig;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private TicketRepository ticketRepository;
 
     @PostConstruct
     private void loadNames() throws IOException {
@@ -88,19 +91,21 @@ public class DataGenerator {
         return random.nextInt(start, end);
     }
 
-    public List<Customer> simulateCustomers(int simulateCustomers, int customerFrequency, int customerRetrieve) throws IOException {
+    public List<Customer> simulateCustomers(int simulateCustomers, int customerFrequency, int customerRetrieve, CustomerService customerService) throws IOException {
         List<Customer> customers = new ArrayList<>();
         for(int i = 0; i < simulateCustomers; i++){
             Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, customerRetrieve, customerFrequency, loggingConfig.getCustomerLog());
+            customer.setCustomerService(customerService);
             customers.add(customer);
         }
         return customers;
     }
 
-    public List<Customer> simulateCustomers(int simulateCustomers, int customerRetrieveMin, int customerRetrieveMax, int customerFrequencyMin, int customerFrequencyMax) throws IOException {
+    public List<Customer> simulateCustomers(int simulateCustomers, int customerRetrieveMin, int customerRetrieveMax, int customerFrequencyMin, int customerFrequencyMax, CustomerService customerService) throws IOException {
         List<Customer> customers = new ArrayList<>();
         for(int i = 0; i < simulateCustomers; i++){
             Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, generateRandomInt(customerRetrieveMin, customerRetrieveMax), generateRandomInt(customerFrequencyMin, customerFrequencyMax), loggingConfig.getCustomerLog());
+            customer.setCustomerService(customerService);
             customers.add(customer);
         }
         return customers;
@@ -127,7 +132,7 @@ public class DataGenerator {
     public void simulateEventsForThreadTesting(int simulatedEvent, int poolSize, int totalEventTickets, int releaseRate, int frequency, List<Vendor> vendors){
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(poolSize, totalEventTickets);
-            event = eventService.addEvent(event); // Save the event *first*
+            event = eventService.addEvent(event); // Save the event first
             int vendorCount = generateRandomInt(-5, (int) vendorRepository.count());
             if (vendorCount <= 0) {
                 vendorCount = 1;
@@ -146,12 +151,8 @@ public class DataGenerator {
                 vendor.addEvent(event);  // Manage the bidirectional relationship
                 vendorRepository.save(vendor);  // Persist the vendor change immediately
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, releaseRate, frequency, loggingConfig.getEventLog());
-                vendorEventAssociation = vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save the association immediately
-                // Start the thread *after* persisting
-                Thread eventThread = new Thread(vendorEventAssociation);
-                eventThread.start();
+                vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save the association immediately
             }
-//            eventService.startEventThreads();
         }
     }
 
@@ -181,12 +182,8 @@ public class DataGenerator {
 
 
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, generateRandomInt(releaseRateMin, releaseRateMax), generateRandomInt(frequencyMin, frequencyMax), loggingConfig.getEventLog());
-                vendorEventAssociation = vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save association
-
-                Thread eventThread = new Thread(vendorEventAssociation);
-                eventThread.start(); // Start thread *after* persistence
+                vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
             }
-            //eventService.startEventThreads(); // Start event threads.
         }
     }
 }

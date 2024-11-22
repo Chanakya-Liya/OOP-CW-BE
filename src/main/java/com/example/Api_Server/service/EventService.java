@@ -21,19 +21,19 @@ public class EventService {
     @Autowired
     private VendorRepository vendorRepository;
 
-    public Event addEvent(Event event){
+    public Event addEvent(Event event) {
         return eventRepository.save(event);
     }
 
-    public List<Event> getAll(){
-        return eventRepository.findAll();
+    public List<Event> getAll() {
+        return eventRepository.findAllWithTickets();
     }
 
-    public Event getLast(){
+    public Event getLast() {
         return eventRepository.getById(eventRepository.count());
     }
 
-    public int getCount(){
+    public int getCount() {
         return (int) eventRepository.count();
     }
 }

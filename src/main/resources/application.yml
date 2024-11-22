@@ -6,12 +6,19 @@ spring:
     url: jdbc:postgresql://localhost:5333/ticketingsystem
     username: Chanakya
     password: chanakya@123
+    hikari:
+      maximum-pool-size: 200
+      minimum-idle: 0
+      connection-timeout: 0
+      idle-timeout: 0
+      max-lifetime: 0
+      leak-detection-threshold: 2000
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    show-sql: true
+        format_sql: false
+    show-sql: false
 
