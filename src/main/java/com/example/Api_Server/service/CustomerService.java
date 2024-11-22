@@ -7,18 +7,12 @@ import com.example.Api_Server.entity.Ticket;
 import com.example.Api_Server.entity.TicketStatus;
 import com.example.Api_Server.repository.*;
 import jakarta.annotation.PostConstruct;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.Transient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
@@ -44,67 +38,77 @@ public class CustomerService {
 
     private DataGenerator dataGenerator;
 
+    private final Lock lock = new ReentrantLock();
+
     @Autowired
     public void setDataGenerator(DataGenerator dataGenerator) {
         this.dataGenerator = dataGenerator;
     }
 
-    public Customer addCustomer(Customer customer){
-        return customerRepository.save(customer);
+    public void addCustomer(Customer customer){
+        customerRepository.save(customer);
     }
 
     public List<Customer> getAll(){
         return customerRepository.findAll();
     }
 
-    public void updateTicket(Ticket ticket){
-        ticketRepository.save(ticket);
+    @Transactional
+    public void buyTicket(Customer customer, Event event){
+        lock.lock();
+        try{
+            Optional<Ticket> ticketOptional = eventRepository.findPoolTicketByEvent(event);
+            if(ticketOptional.isPresent()){
+                Ticket ticket = ticketOptional.get();
+                synchronized (ticket){
+                    if(ticket.getStatus() != TicketStatus.POOL) return;
+                    ticket.setStatus(TicketStatus.SOLD);
+                    ticket.setCustomer(customer);
+                    ticketRepository.save(ticket);
+                }
+                String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), event.getId());
+                customer.logInfo(message);
+            }
+        }catch (Exception e){
+            System.err.println("Error buying ticket: " + e.getMessage());
+        }finally {
+            lock.unlock();
+        }
+
     }
 
     @Transactional
     public void performTicketRetrieval(Customer customer) {
-        while (true) {
+        int totalTickets = ticketService.getTotalTickets();
+        while (totalTickets > 0) {
             try {
                 for (int i = 0; i < customer.getRetrievalRate(); i++) {
                     boolean flag = true;
-                    while (flag && ticketService.getTotalTickets() > 0) {
+                    while (flag && totalTickets > 0) {
                         int eventId = dataGenerator.generateRandomInt(1, eventService.getCount() + 1);
-                        synchronized (eventRepository){
                             Optional<Event> selectedEventOptional = eventRepository.findById((long) eventId);
-
-                            if (selectedEventOptional.isPresent()) {
-                                Event selectedEvent = selectedEventOptional.get();
-                                synchronized (selectedEvent) {
+                            synchronized (eventRepository){
+                                if (selectedEventOptional.isPresent()) {
+                                    Event selectedEvent = selectedEventOptional.get();
                                     if (!selectedEvent.getPoolTickets().isEmpty()) {
-                                        Ticket ticket;
-                                        do{
-                                            ticket = selectedEvent.getPoolTickets().removeFirst();
-                                        }while(ticket.getStatus() == TicketStatus.SOLD);
-
-                                        ticket.setStatus(TicketStatus.SOLD);
-                                        ticket.setCustomer(customer);
-                                        updateTicket(ticket);
-
-                                        // Log and update state
-//                                        String messageTemplate = "event id: %d ticket(id: %d) sold to customer with id: %d, available tickets: %d";
-//                                        String message = String.format(messageTemplate, selectedEvent.getId(), ticket.getId(), customer.getId(), selectedEvent.getPoolTickets().size());
-                                        String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), selectedEvent.getId());
-                                        customer.logInfo(message);
-
+                                        buyTicket(customer, selectedEvent);
                                         flag = false;
+                                        totalTickets--;
                                     }
+                                } else {
+                                    logger.info("Event not found for ID: " + eventId);
                                 }
-                            } else {
-                                logger.info("Event not found for ID: " + eventId);
                             }
-                        }
                     }
                 }
-                Thread.sleep(customer.getFrequency() * 1000L);
+                    Thread.sleep(customer.getFrequency() * 1000L);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
                 break;
+            }
+            if(totalTickets <= 0){
+                totalTickets = ticketService.getTotalTickets();
             }
         }
         System.out.println("Customer " + customer.getId() + " thread ended.");

@@ -11,8 +11,8 @@
         "EventCreationFrequencyMax": 300
       },
       "customer": {
-        "CustomerCountMin": 300,
-        "CustomerCountMax": 500,
+        "CustomerCountMin": 60,
+        "CustomerCountMax": 90,
         "RetrievalRateMin": 25,
         "RetrievalRateMax": 50,
         "FrequencyMin": 10,

@@ -31,9 +31,11 @@ public class Main {
         }
 
         System.out.println("Oversold Tickets:");
+        int i = 1;
         for (Map.Entry<Long, Integer> entry : ticketCounts.entrySet()) {
             if (entry.getValue() > 1) { // If ticket sold more than once
-                System.out.println("Ticket ID: " + entry.getKey() + ", Event ID: " + ticketToEvent.get(entry.getKey()) + ", Sold Count: " + entry.getValue());
+                System.out.println(i + ". Ticket ID: " + entry.getKey() + ", Event ID: " + ticketToEvent.get(entry.getKey()) + ", Sold Count: " + entry.getValue());
+                i = i + entry.getValue();
             }
         }
 

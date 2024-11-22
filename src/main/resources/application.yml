@@ -7,15 +7,15 @@ spring:
     username: Chanakya
     password: chanakya@123
     hikari:
-      maximum-pool-size: 40
-      minimum-idle: 10
-      connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
+      maximum-pool-size: 200
+      minimum-idle: 0
+      connection-timeout: 0
+      idle-timeout: 0
+      max-lifetime: 0
       leak-detection-threshold: 2000
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
