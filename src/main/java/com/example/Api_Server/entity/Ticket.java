@@ -24,6 +24,9 @@ public class Ticket {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Version
+    private int version;
+
     @Setter
     @Enumerated(EnumType.STRING)
     private TicketStatus status;

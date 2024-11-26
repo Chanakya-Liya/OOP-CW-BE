@@ -6,6 +6,7 @@ import com.example.Api_Server.entity.Ticket;
 import com.example.Api_Server.entity.TicketStatus;
 import com.example.Api_Server.repository.*;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OptimisticLockException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,9 +70,13 @@ public class EventService {
                     if(ticket.getStatus() != TicketStatus.POOL) return;
                     ticket.setStatus(TicketStatus.SOLD);
                     ticket.setCustomer(customer);
-                    ticketService.saveTicket(ticket);
-                    String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), event.getId());
-                    customer.logInfo(message);
+                    try{
+                        ticketService.saveTicket(ticket);
+                        String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), event.getId());
+                        customer.logInfo(message);
+                    }catch(OptimisticLockException e){
+                        System.err.println("Ticket has already been sold");
+                    }
             }
         }catch (Exception e){
             System.err.println("Error buying ticket: " + e.getMessage());
