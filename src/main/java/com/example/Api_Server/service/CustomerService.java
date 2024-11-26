@@ -53,62 +53,45 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    @Transactional
-    public void buyTicket(Customer customer, Event event){
-        lock.lock();
-        try{
-            Optional<Ticket> ticketOptional = eventRepository.findPoolTicketByEvent(event);
-            if(ticketOptional.isPresent()){
-                Ticket ticket = ticketOptional.get();
-                synchronized (ticket){
-                    if(ticket.getStatus() != TicketStatus.POOL) return;
-                    ticket.setStatus(TicketStatus.SOLD);
-                    ticket.setCustomer(customer);
-                    ticketRepository.save(ticket);
-                }
-                String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), event.getId());
-                customer.logInfo(message);
-            }
-        }catch (Exception e){
-            System.err.println("Error buying ticket: " + e.getMessage());
-        }finally {
-            lock.unlock();
-        }
 
+    public void simulationTicketRetrieval(Customer customer, int totalTickets){
+        try {
+            for (int i = 0; i < customer.getRetrievalRate(); i++) {
+                boolean flag = true;
+                while (flag && totalTickets > 0) {
+                    int eventId = dataGenerator.generateRandomInt(1, eventService.getCount() + 1);
+                    Optional<Event> selectedEventOptional = eventService.getEventById(eventId);
+                    if (selectedEventOptional.isPresent()) {
+                        Event selectedEvent = selectedEventOptional.get();
+                        if (!selectedEvent.getPoolTickets().isEmpty()) {
+                            eventService.giveTicket(customer, selectedEvent);
+                            flag = false;
+                            totalTickets--;
+                        }
+                    } else {
+                        logger.info("Event not found for ID: " + eventId);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Thread.currentThread().interrupt();
+            logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
+        }
     }
 
-    @Transactional
+
     public void performTicketRetrieval(Customer customer) {
         int totalTickets = ticketService.getTotalTickets();
         while (totalTickets > 0) {
-            try {
-                for (int i = 0; i < customer.getRetrievalRate(); i++) {
-                    boolean flag = true;
-                    while (flag && totalTickets > 0) {
-                        int eventId = dataGenerator.generateRandomInt(1, eventService.getCount() + 1);
-                            Optional<Event> selectedEventOptional = eventRepository.findById((long) eventId);
-                            synchronized (eventRepository){
-                                if (selectedEventOptional.isPresent()) {
-                                    Event selectedEvent = selectedEventOptional.get();
-                                    if (!selectedEvent.getPoolTickets().isEmpty()) {
-                                        buyTicket(customer, selectedEvent);
-                                        flag = false;
-                                        totalTickets--;
-                                    }
-                                } else {
-                                    logger.info("Event not found for ID: " + eventId);
-                                }
-                            }
-                    }
+            try{
+                simulationTicketRetrieval(customer, totalTickets);
+                Thread.sleep(1000L * customer.getFrequency());
+                if(totalTickets <= 0){
+                    totalTickets = ticketService.getTotalTickets();
                 }
-                    Thread.sleep(customer.getFrequency() * 1000L);
-            } catch (InterruptedException e) {
+            }catch(InterruptedException e){
                 Thread.currentThread().interrupt();
                 logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
-                break;
-            }
-            if(totalTickets <= 0){
-                totalTickets = ticketService.getTotalTickets();
             }
         }
         System.out.println("Customer " + customer.getId() + " thread ended.");
