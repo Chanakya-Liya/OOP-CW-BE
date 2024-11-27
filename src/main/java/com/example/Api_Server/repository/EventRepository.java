@@ -18,9 +18,4 @@ import java.util.Optional;
 public interface EventRepository extends JpaRepository<Event, Long> {
     @Query("SELECT e FROM Event e LEFT JOIN FETCH e.tickets")
     List<Event> findAllWithTickets();
-
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Transactional
-    @Query("SELECT t FROM Ticket t WHERE t.status = 'POOL' AND t.event = :event ORDER BY t.id ASC LIMIT 1")
-    Optional<Ticket> findPoolTicketByEvent(@Param("event") Event event);
 }

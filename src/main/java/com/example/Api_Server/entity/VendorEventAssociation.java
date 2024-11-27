@@ -39,7 +39,7 @@ public class VendorEventAssociation implements Runnable {
     @Transient
     private VendorEventAssociationService vendorEventAssociationService;
 
-    public VendorEventAssociation(Vendor vendor, Event event, int releaseRate, int frequency, String eventLogPath) {
+    public VendorEventAssociation(Vendor vendor, Event event, int releaseRate, int frequency) {
         this.vendor = vendor;
         this.event = event;
         this.releaseRate = releaseRate;

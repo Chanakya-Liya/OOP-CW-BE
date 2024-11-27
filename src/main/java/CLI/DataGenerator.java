@@ -14,6 +14,7 @@ import com.example.Api_Server.service.VendorEventAssociationService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +71,6 @@ public class DataGenerator {
     }
 
     public String generateRandomString(String stringRequired) throws IOException {
-        int size;
         if(stringRequired.equalsIgnoreCase("fname")){
             return fNames.get(random.nextInt(fNames.size()));
         } else if (stringRequired.equalsIgnoreCase("lname")) {
@@ -85,7 +85,7 @@ public class DataGenerator {
     }
 
     public int generateRandomInt(int start, int end){
-        if(start == end){
+        if(start == end || start > end){
             return end;
         }
         return random.nextInt(start, end);
@@ -138,7 +138,6 @@ public class DataGenerator {
                 vendorCount = 1;
             }
             ArrayList<Integer> addedVendors = new ArrayList<>(); // Track added vendors
-
             for (int j = 0; j < vendorCount; j++) {
                 int vendorPosition;
                 do {
@@ -150,7 +149,8 @@ public class DataGenerator {
                 Vendor vendor = vendors.get(vendorPosition); // Get vendor by ID from service
                 vendor.addEvent(event);  // Manage the bidirectional relationship
                 vendorRepository.save(vendor);  // Persist the vendor change immediately
-                VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, releaseRate, frequency, loggingConfig.getEventLog());
+
+                VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, releaseRate, frequency);
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation); // Save the association immediately
             }
         }
@@ -165,7 +165,6 @@ public class DataGenerator {
             if (vendorCount <= 0) {
                 vendorCount = 1;
             }
-
             ArrayList<Integer> addedVendors = new ArrayList<>();
 
             for (int j = 0; j < vendorCount; j++) {
@@ -181,7 +180,7 @@ public class DataGenerator {
                 vendorRepository.save(vendor); // Save the vendor
 
 
-                VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, generateRandomInt(releaseRateMin, releaseRateMax), generateRandomInt(frequencyMin, frequencyMax), loggingConfig.getEventLog());
+                VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, event, generateRandomInt(releaseRateMin, releaseRateMax), generateRandomInt(frequencyMin, frequencyMax));
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
             }
         }

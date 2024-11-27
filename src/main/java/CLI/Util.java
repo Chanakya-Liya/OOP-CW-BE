@@ -121,6 +121,7 @@ public class Util {
         int simulatedCustomers = dataGenerator.generateRandomInt(CustomerCountMin, CustomerCountMax);
         int simulatedEvents = dataGenerator.generateRandomInt(EventCountMin, EventCountMax);
 
+        System.out.println("Simulated Events: " + simulatedEvents);
         try{
             List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, RetrievalRateMin, RetrievalRateMax, CustomerFrequencyMin, CustomerFrequencyMax, customerService);
             for(Customer customer : customers){
@@ -149,13 +150,13 @@ public class Util {
         int ReleaseRate = configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate");
         int VendorFrequency = configManager.getIntValue("ThreadTesting", "vendor", "Frequency");
         try{
+            System.out.println("Loading simulation...");
             List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, CustomerFrequency, RetrievalRate, customerService);
             for(Customer customer: customers){
                 customerService.addCustomer(customer);
             }
             List<Vendor> vendors =  dataGenerator.simulateVendors(simulatedVendors, EventCreationFrequency);
             vendorRepository.saveAll(vendors);
-            System.out.println("Loading simulation...");
             dataGenerator.simulateEventsForThreadTesting(simulatedEvents, PoolSize, TotalEventTickets, ReleaseRate, VendorFrequency, vendors);
         }catch (IOException e){
             throw new IOException();
