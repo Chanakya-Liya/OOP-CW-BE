@@ -6,8 +6,10 @@ import com.example.Api_Server.entity.Event;
 import com.example.Api_Server.entity.Ticket;
 import com.example.Api_Server.entity.TicketStatus;
 import com.example.Api_Server.repository.*;
+import com.example.Api_Server.simulation.CustomerSimulation;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,17 +35,13 @@ public class CustomerService {
     private EventService eventService;
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private CustomerSimulation customerSimulation;
 
     private static final Logger logger = Logger.getLogger(CustomerService.class.getName());
 
-    private DataGenerator dataGenerator;
-
-    private final Lock lock = new ReentrantLock();
-
     @Autowired
-    public void setDataGenerator(DataGenerator dataGenerator) {
-        this.dataGenerator = dataGenerator;
-    }
+    private DataGenerator dataGenerator;
 
     public void addCustomer(Customer customer){
         customerRepository.save(customer);
@@ -53,51 +51,16 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-
-    public void simulationTicketRetrieval(Customer customer, int totalTickets){
-        try {
-            for (int i = 0; i < customer.getRetrievalRate(); i++) {
-                boolean flag = true;
-                while (flag && totalTickets > 0) {
-                    int eventId = dataGenerator.generateRandomInt(1, eventService.getCount() + 1);
-                    Optional<Event> selectedEventOptional = eventService.getEventById(eventId);
-                    if (selectedEventOptional.isPresent()) {
-                        Event selectedEvent = selectedEventOptional.get();
-                        if (!selectedEvent.getPoolTickets().isEmpty()) {
-                            eventService.giveTicket(customer, selectedEvent);
-                            flag = false;
-                            totalTickets--;
-                        }
-                    } else {
-                        logger.info("Event not found for ID: " + eventId);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Thread.currentThread().interrupt();
-            logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
-        }
-    }
-
-
     public void performTicketRetrieval(Customer customer) {
-        int totalTickets = ticketService.getTotalTickets();
-        while (totalTickets > 0) {
-            try{
-                simulationTicketRetrieval(customer, totalTickets);
-                Thread.sleep(1000L * customer.getFrequency());
-                if(totalTickets <= 0){
-                    totalTickets = ticketService.getTotalTickets();
-                }
-            }catch(InterruptedException e){
-                Thread.currentThread().interrupt();
-                logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
-            }
-        }
-        System.out.println("Customer " + customer.getId() + " thread ended.");
+        customerSimulation.performTicketRetrieval(customer);
     }
 
-    @PostConstruct
+    @Transactional
+    public void saveAllCustomers(List<Customer> customers){
+        customerRepository.saveAll(customers);
+    }
+
+
     public void init() {
         List<Customer> customers = customerRepository.findAll();
         for (Customer customer : customers) {

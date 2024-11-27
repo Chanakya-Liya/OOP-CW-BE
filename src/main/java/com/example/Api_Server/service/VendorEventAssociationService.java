@@ -2,14 +2,12 @@ package com.example.Api_Server.service;
 
 import com.example.Api_Server.entity.*;
 import com.example.Api_Server.repository.*;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 public class VendorEventAssociationService {
@@ -25,14 +23,17 @@ public class VendorEventAssociationService {
     private VendorRepository vendorRepository;
     private final Object lock = new Object();
 
-    public VendorEventAssociation addVendorEventAssociation(VendorEventAssociation vendorEventAssociation){
-        return vendorEventAssociationRepository.save(vendorEventAssociation);
+    @Transactional
+    public void addVendorEventAssociation(VendorEventAssociation vendorEventAssociation){
+        vendorEventAssociationRepository.save(vendorEventAssociation);
     }
 
+    @Transactional
     public void addVendorEventAssociationList(List<VendorEventAssociation> vendorEventAssociations){
         vendorEventAssociationRepository.saveAll(vendorEventAssociations);
     }
 
+    @Transactional
     public void performTicketRelease(VendorEventAssociation vendorEventAssociation) {
         while (vendorEventAssociation.getEvent().getSoldTickets().size() < vendorEventAssociation.getEvent().getTotalTickets()) {  // Continue as long as there are unsold tickets in the database.
             try {
@@ -71,11 +72,12 @@ public class VendorEventAssociationService {
         }
     }
 
+    @Transactional
     public void init() {
-
         List<VendorEventAssociation> vendorEventAssociations = vendorEventAssociationRepository.findAll();
         for (VendorEventAssociation vendorEventAssociation : vendorEventAssociations) {
-            Thread vendorAssociationThread = new Thread(() -> performTicketRelease(vendorEventAssociation));
+            vendorEventAssociation.setVendorEventAssociationService(this);
+            Thread vendorAssociationThread = new Thread(vendorEventAssociation);
             vendorAssociationThread.start();
         }
     }

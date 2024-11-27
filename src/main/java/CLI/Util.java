@@ -32,13 +32,15 @@ public class Util {
     @Autowired
     private EventService eventService;
     @Autowired
-    private VendorEventAssociationService vendorEventAssociationService;
+    private GenerateSimulation generateForSimulation;
     @Autowired
-    private VendorService vendorService;
+    private VendorEventAssociationService vendorEventAssociationService;
     @Autowired
     private TicketService ticketService;
     @Autowired
     private VendorEventAssociationRepository vendorEventAssociationRepository;
+    @Autowired
+    private VendorService vendorService;
 
 
     @Autowired
@@ -74,93 +76,23 @@ public class Util {
             System.out.println("2. Thread Testing");
             System.out.println("3. Exit");
             startOption = validateUserInput("Option", 1 , 3);
-
+            System.out.println("Loading Simulation");
             if(startOption == 1){
-                generateForSimulation();
+                generateForSimulation.generateForSimulation(true);
             }else if(startOption == 2){
-                generateForThreadTesting();
+                generateForSimulation.generateForThreadTesting(true);
             }else if(startOption == 3){
                 System.out.println("Exiting Program");
                 System.exit(1);
             }
             System.out.println("Simulation loaded successfully");
             customerService.init();
-            vendorEventAssociationService.init();
             vendorService.init();
+            vendorEventAssociationService.init();
         } catch (Exception e) {
             logger.severe("Error generating simulated users: " + e.getMessage());  // Use severe for critical errors
             System.err.println("An error occurred. Please check the logs for details.");  // User-friendly message
         }
-    }
-
-    public void generateForSimulation() throws IOException {
-        int EventCountMin = configManager.getIntValue("Simulation", "event", "EventCountMin");
-        int EventCountMax = configManager.getIntValue("Simulation", "event", "EventCountMax");
-        int PoolSizeMin = configManager.getIntValue("Simulation", "event", "PoolSizeMin");
-        int PoolSizeMax = configManager.getIntValue("Simulation", "event", "PoolSizeMax");
-        int TotalEventTicketsMin = configManager.getIntValue("Simulation", "event", "TotalEventTicketsMin");
-        int TotalEventTicketsMax = configManager.getIntValue("Simulation", "event", "TotalEventTicketsMax");
-        int EventCreationFrequencyMin = configManager.getIntValue("Simulation", "event", "EventCreationFrequencyMin");
-        int EventCreationFrequencyMax = configManager.getIntValue("Simulation", "event", "EventCreationFrequencyMax");
-
-        int CustomerCountMin = configManager.getIntValue("Simulation", "customer", "CustomerCountMin");
-        int CustomerCountMax = configManager.getIntValue("Simulation", "customer", "CustomerCountMax");
-        int RetrievalRateMin = configManager.getIntValue("Simulation", "customer", "RetrievalRateMin");
-        int RetrievalRateMax = configManager.getIntValue("Simulation", "customer", "RetrievalRateMax");
-        int CustomerFrequencyMin = configManager.getIntValue("Simulation", "customer", "FrequencyMin");
-        int CustomerFrequencyMax = configManager.getIntValue("Simulation", "customer", "FrequencyMax");
-
-        int VendorCountMin = configManager.getIntValue("Simulation", "vendor", "VendorCountMin");
-        int VendorCountMax = configManager.getIntValue("Simulation", "vendor", "VendorCountMax");
-        int ReleaseRateMin = configManager.getIntValue("Simulation", "vendor", "ReleaseRateMin");
-        int ReleaseRateMax = configManager.getIntValue("Simulation", "vendor", "ReleaseRateMax");
-        int VendorFrequencyMin = configManager.getIntValue("Simulation", "vendor", "FrequencyMin");
-        int VendorFrequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
-
-        int simulatedVendors = dataGenerator.generateRandomInt(VendorCountMin, VendorCountMax);
-        int simulatedCustomers = dataGenerator.generateRandomInt(CustomerCountMin, CustomerCountMax);
-        int simulatedEvents = dataGenerator.generateRandomInt(EventCountMin, EventCountMax);
-
-        try{
-            List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, RetrievalRateMin, RetrievalRateMax, CustomerFrequencyMin, CustomerFrequencyMax, customerService);
-            for(Customer customer : customers){
-                customerService.addCustomer(customer);
-            }
-            List<Vendor> vendors = dataGenerator.simulateVendors(simulatedVendors, EventCreationFrequencyMin, EventCreationFrequencyMax);
-            vendorRepository.saveAll(vendors);
-            System.out.println("Loading simulation...");
-            dataGenerator.simulateEventsForSimulationTesting(simulatedEvents, PoolSizeMin, PoolSizeMax,TotalEventTicketsMin, TotalEventTicketsMax, ReleaseRateMin, ReleaseRateMax, VendorFrequencyMin, VendorFrequencyMax, vendors);
-        }catch (IOException e){
-            throw new IOException();
-        }
-    }
-
-    public void generateForThreadTesting() throws IOException {
-        int simulatedEvents = configManager.getIntValue("ThreadTesting", "event", "EventCount");
-        int PoolSize = configManager.getIntValue("ThreadTesting", "event", "PoolSize");
-        int TotalEventTickets = configManager.getIntValue("ThreadTesting", "event", "TotalTicketCount");
-        int EventCreationFrequency = configManager.getIntValue("ThreadTesting", "event", "EventCreationFrequency");
-
-        int simulatedCustomers = configManager.getIntValue("ThreadTesting", "customer", "CustomerCount");
-        int RetrievalRate = configManager.getIntValue("ThreadTesting", "customer", "RetrievalRate");
-        int CustomerFrequency = configManager.getIntValue("ThreadTesting", "customer", "Frequency");
-
-        int simulatedVendors = configManager.getIntValue("ThreadTesting", "vendor", "VendorCount");
-        int ReleaseRate = configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate");
-        int VendorFrequency = configManager.getIntValue("ThreadTesting", "vendor", "Frequency");
-        try{
-            List<Customer> customers = dataGenerator.simulateCustomers(simulatedCustomers, CustomerFrequency, RetrievalRate, customerService);
-            for(Customer customer: customers){
-                customerService.addCustomer(customer);
-            }
-            List<Vendor> vendors =  dataGenerator.simulateVendors(simulatedVendors, EventCreationFrequency);
-            vendorRepository.saveAll(vendors);
-            System.out.println("Loading simulation...");
-            dataGenerator.simulateEventsForThreadTesting(simulatedEvents, PoolSize, TotalEventTickets, ReleaseRate, VendorFrequency, vendors);
-        }catch (IOException e){
-            throw new IOException();
-        }
-
     }
 
     public int validateUserInput(String prompt, int min, int max){

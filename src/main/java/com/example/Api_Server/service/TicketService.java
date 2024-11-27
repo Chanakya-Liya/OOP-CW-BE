@@ -23,14 +23,17 @@ public class TicketService {
     @Autowired
     private VendorRepository vendorRepository;
 
+    @Transactional
     public Ticket addTicket(Ticket ticket){
         return ticketRepository.save(ticket);
     }
 
+    @Transactional
     public void updateTicket(Ticket ticket){
         ticketRepository.save(ticket);
     }
 
+    @Transactional
     public List<Ticket> getAll(){
         return ticketRepository.findAll();
     }
@@ -51,12 +54,7 @@ public class TicketService {
 
     @Transactional
     public Optional<Ticket> getPoolTicket(Event event){
-        Optional<Ticket> ticket  = ticketRepository.findPoolTicketByEvent(event);
-        if(ticket.isPresent()){
-            return ticket;
-        }else{
-            return null;
-        }
+        return ticketRepository.findPoolTicketByEvent(event);
     }
 
     public void saveTicket(Ticket ticket){

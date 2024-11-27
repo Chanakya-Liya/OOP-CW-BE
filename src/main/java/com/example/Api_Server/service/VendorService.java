@@ -6,9 +6,12 @@ import CLI.LoggingConfig;
 import CLI.Util;
 import com.example.Api_Server.entity.Vendor;
 import com.example.Api_Server.repository.*;
+import com.example.Api_Server.simulation.VendorSimulation;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
@@ -35,6 +38,8 @@ public class VendorService {
     private ConfigManager configManager;
     @Autowired
     private DataGenerator dataGenerator;
+    @Autowired
+    private VendorSimulation vendorSimulation;
 
     private static final Logger logger;
     static {
@@ -52,66 +57,41 @@ public class VendorService {
         }
     }
 
+    @Transactional
     public Vendor addVendor(Vendor vendor){
         return vendorRepository.save(vendor);
     }
 
+    @Transactional
     public int vendorCount(){
         return (int) vendorRepository.count();
     }
 
+    @Transactional
     public Vendor getVendor(int id){
         return vendorRepository.getById((long) id);
     }
 
+    @Transactional
     public List<Vendor> getAll(){
         return vendorRepository.findAll();
     }
 
     public void addEvents(Vendor vendor) {
-        while (true) {
-            try {
-                if (Util.getStartOption() == 1) {
-                    // Get config values using configManager
-                    int poolSizeMin = configManager.getIntValue("Simulation", "event", "PoolSizeMin");
-                    int poolSizeMax = configManager.getIntValue("Simulation", "event", "PoolSizeMax");
-                    int totalTicketsMin = configManager.getIntValue("Simulation", "event", "TotalEventTicketsMin");
-                    int totalTicketsMax = configManager.getIntValue("Simulation", "event", "TotalEventTicketsMax");
-                    int releaseRateMin = configManager.getIntValue("Simulation", "vendor", "ReleaseRateMin");
-                    int releaseRateMax = configManager.getIntValue("Simulation", "vendor", "ReleaseRateMax");
-                    int frequencyMin = configManager.getIntValue("Simulation", "vendor", "FrequencyMin");
-                    int frequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
-
-                    dataGenerator.simulateEventsForSimulationTesting(1, poolSizeMin, poolSizeMax, totalTicketsMin, totalTicketsMax, releaseRateMin, releaseRateMax, frequencyMin, frequencyMax, getAll());
-                } else {
-
-                    dataGenerator.simulateEventsForThreadTesting(1, configManager.getIntValue("ThreadTesting", "event", "PoolSize"), configManager.getIntValue("ThreadTesting", "event", "TotalTicketCount"), configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate"), configManager.getIntValue("ThreadTesting", "vendor", "Frequency"), getAll());
-                }
-
-                vendor.logInfo("New Event Created by Vendor: " + vendor.getId() ); //+ " event: " + lastEvent);
-
-
-
-            } catch (Exception e) { // Catch broader Exception
-                logger.warning("Error occurred while trying to create an event: " + e.getMessage());
-            }
-            try {
-                Thread.sleep(vendor.getEventCreationFrequency() * 1000L); // Correct usage assuming eventCreationFrequency is now an instance member of Vendor class.
-            } catch (InterruptedException e) {
-                logger.warning("Vendor thread interrupted: " + e.getMessage());
-                Thread.currentThread().interrupt();
-                break; // Exit the loop to prevent resource leaks if interrupted
-
-            }
-        }
+        vendorSimulation.addEvent(vendor);
     }
 
-    @PostConstruct
+    @Transactional
+    public void saveAllVendors(List<Vendor> vendors){
+        vendorRepository.saveAll(vendors);
+    }
+
     public void init() {
         List<Vendor> vendors = vendorRepository.findAll();
         for (Vendor vendor : vendors) {
             if (vendor.isSimulated()) {
-                Thread vendorThread = new Thread(() -> addEvents(vendor)); //Start vendor threads using lambda
+                vendor.setVendorService(this);
+                Thread vendorThread = new Thread(vendor); //Start vendor threads using lambda
                 vendorThread.start();
             }
         }

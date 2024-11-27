@@ -28,6 +28,11 @@ public class Ticket {
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
 
+    @Setter
+    @Getter
+    @Version
+    private int version;
+
     public Ticket() {
 
     }

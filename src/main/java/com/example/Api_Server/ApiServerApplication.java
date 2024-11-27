@@ -12,15 +12,17 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EntityScan(basePackages = "com.example.Api_Server.entity")
-@ComponentScan(basePackages = {"com.example.Api_Server", "CLI"})
+@ComponentScan(basePackages = {"com.example.Api_Server", "CLI", "com.example.Api_Server.service"})
 public class ApiServerApplication {
 
     public static void main(String[] args) {
 		ConfigManager configManager = new ConfigManager();
-		configManager.validateConfig();
+		configManager.validateConfig(); // Validate custom configurations
+
 		ConfigurableApplicationContext context = SpringApplication.run(ApiServerApplication.class, args);
+
 		Util util = context.getBean(Util.class);
-		util.generateSimulatedUsers();
-		util.endProgram();
+		util.generateSimulatedUsers(); // Your custom CLI logic
+		util.endProgram(); // CLI-related termination logic
 	}
 }
