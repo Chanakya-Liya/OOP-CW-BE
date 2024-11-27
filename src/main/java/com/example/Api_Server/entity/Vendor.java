@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -61,20 +62,24 @@ public class Vendor extends User implements Runnable{
 
     @Override
     public String toString() {
-        StringBuilder eventIdBuilder = new StringBuilder("[");
-        for (Event event : events) {
-            eventIdBuilder.append(event.getId()).append(", ");
-        }
 
-        if (!events.isEmpty()) {
-            eventIdBuilder.setLength(eventIdBuilder.length() - 2);
-        }
-        eventIdBuilder.append("]");
         return "Vendor{" +
-                "eventIds=" + eventIdBuilder +
                 ", id=" + super.getId() +
                 ", Event Creation Frequency=" + eventCreationFrequency +
                 "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vendor vendor = (Vendor) o;
+        return Objects.equals(id, vendor.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
 

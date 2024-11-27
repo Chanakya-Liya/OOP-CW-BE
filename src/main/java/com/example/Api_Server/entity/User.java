@@ -1,6 +1,7 @@
 package com.example.Api_Server.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,13 +15,16 @@ import java.util.stream.Collectors;
 @DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING)
 abstract class User {
     private static int nextId = 1;
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    public int id;
     private String fName;
     private  String lName;
     private String username;
     private String password;
+    @Setter
     private String email;
     private boolean simulated;
     private static final Logger logger = Logger.getLogger(User.class.getName());
@@ -83,9 +87,6 @@ abstract class User {
         this.password = hashPassword(password);
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @Override
     public String toString() {

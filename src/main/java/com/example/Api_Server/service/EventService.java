@@ -34,8 +34,9 @@ public class EventService {
     private final Lock writeLock = readWriteLock.writeLock();
     private final Lock readLock = readWriteLock.readLock();
 
+    @Transactional
     public Event addEvent(Event event) {
-        return eventRepository.save(event);
+            return eventRepository.save(event);
     }
 
     public List<Event> getAll() {

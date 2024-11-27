@@ -7,8 +7,8 @@
         "PoolSizeMax": 700,
         "TotalEventTicketsMin": 3000,
         "TotalEventTicketsMax": 5000,
-        "EventCreationFrequencyMin": 120,
-        "EventCreationFrequencyMax": 300
+        "EventCreationFrequencyMin": 10,
+        "EventCreationFrequencyMax": 20
       },
       "customer": {
         "CustomerCountMin": 60,
@@ -29,7 +29,7 @@
   },
   "ThreadTesting" : {
      "event": {
-       "EventCount" : 2,
+       "EventCount" : 6,
        "PoolSize": 100,
        "TotalTicketCount": 400,
        "EventCreationFrequency": 10
