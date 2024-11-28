@@ -47,6 +47,10 @@ public class Vendor extends User implements Runnable{
         logger.info(msg);
     }
 
+    public void logWarning(String msg){
+        logger.warning(msg);
+    }
+
     public void setEvents(Event event) {
         events.add(event);
     }

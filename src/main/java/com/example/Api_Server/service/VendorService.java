@@ -8,19 +8,13 @@ import com.example.Api_Server.entity.Event;
 import com.example.Api_Server.entity.Vendor;
 import com.example.Api_Server.entity.VendorEventAssociation;
 import com.example.Api_Server.repository.*;
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.OptimisticLockException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
-import java.nio.file.InvalidPathException;
 import java.util.*;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+
 
 @Service
 public class VendorService {
@@ -47,22 +41,6 @@ public class VendorService {
 
     private volatile boolean running = true;
 
-    private static final Logger logger;
-    static {
-        logger = Logger.getLogger(VendorService.class.getName());
-
-        try {
-            FileHandler fileHandler = new FileHandler(new LoggingConfig().getEventLog(), true); // "true" to append to the file
-            fileHandler.setFormatter(new SimpleFormatter());  // Sets a simple text format for logs
-            logger.addHandler(fileHandler);
-            logger.setUseParentHandlers(false); // Disables logging to console
-        } catch (IOException e) {
-            logger.warning("Failed to set up file handler for logger: " + e.getMessage());
-        }catch(InvalidPathException e){
-            logger.warning("Failed to set up file handler for logger: " + e.getMessage());
-        }
-    }
-
     @Transactional
     public void addVendor(Vendor vendor){
         vendorRepository.save(vendor);
@@ -85,7 +63,7 @@ public class VendorService {
 
 
     @Transactional
-    public void createSimulationEvent(){
+    public void createSimulationEvent(Vendor vendor){
         int poolSizeMin = configManager.getIntValue("Simulation", "event", "PoolSizeMin");
         int poolSizeMax = configManager.getIntValue("Simulation", "event", "PoolSizeMax");
         int totalTicketsMin = configManager.getIntValue("Simulation", "event", "TotalEventTicketsMin");
@@ -96,7 +74,12 @@ public class VendorService {
         int frequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
 
         Event event = new Event(dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
-        event = eventService.addEvent(event); // Save event first
+        event.setVendor(vendor);
+        Event savedEvent = eventService.addEvent(event);
+        VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
+        vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
+        vendor.addEvent(event);
+        addVendor(vendor);
 
     }
 
@@ -116,7 +99,7 @@ public class VendorService {
             addVendor(vendor);
             generateVendorEventAssociations(vendor, savedEvent, ReleaseRate, VendorFrequency);
         } catch (Exception e) {
-            logger.warning("Error occurred while trying to create an event one: " + e.getMessage());
+            vendor.logWarning("Error occurred while trying to create an event one: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -145,11 +128,42 @@ public class VendorService {
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
             }
         }catch (OptimisticLockException e) {
-            logger.warning("Optimistic lock exception occurred: " + e.getMessage());
+            vendor.logWarning("Optimistic lock exception occurred: " + e.getMessage());
             throw e;
         } catch (Exception e) {
-            logger.warning("Error occurred while trying to create an event two: " + e.getMessage());
-            e.printStackTrace();
+            vendor.logWarning("Error occurred while trying to create an event : " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Transactional
+    public void generateVendorEventAssociations(Vendor vendor, Event event, int releaseRateMin, int releaseRateMax, int frequencyMin, int frequencyMax) {
+        try{
+            int customerSize = customerService.getAll().size();
+            int vendorCount = dataGenerator.generateRandomInt(-5, vendorCount() - 1);
+            if (vendorCount <= 0) {
+                vendorCount = 0;
+            }
+            Set<Vendor> addedVendors = new HashSet<>(); // Use Set to avoid duplicates automatically
+
+            for (int j = 0; j < vendorCount; j++) {
+                Optional<Vendor> vendorOptional;
+                do {
+                    vendorOptional = vendorRepository.findById(dataGenerator.generateRandomInt(1, vendorCount() - 5) + customerSize);
+                } while (vendorOptional.isEmpty() || addedVendors.contains(vendorOptional.get()) || vendorOptional.get().getId() == vendor.getId());
+
+                Vendor vendorAssociation = vendorOptional.get(); // Extract the vendor
+                addedVendors.add(vendorAssociation); // Add it to the set
+                vendorAssociation.addEvent(event); // Manage the bidirectional relationship
+                addVendor(vendorAssociation);
+                VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendorAssociation, event, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
+                vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
+            }
+        }catch (OptimisticLockException e) {
+            vendor.logWarning("Optimistic lock exception occurred: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            vendor.logWarning("Error occurred while trying to create an event : " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -164,13 +178,13 @@ public class VendorService {
             try {
                 Thread.sleep(vendor.getEventCreationFrequency() * 1000L);
                 if (Util.getStartOption() == 1) {
-                    createSimulationEvent();
+                    createSimulationEvent(vendor);
                 } else {
                     createThreadTestingEvent(vendor);
                 }
                 vendor.logInfo("New Event Created by Vendor: " + vendor.getId());
             } catch (Exception e) {
-                logger.warning("Error occurred while trying to create an event: " + e.getMessage());
+                vendor.logWarning("Error occurred while trying to create an event: " + e.getMessage());
             }
         }
     }
