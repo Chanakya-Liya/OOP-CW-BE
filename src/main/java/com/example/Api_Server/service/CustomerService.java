@@ -49,6 +49,7 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
+    @Transactional
     public List<Customer> getAll(){
         return customerRepository.findAll();
     }

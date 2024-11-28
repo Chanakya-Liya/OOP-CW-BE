@@ -36,7 +36,9 @@ public class EventService {
 
     @Transactional
     public Event addEvent(Event event) {
+        synchronized (this) {
             return eventRepository.save(event);
+        }
     }
 
     public List<Event> getAll() {
@@ -85,6 +87,5 @@ public class EventService {
             writeLock.unlock();
         }
     }
-
 
 }

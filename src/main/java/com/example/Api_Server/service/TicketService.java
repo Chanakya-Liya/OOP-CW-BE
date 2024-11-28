@@ -55,7 +55,7 @@ public class TicketService {
         if(ticket.isPresent()){
             return ticket;
         }else{
-            return null;
+            return Optional.empty();
         }
     }
 

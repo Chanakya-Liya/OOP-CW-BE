@@ -25,6 +25,7 @@ public class VendorEventAssociationService {
     private VendorRepository vendorRepository;
     private final Object lock = new Object();
 
+    @Transactional
     public VendorEventAssociation addVendorEventAssociation(VendorEventAssociation vendorEventAssociation){
         return vendorEventAssociationRepository.save(vendorEventAssociation);
     }

@@ -1,6 +1,7 @@
 package com.example.Api_Server.entity;
 import jakarta.persistence.*;
 import lombok.ToString;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +23,24 @@ public class Event{
     private int poolSize;
     private int totalTickets;
 
+
     public Event(int poolSize, int totalTickets) {
         this.id = nextId++;
         this.poolSize = poolSize;
         this.totalTickets = totalTickets;
-        for (int i = 0; i < poolSize; i++) {
-            addTicket(TicketStatus.POOL);
-        }
+        addPoolTickets(poolSize);
     }
 
     public Event(){}
+
+    public void addPoolTickets(int poolSize) {
+        synchronized (this){
+            for (int i = 0; i < poolSize; i++) {
+                addTicket(TicketStatus.POOL);
+            }
+        }
+
+    }
 
     public void addTicket(TicketStatus status) {
         Ticket ticket = new Ticket();

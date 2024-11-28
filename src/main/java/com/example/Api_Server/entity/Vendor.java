@@ -23,7 +23,7 @@ import java.util.logging.SimpleFormatter;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Vendor extends User implements Runnable{
     private int eventCreationFrequency;
-    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Event> events = new HashSet<>();
     private static Logger logger = Logger.getLogger(Vendor.class.getName());
 
@@ -52,7 +52,7 @@ public class Vendor extends User implements Runnable{
     }
 
     @Override
-    public void run(){
+    public void run() {
         if (vendorService != null) {
             vendorService.addEvents(this);
         } else {

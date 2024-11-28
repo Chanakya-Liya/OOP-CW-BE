@@ -1,6 +1,14 @@
 server:
   port: 8030
 
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#            descriptor.sql: TRACE
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5333/ticketingsystem
