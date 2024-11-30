@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -63,7 +64,7 @@ public class VendorService {
 
 
     @Transactional
-    public void createSimulationEvent(Vendor vendor){
+    public void createSimulationEvent(Vendor vendor) throws IOException {
         int poolSizeMin = configManager.getIntValue("Simulation", "event", "PoolSizeMin");
         int poolSizeMax = configManager.getIntValue("Simulation", "event", "PoolSizeMax");
         int totalTicketsMin = configManager.getIntValue("Simulation", "event", "TotalEventTicketsMin");
@@ -73,7 +74,7 @@ public class VendorService {
         int frequencyMin = configManager.getIntValue("Simulation", "vendor", "FrequencyMin");
         int frequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
 
-        Event event = new Event(dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
+        Event event = new Event(dataGenerator.generateRandomString("event"),dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
         event.setVendor(vendor);
         Event savedEvent = eventService.addEvent(event);
         VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
@@ -90,7 +91,7 @@ public class VendorService {
         int ReleaseRate = configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate");
         int VendorFrequency = configManager.getIntValue("ThreadTesting", "vendor", "Frequency");
         try{
-            Event event = new Event(PoolSize, TotalEventTickets);
+            Event event = new Event(dataGenerator.generateRandomString("event"), PoolSize, TotalEventTickets);
             event.setVendor(vendor);
             Event savedEvent = eventService.addEvent(event); // Save the event first
             VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, ReleaseRate, VendorFrequency);

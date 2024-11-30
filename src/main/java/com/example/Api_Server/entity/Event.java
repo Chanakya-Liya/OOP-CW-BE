@@ -15,6 +15,7 @@ public class Event{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
@@ -24,8 +25,9 @@ public class Event{
     private int totalTickets;
 
 
-    public Event(int poolSize, int totalTickets) {
+    public Event(String name, int poolSize, int totalTickets) {
         this.id = nextId++;
+        this.name = name;
         this.poolSize = poolSize;
         this.totalTickets = totalTickets;
         addPoolTickets(poolSize);
