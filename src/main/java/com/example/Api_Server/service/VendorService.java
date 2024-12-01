@@ -201,4 +201,14 @@ public class VendorService {
             }
         }
     }
+
+    public boolean checkVendor(String email, String password) {
+        List<Vendor> vendors = vendorRepository.findAll();
+        for (Vendor vendor : vendors) {
+            if (vendor.getEmail().equals(email) && vendor.getPassword().equals(vendor.hashPassword(password))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

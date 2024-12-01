@@ -34,6 +34,7 @@ public class Customer extends User implements Runnable {
         super(fName, lName, username, password, email, simulated);
         this.retrievalRate = retrievalRate;
         this.frequency = frequency;
+        System.out.println("Customer " + "email: " + email + "password: " + password);
     }
 
     public Customer() {

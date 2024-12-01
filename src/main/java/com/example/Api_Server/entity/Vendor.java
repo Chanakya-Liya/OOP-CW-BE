@@ -34,6 +34,7 @@ public class Vendor extends User implements Runnable{
     public Vendor(String fName, String lName, String username, String password, String email, boolean simulated, int eventCreationFrequency, String vendorLogPath) {
         super(fName, lName, username, password, email, simulated);
         this.eventCreationFrequency = eventCreationFrequency;
+        System.out.println("Vendor " + "email: " + email + "password: " + password);
     }
 
     public Vendor(){}

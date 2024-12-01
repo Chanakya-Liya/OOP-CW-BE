@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.locks.Lock;
@@ -108,5 +110,15 @@ public class CustomerService {
                 customerThread.start();
             }
         }
+    }
+
+    public boolean checkCustomer(String email, String password) {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer customer : customers) {
+            if (customer.getEmail().equals(email) && customer.getPassword().equals(customer.hashPassword(password))) {
+                return true;
+            }
+        }
+        return false;
     }
 }
