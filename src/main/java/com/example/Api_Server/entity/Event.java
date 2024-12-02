@@ -1,5 +1,7 @@
 package com.example.Api_Server.entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,7 @@ public class Event{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Setter
     private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendor_id")
@@ -23,6 +26,13 @@ public class Event{
     private List<Ticket> tickets = new ArrayList<>();
     private int poolSize;
     private int totalTickets;
+    @Setter
+    @Getter
+    @Lob
+    private byte[] photo;
+    @Getter
+    @Setter
+    private String Description;
 
 
     public Event(String name, int poolSize, int totalTickets) {
@@ -41,7 +51,6 @@ public class Event{
                 addTicket(TicketStatus.POOL);
             }
         }
-
     }
 
     public void addTicket(TicketStatus status) {

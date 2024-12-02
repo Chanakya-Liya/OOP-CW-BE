@@ -36,12 +36,14 @@ public class DataGenerator {
     private static final String email = "src/main/java/CLI/Static/email.txt";
     private static final String username = "src/main/java/CLI/Static/username.txt";
     private static final String eventFile = "src/main/java/CLI/Static/eventName.txt";
+    private static final String description = "src/main/java/CLI/Static/description.txt";
     private ArrayList<String> fNames = new ArrayList<>();
     private ArrayList<String> lNames = new ArrayList<>();
     private ArrayList<String> passwords = new ArrayList<>();
     private ArrayList<String> emails = new ArrayList<>();
     private ArrayList<String> usernames = new ArrayList<>();
     private ArrayList<String> eventNames = new ArrayList<>();
+    private ArrayList<String> descriptions = new ArrayList<>();
 
     @Autowired
     private VendorRepository vendorRepository;
@@ -66,6 +68,7 @@ public class DataGenerator {
         loadFile(email, emails);
         loadFile(username, usernames);
         loadFile(eventFile, eventNames);
+        loadFile(description, descriptions);
     }
 
     private void loadFile(String filePath, ArrayList<String> arrayList) throws IOException {
@@ -86,6 +89,8 @@ public class DataGenerator {
             return emails.get(random.nextInt(emails.size()));
         } else if (stringRequired.equalsIgnoreCase("event")){
             return eventNames.get(random.nextInt(eventNames.size()));
+        }else if(stringRequired.equalsIgnoreCase("description")){
+            return descriptions.get(random.nextInt(descriptions.size()));
         }else{
             return usernames.get(random.nextInt(usernames.size()));
         }
@@ -139,6 +144,7 @@ public class DataGenerator {
     public void simulateEventsForThreadTesting(int simulatedEvent, int poolSize, int totalEventTickets, int releaseRate, int frequency, List<Vendor> vendors) throws IOException {
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(generateRandomString("event"), poolSize, totalEventTickets);
+            event.setDescription(generateRandomString("description"));
             event = eventService.addEvent(event); // Save the event first
             int vendorCount = generateRandomInt(-5, (int) vendorRepository.count());
             if (vendorCount <= 0) {
@@ -166,6 +172,7 @@ public class DataGenerator {
     public void simulateEventsForSimulationTesting(int simulatedEvent, int poolSizeMin, int poolSizeMax, int totalEventTicketsMin, int totalEventTicketsMax, int releaseRateMin, int releaseRateMax, int frequencyMin, int frequencyMax, List<Vendor> vendors) throws IOException {
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(generateRandomString("event"),generateRandomInt(poolSizeMin, poolSizeMax), generateRandomInt(totalEventTicketsMin, totalEventTicketsMax));
+            event.setDescription(generateRandomString("description"));
             event = eventService.addEvent(event); // Save event first
 
             int vendorCount = generateRandomInt(-5, (int) vendorRepository.count());

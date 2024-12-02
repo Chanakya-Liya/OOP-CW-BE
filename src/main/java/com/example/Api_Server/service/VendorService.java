@@ -73,15 +73,20 @@ public class VendorService {
         int releaseRateMax = configManager.getIntValue("Simulation", "vendor", "ReleaseRateMax");
         int frequencyMin = configManager.getIntValue("Simulation", "vendor", "FrequencyMin");
         int frequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
-
-        Event event = new Event(dataGenerator.generateRandomString("event"),dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
-        event.setVendor(vendor);
-        Event savedEvent = eventService.addEvent(event);
-        VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
-        vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
-        vendor.addEvent(event);
-        addVendor(vendor);
-
+        try{
+            Event event = new Event(dataGenerator.generateRandomString("event"),dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
+            event.setVendor(vendor);
+            event.setDescription(dataGenerator.generateRandomString("description"));
+            Event savedEvent = eventService.addEvent(event);
+            VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
+            vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
+            vendor.addEvent(event);
+            addVendor(vendor);
+            generateVendorEventAssociations(vendor, savedEvent, releaseRateMin, releaseRateMax, frequencyMin, frequencyMax);
+        } catch (Exception e) {
+            vendor.logWarning("Error occurred while trying to create an event one: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     @Transactional
@@ -93,6 +98,7 @@ public class VendorService {
         try{
             Event event = new Event(dataGenerator.generateRandomString("event"), PoolSize, TotalEventTickets);
             event.setVendor(vendor);
+            event.setDescription(dataGenerator.generateRandomString("description"));
             Event savedEvent = eventService.addEvent(event); // Save the event first
             VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, ReleaseRate, VendorFrequency);
             vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
