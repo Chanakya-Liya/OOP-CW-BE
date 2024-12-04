@@ -64,7 +64,7 @@ abstract class User {
     public static boolean isValidPassword(String password) {
         boolean hasLetter = false;
         boolean hasNumber = false;
-        boolean passLength = password.length() > 10;
+        boolean passLength = password.length() >= 6;
         for (char c : password.toCharArray()) {
             if (Character.isLetter(c)) {
                 hasLetter = true;

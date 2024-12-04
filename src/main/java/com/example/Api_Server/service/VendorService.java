@@ -77,6 +77,8 @@ public class VendorService {
             Event event = new Event(dataGenerator.generateRandomString("event"),dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
             event.setVendor(vendor);
             event.setDescription(dataGenerator.generateRandomString("description"));
+            event.setEventDateTime(dataGenerator.generateRandomDateTime());
+            event.setPhoto(dataGenerator.generateImageByte());
             Event savedEvent = eventService.addEvent(event);
             VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
             vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
@@ -98,6 +100,8 @@ public class VendorService {
         try{
             Event event = new Event(dataGenerator.generateRandomString("event"), PoolSize, TotalEventTickets);
             event.setVendor(vendor);
+            event.setEventDateTime(dataGenerator.generateRandomDateTime());
+            event.setPhoto(dataGenerator.generateImageByte());
             event.setDescription(dataGenerator.generateRandomString("description"));
             Event savedEvent = eventService.addEvent(event); // Save the event first
             VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, ReleaseRate, VendorFrequency);
@@ -216,5 +220,15 @@ public class VendorService {
             }
         }
         return false;
+    }
+
+    public Vendor getVendorFromEmail(String email) {
+        List<Vendor> vendors = vendorRepository.findAll();
+        for (Vendor vendor : vendors) {
+            if (vendor.getEmail().equals(email)) {
+                return vendor;
+            }
+        }
+        return null;
     }
 }

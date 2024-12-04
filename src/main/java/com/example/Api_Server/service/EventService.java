@@ -93,7 +93,6 @@ public class EventService {
     public void createEvent(String name, String description, MultipartFile photo) throws IOException {
         Event event = new Event();
         event.setName(name);
-        event.setPhoto(photo.getBytes()); // Save binary data
         eventRepository.save(event);
     }
 

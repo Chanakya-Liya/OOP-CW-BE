@@ -1,6 +1,7 @@
 package com.example.Api_Server.service;
 
 import CLI.DataGenerator;
+import com.example.Api_Server.DTO.UserRegisterDTO;
 import com.example.Api_Server.entity.Customer;
 import com.example.Api_Server.entity.Event;
 import com.example.Api_Server.entity.Ticket;
@@ -116,6 +117,31 @@ public class CustomerService {
         List<Customer> customers = customerRepository.findAll();
         for (Customer customer : customers) {
             if (customer.getEmail().equals(email) && customer.getPassword().equals(customer.hashPassword(password))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addCustomerFromUI(UserRegisterDTO userRegisterDTO) {
+        Customer customer = new Customer(userRegisterDTO.getFirstName(), userRegisterDTO.getLastName(), userRegisterDTO.getUsername(), userRegisterDTO.getPassword(), userRegisterDTO.getEmail());
+        addCustomer(customer);
+    }
+
+    public Customer getCustomerFromEmail(String email) {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer customer : customers) {
+            if (customer.getEmail().equals(email)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+    public boolean checkCustomerExists(String email) {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer customer : customers) {
+            if (customer.getEmail().equals(email)) {
                 return true;
             }
         }

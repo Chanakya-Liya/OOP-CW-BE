@@ -30,11 +30,14 @@ public class Customer extends User implements Runnable {
     private CustomerService customerService;
 
 
-    public Customer(String fName, String lName, String username, String password, String email, boolean simulated, int retrievalRate, int frequency, String customerLogPath) {
+    public Customer(String fName, String lName, String username, String password, String email, boolean simulated, int retrievalRate, int frequency) {
         super(fName, lName, username, password, email, simulated);
         this.retrievalRate = retrievalRate;
         this.frequency = frequency;
-        System.out.println("Customer " + "email: " + email + "password: " + password);
+    }
+
+    public Customer(String fName, String lName, String username, String password, String email) {
+        super(fName, lName, username, password, email, false);
     }
 
     public Customer() {

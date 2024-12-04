@@ -3,8 +3,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.transaction.annotation.Transactional;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,10 +28,13 @@ public class Event{
     @Setter
     @Getter
     @Lob
-    private byte[] photo;
+    private String photo;
     @Getter
     @Setter
     private String Description;
+    @Getter
+    @Setter
+    private LocalDateTime eventDateTime;
 
 
     public Event(String name, int poolSize, int totalTickets) {

@@ -16,14 +16,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class DataGenerator {
@@ -71,11 +75,25 @@ public class DataGenerator {
         loadFile(description, descriptions);
     }
 
+    public static LocalDateTime generateRandomDateTime() {
+        long startEpochSecond = LocalDateTime.now().toEpochSecond(java.time.ZoneOffset.UTC);
+        long endEpochSecond = LocalDateTime.now().plusMonths(10).toEpochSecond(java.time.ZoneOffset.UTC);
+        long randomEpochSecond = ThreadLocalRandom.current().nextLong(startEpochSecond, endEpochSecond);
+        LocalDateTime randomDateTime =  LocalDateTime.ofEpochSecond(randomEpochSecond, 0, java.time.ZoneOffset.UTC);
+        return randomDateTime.truncatedTo(ChronoUnit.HOURS);
+    }
+
     private void loadFile(String filePath, ArrayList<String> arrayList) throws IOException {
         Scanner fileScanner = new Scanner(new File(filePath));
         while(fileScanner.hasNextLine()){
             arrayList.add(fileScanner.nextLine());
         }
+    }
+
+    public String generateImageByte() throws IOException {
+        File file = new File("src/main/java/CLI/Static/images/" + generateRandomInt(1, 13) + ".jpg");
+        byte[] fileContent = Files.readAllBytes(file.toPath());
+        return Base64.getEncoder().encodeToString(fileContent);
     }
 
     public String generateRandomString(String stringRequired) throws IOException {
@@ -106,7 +124,7 @@ public class DataGenerator {
     public List<Customer> simulateCustomers(int simulateCustomers, int customerFrequency, int customerRetrieve, CustomerService customerService) throws IOException {
         List<Customer> customers = new ArrayList<>();
         for(int i = 0; i < simulateCustomers; i++){
-            Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, customerRetrieve, customerFrequency, loggingConfig.getCustomerLog());
+            Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, customerRetrieve, customerFrequency);
             customer.setCustomerService(customerService);
             customers.add(customer);
         }
@@ -116,7 +134,7 @@ public class DataGenerator {
     public List<Customer> simulateCustomers(int simulateCustomers, int customerRetrieveMin, int customerRetrieveMax, int customerFrequencyMin, int customerFrequencyMax, CustomerService customerService) throws IOException {
         List<Customer> customers = new ArrayList<>();
         for(int i = 0; i < simulateCustomers; i++){
-            Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, generateRandomInt(customerRetrieveMin, customerRetrieveMax), generateRandomInt(customerFrequencyMin, customerFrequencyMax), loggingConfig.getCustomerLog());
+            Customer customer = new Customer(generateRandomString("fname"), generateRandomString("lname"), generateRandomString("username"), generateRandomString("password"), generateRandomString("email"), true, generateRandomInt(customerRetrieveMin, customerRetrieveMax), generateRandomInt(customerFrequencyMin, customerFrequencyMax));
             customer.setCustomerService(customerService);
             customers.add(customer);
         }
@@ -145,6 +163,8 @@ public class DataGenerator {
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(generateRandomString("event"), poolSize, totalEventTickets);
             event.setDescription(generateRandomString("description"));
+            event.setEventDateTime(generateRandomDateTime());
+            event.setPhoto(generateImageByte());
             event = eventService.addEvent(event); // Save the event first
             int vendorCount = generateRandomInt(-5, (int) vendorRepository.count());
             if (vendorCount <= 0) {
@@ -173,6 +193,8 @@ public class DataGenerator {
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(generateRandomString("event"),generateRandomInt(poolSizeMin, poolSizeMax), generateRandomInt(totalEventTicketsMin, totalEventTicketsMax));
             event.setDescription(generateRandomString("description"));
+            event.setEventDateTime(generateRandomDateTime());
+            event.setPhoto(generateImageByte());
             event = eventService.addEvent(event); // Save event first
 
             int vendorCount = generateRandomInt(-5, (int) vendorRepository.count());
