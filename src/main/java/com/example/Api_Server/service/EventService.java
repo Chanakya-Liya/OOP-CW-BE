@@ -6,6 +6,7 @@ import com.example.Api_Server.entity.Ticket;
 import com.example.Api_Server.entity.TicketStatus;
 import com.example.Api_Server.repository.*;
 import jakarta.persistence.Entity;
+import com.example.Api_Server.DTO.EventDTO;
 import jakarta.persistence.OptimisticLockException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.locks.Lock;
@@ -96,4 +98,12 @@ public class EventService {
         eventRepository.save(event);
     }
 
+    public List<EventDTO> getAllEvents() {
+        List<EventDTO> events = new ArrayList<>();
+        for(Event event : eventRepository.findAll()){
+            EventDTO eventDTO = new EventDTO(event);
+            events.add(eventDTO);
+        }
+        return events;
+    }
 }

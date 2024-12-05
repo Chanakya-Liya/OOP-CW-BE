@@ -87,6 +87,7 @@ public class Util {
             customerService.init();
             vendorEventAssociationService.init();
             vendorService.init();
+//            eventService.printEventPhoto();
         } catch (Exception e) {
             logger.severe("Error generating simulated users: " + e.getMessage());  // Use severe for critical errors
             System.err.println("An error occurred. Please check the logs for details.");  // User-friendly message

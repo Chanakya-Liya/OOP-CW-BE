@@ -17,17 +17,18 @@ public class Event{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Setter
+    @Getter
     private String name;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Getter
     private List<Ticket> tickets = new ArrayList<>();
     private int poolSize;
     private int totalTickets;
     @Setter
     @Getter
-    @Lob
     private String photo;
     @Getter
     @Setter

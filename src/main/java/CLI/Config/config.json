@@ -32,17 +32,17 @@
        "EventCount" : 6,
        "PoolSize": 100,
        "TotalTicketCount": 400,
-       "EventCreationFrequency": 10
+       "EventCreationFrequency": 20
      },
     "customer": {
       "CustomerCount": 5,
-      "RetrievalRate": 7,
-      "Frequency": 3
+      "RetrievalRate": 2,
+      "Frequency": 30
     },
     "vendor": {
       "VendorCount": 10,
       "ReleaseRate": 10,
-      "Frequency": 2
+      "Frequency": 40
     }
   }
 }

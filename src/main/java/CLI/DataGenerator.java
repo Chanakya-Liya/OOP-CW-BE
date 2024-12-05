@@ -18,8 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.security.MessageDigest;
@@ -91,9 +94,7 @@ public class DataGenerator {
     }
 
     public String generateImageByte() throws IOException {
-        File file = new File("src/main/java/CLI/Static/images/" + generateRandomInt(1, 13) + ".jpg");
-        byte[] fileContent = Files.readAllBytes(file.toPath());
-        return Base64.getEncoder().encodeToString(fileContent);
+        return "src/main/resources/Static/images/" + generateRandomInt(1, 13) + ".jpg";
     }
 
     public String generateRandomString(String stringRequired) throws IOException {
