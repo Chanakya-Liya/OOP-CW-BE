@@ -36,6 +36,8 @@ public class CustomerService {
     private EventService eventService;
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private BuyTicketService buyTicketService;
 
     private static final Logger logger = Logger.getLogger(CustomerService.class.getName());
 
@@ -68,7 +70,7 @@ public class CustomerService {
                     if (selectedEventOptional.isPresent()) {
                         Event selectedEvent = selectedEventOptional.get();
                         if (!selectedEvent.getPoolTickets().isEmpty()) {
-                            eventService.giveTicket(customer, selectedEvent);
+                            buyTicketService.giveTicket(customer, selectedEvent);
                             flag = false;
                             totalTickets--;
                         }

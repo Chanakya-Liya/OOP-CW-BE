@@ -32,7 +32,7 @@
        "EventCount" : 6,
        "PoolSize": 100,
        "TotalTicketCount": 400,
-       "EventCreationFrequency": 20
+       "EventCreationFrequency": 1000
      },
     "customer": {
       "CustomerCount": 5,

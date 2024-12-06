@@ -10,6 +10,7 @@ import java.util.Base64;
 
 @Getter
 public class EventDTO {
+    private int id;
     private String name;
     private String description;
     private int availableSeats;
@@ -25,6 +26,6 @@ public class EventDTO {
         this.availableSeats = poolSeats;
         this.eventDate = event.getEventDateTime().toString();
         this.photo = event.getPhoto();
-
+        this.id = event.getId();
     }
 }
