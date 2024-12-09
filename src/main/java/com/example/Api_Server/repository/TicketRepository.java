@@ -19,4 +19,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Transactional
     @Query("SELECT t FROM Ticket t WHERE t.status = 'POOL' AND t.event = :event ORDER BY t.id ASC LIMIT 1")
     Optional<Ticket> findPoolTicketByEvent(@Param("event") Event event);
+
+    @Transactional
+    @Query("SELECT count(*) FROM Ticket t WHERE t.status = 'SOLD'")
+    Optional<Integer> findSoldTicket();
 }

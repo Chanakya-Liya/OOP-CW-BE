@@ -97,4 +97,8 @@ public class EventService {
             throw new EntityNotFoundException("Event or customer not found");
         }
     }
+
+    public int getEventCount() {
+        return eventRepository.findAll().size();
+    }
 }

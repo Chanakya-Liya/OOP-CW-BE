@@ -2,8 +2,10 @@ package com.example.Api_Server.controller;
 
 import com.example.Api_Server.DTO.UserLoginDTO;
 import com.example.Api_Server.DTO.UserRegisterDTO;
+import com.example.Api_Server.service.AdminService;
 import com.example.Api_Server.service.CustomerService;
 import com.example.Api_Server.service.VendorService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,8 @@ public class UserController {
     private CustomerService customerService;
     @Autowired
     private VendorService vendorService;
+    @Autowired
+    private AdminService adminService;
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody UserLoginDTO userDTO) {
@@ -39,6 +43,11 @@ public class UserController {
                 response.put("role", "Vendor");
                 response.put("token", generateJwtToken(email, "Vendor"));
                 response.put("id",  "" + vendorService.getVendorFromEmail(email).getId());
+                return ResponseEntity.ok(response);
+            }else if (adminService.checkAdmin(email, password)) {
+                response.put("role", "Admin");
+                response.put("token", generateJwtToken(email, "Admin"));
+                response.put("id",  "" + adminService.getAdminFromEmail(email).getId());
                 return ResponseEntity.ok(response);
             } else {
                 response.put("error", "Invalid credentials");

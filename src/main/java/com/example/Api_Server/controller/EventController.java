@@ -65,4 +65,9 @@ public class EventController {
             return ResponseEntity.status(500).body("Error buying ticket: " + e.getMessage());
         }
     }
+
+    @GetMapping("/count")
+    public ResponseEntity<Integer> getEventCount() {
+        return ResponseEntity.ok(eventService.getEventCount());
+    }
 }

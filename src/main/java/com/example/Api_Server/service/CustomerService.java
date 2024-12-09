@@ -149,4 +149,8 @@ public class CustomerService {
         }
         return false;
     }
+
+    public int getCustomerCount() {
+        return customerRepository.findAll().size();
+    }
 }

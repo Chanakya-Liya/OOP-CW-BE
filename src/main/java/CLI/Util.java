@@ -39,6 +39,8 @@ public class Util {
     private TicketService ticketService;
     @Autowired
     private VendorEventAssociationRepository vendorEventAssociationRepository;
+    @Autowired
+    private AdminService adminService;
 
 
     @Autowired
@@ -83,6 +85,8 @@ public class Util {
                 System.out.println("Exiting Program");
                 System.exit(1);
             }
+            Admin admin = new Admin("Super", "Admin", "admin", "admin123", "admin@gmail.com", true);
+            adminService.addAdmin(admin);
             System.out.println("Simulation loaded successfully");
             customerService.init();
             vendorEventAssociationService.init();

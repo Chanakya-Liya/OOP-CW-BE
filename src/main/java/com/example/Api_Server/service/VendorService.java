@@ -231,4 +231,8 @@ public class VendorService {
         }
         return null;
     }
+
+    public int getVendorCount() {
+        return vendorRepository.findAll().size();
+    }
 }
