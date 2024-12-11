@@ -15,4 +15,8 @@ public interface VendorRepository extends JpaRepository<Vendor, Long> {
     @Transactional
     @Query("SELECT v FROM Vendor v WHERE v.id = :id")
     Optional<Vendor> findById(@Param("id") int id);
+
+    @Transactional
+    @Query("SELECT v FROM Vendor v LEFT JOIN FETCH v.events WHERE v.id = :vendorId")
+    Optional<Vendor> findByIdWithEvents(@Param("vendorId") Long vendorId);
 }

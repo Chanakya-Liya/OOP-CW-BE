@@ -20,4 +20,9 @@ public class TicketController {
     public ResponseEntity<Integer> getTicketCount() {
         return ResponseEntity.ok(ticketService.getSoldTicketCount());
     }
+
+    @GetMapping("/available/count")
+    public ResponseEntity<Integer> getAvailableTicketCount() {
+        return ResponseEntity.ok(ticketService.getAvaliableTicketCount());
+    }
 }

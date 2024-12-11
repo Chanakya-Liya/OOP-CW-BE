@@ -9,6 +9,7 @@ import com.example.Api_Server.entity.Vendor;
 import com.example.Api_Server.entity.VendorEventAssociation;
 import com.example.Api_Server.repository.*;
 import jakarta.persistence.OptimisticLockException;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
@@ -85,8 +86,7 @@ public class VendorService {
             addVendor(vendor);
             generateVendorEventAssociations(vendor, savedEvent, releaseRateMin, releaseRateMax, frequencyMin, frequencyMax);
         } catch (Exception e) {
-            vendor.logWarning("Error occurred while trying to create an event one: " + e.getMessage());
-            throw new RuntimeException(e);
+            vendor.logWarning("Error occurred while creating event");
         }
     }
 
@@ -104,8 +104,7 @@ public class VendorService {
             addVendor(vendor);
             generateVendorEventAssociations(vendor, savedEvent, ReleaseRate, VendorFrequency);
         } catch (Exception e) {
-            vendor.logWarning("Error occurred while trying to create an event one: " + e.getMessage());
-            throw new RuntimeException(e);
+            vendor.logWarning("Error occurred while creating event");
         }
     }
 
@@ -122,7 +121,7 @@ public class VendorService {
             for (int j = 0; j < vendorCount; j++) {
                 Optional<Vendor> vendorOptional;
                 do {
-                    vendorOptional = vendorRepository.findById(dataGenerator.generateRandomInt(1, vendorCount() - 5) + customerSize);
+                    vendorOptional = vendorRepository.findByIdWithEvents((long) dataGenerator.generateRandomInt(1, vendorCount() - 5) + customerSize);
                 } while (vendorOptional.isEmpty() || addedVendors.contains(vendorOptional.get()) || vendorOptional.get().getId() == vendor.getId());
 
                 Vendor vendorAssociation = vendorOptional.get(); // Extract the vendor
@@ -133,11 +132,9 @@ public class VendorService {
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
             }
         }catch (OptimisticLockException e) {
-            vendor.logWarning("Optimistic lock exception occurred: " + e.getMessage());
-            throw e;
+            vendor.logWarning("Optimistic Lock Exception");
         } catch (Exception e) {
-            vendor.logWarning("Error occurred while trying to create an event : " + e.getMessage());
-            throw new RuntimeException(e);
+            vendor.logWarning("Error occurred while generating vendor event associations");
         }
     }
 
@@ -165,11 +162,9 @@ public class VendorService {
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
             }
         }catch (OptimisticLockException e) {
-            vendor.logWarning("Optimistic lock exception occurred: " + e.getMessage());
-            throw e;
+            vendor.logWarning("Optimistic Lock Exception");
         } catch (Exception e) {
-            vendor.logWarning("Error occurred while trying to create an event : " + e.getMessage());
-            throw new RuntimeException(e);
+            vendor.logWarning("Error occurred while generating vendor event associations");
         }
     }
 
@@ -189,7 +184,7 @@ public class VendorService {
                 }
                 vendor.logInfo("New Event Created by Vendor: " + vendor.getId());
             } catch (Exception e) {
-                vendor.logWarning("Error occurred while trying to create an event: " + e.getMessage());
+                vendor.logWarning("Error occurred while creating event");
             }
         }
     }

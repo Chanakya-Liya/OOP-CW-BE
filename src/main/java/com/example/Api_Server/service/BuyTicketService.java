@@ -40,10 +40,12 @@ public class BuyTicketService{
                     customer.logInfo(message);
                 }catch(OptimisticLockException e){
                     System.err.println("Ticket has already been sold");
+                    customer.logWarning("Ticket has already been sold");
                 }
             }
         }catch (Exception e){
             System.err.println("Error buying ticket: " + e.getMessage());
+            customer.logWarning("Error buying ticket: " + e.getMessage());
         }finally {
             writeLock.unlock();
         }
