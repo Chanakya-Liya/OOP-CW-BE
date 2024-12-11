@@ -22,6 +22,7 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
+    //create an event
     @PostMapping("/create")
     public ResponseEntity<String> createEvent(
             @RequestParam("name") String name,
@@ -36,6 +37,7 @@ public class EventController {
         }
     }
 
+    //get all events
     @GetMapping("/all")
     public ResponseEntity<List<EventDTO>> getAllEvents() {
         List<EventDTO> events = eventService.getAllEvents();
@@ -45,6 +47,7 @@ public class EventController {
         return ResponseEntity.ok(events);
     }
 
+    //get event by id
     @GetMapping("/{id}")
     public ResponseEntity<EventDTO> getEvent(@PathVariable int id) {
         Optional<Event> event = eventService.getEventById(id);
@@ -56,6 +59,7 @@ public class EventController {
         }
     }
 
+    //buy a ticket
     @PostMapping("/buy/{id}")
     public ResponseEntity<String> buyTicket(@PathVariable int id, @RequestBody UserIdDTO userId) {
         try {

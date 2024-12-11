@@ -78,11 +78,6 @@ abstract class User {
         }
         return false; // Password doesn't meet the criteria
     }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public void setPassword(String password) {
         this.password = hashPassword(password);
     }

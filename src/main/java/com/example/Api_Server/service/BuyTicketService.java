@@ -24,6 +24,7 @@ public class BuyTicketService{
     private final Lock writeLock = readWriteLock.writeLock();
     private final Lock readLock = readWriteLock.readLock();
 
+    // This method is used to give a ticket to a customer
     @Transactional
     public void giveTicket(Customer customer, Event event){
         try{

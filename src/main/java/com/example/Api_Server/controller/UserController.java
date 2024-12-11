@@ -27,6 +27,7 @@ public class UserController {
     @Autowired
     private AdminService adminService;
 
+    // Login endpoint, handles all the login requests
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody UserLoginDTO userDTO) {
         try {
@@ -62,6 +63,7 @@ public class UserController {
         }
     }
 
+    // Register endpoint, handles all the registration requests
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> register(@RequestBody UserRegisterDTO userRegisterDTO) {
         try {
@@ -85,6 +87,7 @@ public class UserController {
         }
     }
 
+    // Generate JWT token for the user
     private String generateJwtToken(String email, String role) {
         return Base64.getEncoder().encodeToString((role + ":" +email + ":" + System.currentTimeMillis()).getBytes());
     }

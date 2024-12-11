@@ -16,6 +16,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+
     @GetMapping("/count")
     public ResponseEntity<Integer> getCustomerCount() {
         return ResponseEntity.ok(customerService.getCustomerCount());

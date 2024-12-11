@@ -26,10 +26,11 @@ public class ConfigurationController {
     @Autowired
     private Util util;
 
+    //loads the simulation data from the config.json file to the frontend
     @GetMapping("/simulation-data")
     public ResponseEntity<?> getSimulationData(@RequestParam(defaultValue = "Simulation") String mode) {
         // Load the JSON file from resources
-        String filePath = "src/main/resources/config/config.json"; // Replace with your file path
+        String filePath = "src/main/resources/config/config.json";
         try (FileReader reader = new FileReader(filePath)) {
             ObjectMapper objectMapper = new ObjectMapper();
             Map<String, Object> jsonData = objectMapper.readValue(reader, Map.class);
@@ -43,6 +44,7 @@ public class ConfigurationController {
         }
     }
 
+    //updates the simulation data in the config.json file
     @PutMapping("/update/{section}")
     public ResponseEntity<?> updateSimulationData(@PathVariable String section, @RequestBody Map<String, Map<String, Object>> data) {
         try {
@@ -89,6 +91,7 @@ public class ConfigurationController {
         }
     }
 
+    //starts the simulation based on the section
     @PostMapping("/start/{section}")
     public ResponseEntity<?> startSimulation(@PathVariable String section) {
         try {

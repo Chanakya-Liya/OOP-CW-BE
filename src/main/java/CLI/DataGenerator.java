@@ -67,6 +67,7 @@ public class DataGenerator {
     @Autowired
     private TicketRepository ticketRepository;
 
+    // Load the files into the arraylists
     @PostConstruct
     private void loadNames() throws IOException {
         loadFile(fNameFile, fNames);
@@ -78,6 +79,7 @@ public class DataGenerator {
         loadFile(description, descriptions);
     }
 
+    // Generate a random date time
     public static LocalDateTime generateRandomDateTime() {
         long startEpochSecond = LocalDateTime.now().toEpochSecond(java.time.ZoneOffset.UTC);
         long endEpochSecond = LocalDateTime.now().plusMonths(10).toEpochSecond(java.time.ZoneOffset.UTC);
@@ -86,6 +88,7 @@ public class DataGenerator {
         return randomDateTime.truncatedTo(ChronoUnit.HOURS);
     }
 
+    // Load the files into the arraylists
     private void loadFile(String filePath, ArrayList<String> arrayList) throws IOException {
         Scanner fileScanner = new Scanner(new File(filePath));
         while(fileScanner.hasNextLine()){
@@ -93,10 +96,12 @@ public class DataGenerator {
         }
     }
 
+    // Generate a random image from a list
     public String generateImageByte() throws IOException {
         return "src/main/resources/Static/images/" + generateRandomInt(1, 13) + ".jpg";
     }
 
+    // Generate a random image from a list
     public String generateRandomString(String stringRequired) throws IOException {
         if(stringRequired.equalsIgnoreCase("fname")){
             return fNames.get(random.nextInt(fNames.size()));
@@ -122,6 +127,7 @@ public class DataGenerator {
         return random.nextInt(start, end);
     }
 
+    // Generate customers for the simulation
     public List<Customer> simulateCustomers(int simulateCustomers, int customerFrequency, int customerRetrieve, CustomerService customerService) throws IOException {
         List<Customer> customers = new ArrayList<>();
         for(int i = 0; i < simulateCustomers; i++){
@@ -132,6 +138,7 @@ public class DataGenerator {
         return customers;
     }
 
+    // Generate customers for the simulation
     public List<Customer> simulateCustomers(int simulateCustomers, int customerRetrieveMin, int customerRetrieveMax, int customerFrequencyMin, int customerFrequencyMax, CustomerService customerService) throws IOException {
         List<Customer> customers = new ArrayList<>();
         for(int i = 0; i < simulateCustomers; i++){
@@ -144,6 +151,7 @@ public class DataGenerator {
         return customers;
     }
 
+    // Generate vendors for the simulation
     public List<Vendor> simulateVendors(int simulateVendors, int eventCreationFrequencyMin, int eventCreationFrequencyMax) throws IOException {
         List<Vendor> vendors = new ArrayList<>();
         for(int i = 0; i < simulateVendors; i++){
@@ -153,6 +161,7 @@ public class DataGenerator {
         return vendors;
     }
 
+    // Generate vendors for the simulation
     public List<Vendor> simulateVendors(int simulateVendors, int eventCreationFrequency) throws IOException {
         List<Vendor> vendors = new ArrayList<>();
         for(int i = 0; i < simulateVendors; i++){
@@ -162,6 +171,7 @@ public class DataGenerator {
         return vendors;
     }
 
+    // Generate events for the simulation
     public void simulateEventsForThreadTesting(int simulatedEvent, int poolSize, int totalEventTickets, int releaseRate, int frequency, List<Vendor> vendors) throws IOException {
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(generateRandomString("event"), poolSize, totalEventTickets);
@@ -192,6 +202,7 @@ public class DataGenerator {
         }
     }
 
+    // Generate events for the simulation
     public void simulateEventsForSimulationTesting(int simulatedEvent, int poolSizeMin, int poolSizeMax, int totalEventTicketsMin, int totalEventTicketsMax, int releaseRateMin, int releaseRateMax, int frequencyMin, int frequencyMax, List<Vendor> vendors) throws IOException {
         for (int i = 0; i < simulatedEvent; i++) {
             Event event = new Event(generateRandomString("event"),generateRandomInt(poolSizeMin, poolSizeMax), generateRandomInt(totalEventTicketsMin, totalEventTicketsMax));

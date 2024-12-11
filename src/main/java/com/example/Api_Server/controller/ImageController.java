@@ -14,6 +14,7 @@ import java.io.IOException;
 @RequestMapping("photo")
 public class ImageController {
 
+    // Get image by name
     @GetMapping("/image")
     public ResponseEntity<Resource> getImage(@RequestParam String imageName) throws IOException {
         File imageFile = new File("src/main/resources/static/images/" + imageName + ".jpg");
