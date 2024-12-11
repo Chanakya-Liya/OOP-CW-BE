@@ -62,4 +62,8 @@ public class TicketService {
     public void saveTicket(Ticket ticket){
         ticketRepository.save(ticket);
     }
+
+    public int getSoldTicketCount() {
+        return ticketRepository.findSoldTicket().get();
+    }
 }

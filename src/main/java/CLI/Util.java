@@ -39,6 +39,8 @@ public class Util {
     private TicketService ticketService;
     @Autowired
     private VendorEventAssociationRepository vendorEventAssociationRepository;
+    @Autowired
+    private AdminService adminService;
 
 
     @Autowired
@@ -64,29 +66,23 @@ public class Util {
         }
     }
 
+    public void generateAdmin(){
+        Admin admin = new Admin("Super", "Admin", "admin", "admin123", "admin@gmail.com", true);
+        adminService.addAdmin(admin);
+    }
 
-    public void generateSimulatedUsers(){
+    public void generateSimulatedUsers(int option){
         try {
-            System.out.println("Welcome to the ticket vendor simulation CLI");
-            System.out.println("Make sure you have altered the config file to your liking before starting");
-            System.out.println("Please select one of the following");
-            System.out.println("1. Simulation");
-            System.out.println("2. Thread Testing");
-            System.out.println("3. Exit");
-            startOption = validateUserInput("Option", 1 , 3);
-
-            if(startOption == 1){
+            if(option == 1){
                 generateForSimulation();
-            }else if(startOption == 2){
+            }else if(option == 2){
                 generateForThreadTesting();
-            }else if(startOption == 3){
-                System.out.println("Exiting Program");
-                System.exit(1);
             }
             System.out.println("Simulation loaded successfully");
             customerService.init();
             vendorEventAssociationService.init();
             vendorService.init();
+//            eventService.printEventPhoto();
         } catch (Exception e) {
             logger.severe("Error generating simulated users: " + e.getMessage());  // Use severe for critical errors
             System.err.println("An error occurred. Please check the logs for details.");  // User-friendly message

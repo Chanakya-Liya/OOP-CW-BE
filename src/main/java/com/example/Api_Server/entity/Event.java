@@ -1,8 +1,9 @@
 package com.example.Api_Server.entity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
-import org.springframework.transaction.annotation.Transactional;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,14 +16,27 @@ public class Event{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Setter
+    @Getter
     private String name;
+    @Setter
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Getter
     private List<Ticket> tickets = new ArrayList<>();
     private int poolSize;
     private int totalTickets;
+    @Setter
+    @Getter
+    private String photo;
+    @Getter
+    @Setter
+    private String Description;
+    @Getter
+    @Setter
+    private LocalDateTime eventDateTime;
 
 
     public Event(String name, int poolSize, int totalTickets) {
@@ -41,7 +55,6 @@ public class Event{
                 addTicket(TicketStatus.POOL);
             }
         }
-
     }
 
     public void addTicket(TicketStatus status) {
@@ -81,10 +94,6 @@ public class Event{
 
     public int getTotalTickets() {
         return totalTickets;
-    }
-
-    public void setVendor(Vendor vendor) {
-        this.vendor = vendor;
     }
 
     public void removeTicketFromPool() {

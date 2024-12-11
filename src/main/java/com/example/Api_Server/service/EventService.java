@@ -1,16 +1,19 @@
 package com.example.Api_Server.service;
 
-import com.example.Api_Server.entity.Customer;
-import com.example.Api_Server.entity.Event;
-import com.example.Api_Server.entity.Ticket;
-import com.example.Api_Server.entity.TicketStatus;
+import CLI.DataGenerator;
+import com.example.Api_Server.entity.*;
 import com.example.Api_Server.repository.*;
 import jakarta.persistence.Entity;
+import com.example.Api_Server.DTO.EventDTO;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.OptimisticLockException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.locks.Lock;
@@ -29,6 +32,8 @@ public class EventService {
     private VendorEventAssociationRepository vendorEventAssociationRepository;
     @Autowired
     private VendorRepository vendorRepository;
+    @Autowired
+    private BuyTicketService buyTicketService;
 
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
     private final Lock writeLock = readWriteLock.writeLock();
@@ -63,29 +68,35 @@ public class EventService {
         }
     }
 
+    public void createEvent(String name, String description, MultipartFile photo) throws IOException {
+        Event event = new Event();
+        event.setName(name);
+        eventRepository.save(event);
+    }
+
+    public List<EventDTO> getAllEvents() {
+        List<EventDTO> events = new ArrayList<>();
+        for(Event event : eventRepository.findAll()){
+            EventDTO eventDTO = new EventDTO(event);
+            events.add(eventDTO);
+        }
+        return events;
+    }
+
     @Transactional
-    public void giveTicket(Customer customer, Event event){
-        try{
-            writeLock.lock();
-            Optional<Ticket> ticketOptional = ticketService.getPoolTicket(event);
-            if(ticketOptional.isPresent()){
-                Ticket ticket = ticketOptional.get();
-                    if(ticket.getStatus() != TicketStatus.POOL) return;
-                    ticket.setStatus(TicketStatus.SOLD);
-                    ticket.setCustomer(customer);
-                    try{
-                        ticketService.saveTicket(ticket);
-                        String message = String.format("Customer %d purchased ticket %d from event %d", customer.getId(), ticket.getId(), event.getId());
-                        customer.logInfo(message);
-                    }catch(OptimisticLockException e){
-                        System.err.println("Ticket has already been sold");
-                    }
-            }
-        }catch (Exception e){
-            System.err.println("Error buying ticket: " + e.getMessage());
-        }finally {
-            writeLock.unlock();
+    public void buyTicket(int eventId, int userId) {
+        Optional<Event> eventOptional = eventRepository.findById((long) eventId);
+        Optional<Customer> customerOptional = customerRepository.findById((long) userId);
+        if(eventOptional.isPresent() && customerOptional.isPresent()){
+            Event event = eventOptional.get();
+            Customer customer = customerOptional.get();
+            buyTicketService.giveTicket(customer, event);
+        }else{
+            throw new EntityNotFoundException("Event or customer not found");
         }
     }
 
+    public int getEventCount() {
+        return eventRepository.findAll().size();
+    }
 }

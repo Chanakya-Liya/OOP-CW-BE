@@ -43,6 +43,10 @@ public class Vendor extends User implements Runnable{
         event.setVendor(this);
     }
 
+    public void addEventSimulation(Event event) {
+        this.events.add(event);
+    }
+
     public void logInfo(String msg){
         logger.info(msg);
     }

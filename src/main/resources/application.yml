@@ -20,7 +20,7 @@ spring:
       connection-timeout: 0
       idle-timeout: 0
       max-lifetime: 0
-      leak-detection-threshold: 12000
+      leak-detection-threshold: 120000
   jpa:
     hibernate:
       ddl-auto: create
