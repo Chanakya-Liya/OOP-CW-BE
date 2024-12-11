@@ -86,6 +86,3 @@
   ```java
   Util.generateSimulatedUsers();
   ```
-
-## License
-This project is licensed under the Apache License, Version 2.0. See [LICENSE](http://www.apache.org/licenses/LICENSE-2.0) for more details.
