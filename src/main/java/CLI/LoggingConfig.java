@@ -32,7 +32,7 @@ public class LoggingConfig {
             setupLogger(VendorEventAssociation.class, EventLog);;
             setupLogger(Vendor.class, VendorLog);
         } catch (IOException e) {
-            // ... handle exceptions
+            e.printStackTrace();
         }
     }
 

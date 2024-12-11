@@ -66,11 +66,13 @@ public class Util {
         }
     }
 
+    //generates the admin account
     public void generateAdmin(){
         Admin admin = new Admin("Super", "Admin", "admin", "admin123", "admin@gmail.com", true);
         adminService.addAdmin(admin);
     }
 
+    //generates the users according to the option selected
     public void generateSimulatedUsers(int option){
         try {
             if(option == 1){
@@ -89,6 +91,7 @@ public class Util {
         }
     }
 
+    //generates the simulation data
     public void generateForSimulation() throws IOException {
         int EventCountMin = configManager.getIntValue("Simulation", "event", "EventCountMin");
         int EventCountMax = configManager.getIntValue("Simulation", "event", "EventCountMax");
@@ -132,6 +135,7 @@ public class Util {
         }
     }
 
+    //generates the thread testing data
     public void generateForThreadTesting() throws IOException {
         int simulatedEvents = configManager.getIntValue("ThreadTesting", "event", "EventCount");
         int PoolSize = configManager.getIntValue("ThreadTesting", "event", "PoolSize");
@@ -158,65 +162,5 @@ public class Util {
             throw new IOException();
         }
 
-    }
-
-    public int validateUserInput(String prompt, int min, int max){
-        Scanner scanner = new Scanner(System.in);
-        int option;
-
-        System.out.printf("%s: ", prompt);
-
-        while (true) {
-            try {
-                option = scanner.nextInt();
-
-                if (option >= min && option <= max) {
-                    break;
-                } else {
-                    System.out.printf("Invalid input. Please enter a number between %d and %d: ", min, max);
-                }
-            } catch (InputMismatchException e) {
-                System.out.print("Invalid input. Please enter a valid integer: ");
-                scanner.nextLine();
-            }
-        }
-        return option;
-    }
-
-    public void endProgram(){
-        while(true){
-            System.out.println("1. Exit Program");
-            System.out.println("2. To View All Events");
-            System.out.println("3. To View All Vendors");
-            System.out.println("4. To View All Customers");
-            int option = validateUserInput("option", 1, 4);
-
-            if(option == 1){
-                for(Customer customer : customerService.getAll()){
-                    logger.info(customer.toString());
-                }
-                logger.info("==================================================");
-                for(Vendor vendor : vendorRepository.findAll()){
-                    logger.info(vendor.toString());
-                }
-                logger.info("==================================================");
-                for(Event event : eventService.getAll()) {
-                    logger.info(event.toString());
-                }
-                System.exit(1);
-            } else if (option == 2) {
-                for(Event event : eventService.getAll()){
-                    System.out.println(event.toString());
-                }
-            }else if(option == 3){
-                for(Vendor vendor: vendorRepository.findAll()){
-                    System.out.println(vendor.toString());
-                }
-            } else if (option == 4) {
-                for(Customer customer : customerService.getAll()){
-                    System.out.println(customer.toString());
-                }
-            }
-        }
     }
 }

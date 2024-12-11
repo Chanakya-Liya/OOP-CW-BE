@@ -52,6 +52,7 @@ public class CustomerService {
     }
 
 
+    // Method to simulate ticket retrieval for a customer
     public void simulationTicketRetrieval(Customer customer, int totalTickets){
         try {
             for (int i = 0; i < customer.getRetrievalRate(); i++) {
@@ -78,6 +79,7 @@ public class CustomerService {
     }
 
 
+    // Method to perform ticket retrieval for a customer
     public void performTicketRetrieval(Customer customer) {
         int totalTickets = ticketService.getTotalTickets();
         while (totalTickets > 0) {

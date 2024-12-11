@@ -17,6 +17,7 @@ public class LogController {
     @Autowired
     private LoggingConfig loggingConfig;
 
+    // Stream logs from the specified log file to the frontend
     @GetMapping("/{type}")
     public void streamLogs(@PathVariable String type, HttpServletResponse response) {
         response.setContentType("text/event-stream");

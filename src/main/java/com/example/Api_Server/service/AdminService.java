@@ -19,7 +19,7 @@ public class AdminService {
         adminRepository.save(admin);
     }
 
-
+    // Check if the email and password match an admin in the database
     public boolean checkAdmin(String email, String password) {
         List<Admin> admins = adminRepository.findAll();
         for (Admin admin : admins) {
@@ -30,6 +30,7 @@ public class AdminService {
         return false;
     }
 
+    // Get the admin object from the email
     public Admin getAdminFromEmail(String email) {
         List<Admin> admins = adminRepository.findAll();
         for (Admin admin : admins) {

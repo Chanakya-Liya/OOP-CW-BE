@@ -16,6 +16,7 @@ public class CreateEventService {
     @Autowired
     private DataGenerator dataGenerator;
 
+    // Create a new event for simulation
     @Transactional
     public Event createNewEventForSimulation(Vendor vendor, int poolSizeMin, int poolSizeMax, int totalTicketsMin, int totalTicketsMax) throws IOException {
         Event event = new Event(dataGenerator.generateRandomString("event"),dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
@@ -26,6 +27,7 @@ public class CreateEventService {
         return eventService.addEvent(event);
     }
 
+    // Create a new event for simulation
     @Transactional
     public Event createNewEventForSimulation(Vendor vendor, int poolSize, int totalTickets) throws IOException {
         Event event = new Event(dataGenerator.generateRandomString("event"),poolSize , totalTickets);
