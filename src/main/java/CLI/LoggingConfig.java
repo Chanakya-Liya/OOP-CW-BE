@@ -17,7 +17,7 @@ import java.util.logging.SimpleFormatter;
 
 @Configuration
 public class LoggingConfig {
-    private final String DirectoryPath = "src/main/resources/Logs/"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd _ HH-mm-ss"));
+    private final static String DirectoryPath = "src/main/resources/Logs/"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd _ HH-mm-ss"));
     private final String CustomerLog = DirectoryPath + File.separator +"/customer.log";
     private final String EventLog = DirectoryPath + File.separator +"/event.log";
     private final String VendorLog =DirectoryPath + File.separator +"/vendor.log";
@@ -34,6 +34,10 @@ public class LoggingConfig {
         } catch (IOException e) {
             // ... handle exceptions
         }
+    }
+
+    public String getDirectoryPath() {
+        return DirectoryPath;
     }
 
     public void createDirectory(String directoryPath){

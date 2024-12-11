@@ -66,4 +66,8 @@ public class TicketService {
     public int getSoldTicketCount() {
         return ticketRepository.findSoldTicket().get();
     }
+
+    public int getAvaliableTicketCount() {
+        return ticketRepository.findAvailable().get();
+    }
 }

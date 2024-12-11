@@ -25,14 +25,6 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
     @Autowired
-    private EventRepository eventRepository;
-    @Autowired
-    private TicketRepository ticketRepository;
-    @Autowired
-    private VendorEventAssociationRepository vendorEventAssociationRepository;
-    @Autowired
-    private VendorRepository vendorRepository;
-    @Autowired
     private EventService eventService;
     @Autowired
     private TicketService ticketService;
@@ -75,13 +67,13 @@ public class CustomerService {
                             totalTickets--;
                         }
                     } else {
-                        logger.info("Event not found for ID: " + eventId);
+                        customer.logInfo("Event not found for ID: " + eventId);
                     }
                 }
             }
         } catch (Exception e) {
             Thread.currentThread().interrupt();
-            logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
+            customer.logWarning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
         }
     }
 
@@ -97,10 +89,10 @@ public class CustomerService {
                 }
             }catch(InterruptedException e){
                 Thread.currentThread().interrupt();
-                logger.warning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
+                customer.logWarning("Customer " + customer.getId() + " thread interrupted: " + e.getMessage());
             }
         }
-        System.out.println("Customer " + customer.getId() + " thread ended.");
+        customer.logInfo("Customer " + customer.getId() + " thread ended.");
     }
 
     @PostConstruct

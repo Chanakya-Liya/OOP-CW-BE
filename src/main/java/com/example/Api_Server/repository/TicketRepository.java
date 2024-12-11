@@ -23,4 +23,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Transactional
     @Query("SELECT count(*) FROM Ticket t WHERE t.status = 'SOLD'")
     Optional<Integer> findSoldTicket();
+
+    @Transactional
+    @Query("SELECT count(*) FROM Ticket t WHERE t.status = 'POOL'")
+    Optional<Integer> findAvailable();
 }

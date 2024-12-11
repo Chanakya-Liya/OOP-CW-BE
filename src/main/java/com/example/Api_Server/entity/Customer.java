@@ -57,6 +57,10 @@ public class Customer extends User implements Runnable {
         }
     }
 
+    public void logWarning(String warning){
+        logger.warning(warning);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
