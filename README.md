@@ -52,6 +52,12 @@
    ```sh
    ./mvnw spring-boot:run
    ```
+6. **Clone the GUI application**
+   ```sh
+   git clone https://github.com/Chanakya-Liya/OOP-CW-FE.git
+
+   **This application can only be ran by the GUI**
+   ```
 
 ## Configuration
 - **Configuration File:** Ensure you have altered the `application.yml` configuration file to your liking before starting the simulation.
