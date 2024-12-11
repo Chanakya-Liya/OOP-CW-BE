@@ -19,6 +19,7 @@ public class Event{
     @Setter
     @Getter
     private String name;
+    @Setter
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vendor_id")
     private Vendor vendor;
@@ -93,10 +94,6 @@ public class Event{
 
     public int getTotalTickets() {
         return totalTickets;
-    }
-
-    public void setVendor(Vendor vendor) {
-        this.vendor = vendor;
     }
 
     public void removeTicketFromPool() {

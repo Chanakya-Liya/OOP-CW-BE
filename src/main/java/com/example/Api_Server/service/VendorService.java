@@ -10,6 +10,7 @@ import com.example.Api_Server.entity.VendorEventAssociation;
 import com.example.Api_Server.repository.*;
 import jakarta.persistence.OptimisticLockException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,29 +23,32 @@ public class VendorService {
     @Autowired
     private CustomerService customerService;
     @Autowired
-    private EventRepository eventRepository;
-    @Autowired
-    private TicketRepository ticketRepository;
-    @Autowired
-    private VendorEventAssociationRepository vendorEventAssociationRepository;
-    @Autowired
     private VendorEventAssociationService vendorEventAssociationService;
     @Autowired
     private VendorRepository vendorRepository;
-    @Autowired
-    private LoggingConfig loggingConfig;
     @Autowired
     private ConfigManager configManager;
     @Autowired
     private DataGenerator dataGenerator;
     @Autowired
     private EventService eventService;
+    @Autowired
+    private CreateEventService createEventService;
 
     private volatile boolean running = true;
 
     @Transactional
     public void addVendor(Vendor vendor){
-        vendorRepository.save(vendor);
+        for (int retry = 0; retry < 3; retry++) {
+            try {
+                vendorRepository.save(vendor);
+                return;
+            } catch (ObjectOptimisticLockingFailureException e) {
+                vendor = vendorRepository.findById(vendor.getId())
+                        .orElseThrow(() -> new RuntimeException("Vendor not found"));
+            }
+        }
+        throw new RuntimeException("Failed to save vendor after retries.");
     }
 
     @Transactional
@@ -74,15 +78,10 @@ public class VendorService {
         int frequencyMin = configManager.getIntValue("Simulation", "vendor", "FrequencyMin");
         int frequencyMax = configManager.getIntValue("Simulation", "vendor", "FrequencyMax");
         try{
-            Event event = new Event(dataGenerator.generateRandomString("event"),dataGenerator.generateRandomInt(poolSizeMin, poolSizeMax), dataGenerator.generateRandomInt(totalTicketsMin, totalTicketsMax));
-            event.setVendor(vendor);
-            event.setDescription(dataGenerator.generateRandomString("description"));
-            event.setEventDateTime(dataGenerator.generateRandomDateTime());
-            event.setPhoto(dataGenerator.generateImageByte());
-            Event savedEvent = eventService.addEvent(event);
+            Event savedEvent = createEventService.createNewEventForSimulation(vendor, poolSizeMin, poolSizeMax, totalTicketsMin, totalTicketsMax);
             VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
             vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
-            vendor.addEvent(event);
+            vendor.addEvent(savedEvent);
             addVendor(vendor);
             generateVendorEventAssociations(vendor, savedEvent, releaseRateMin, releaseRateMax, frequencyMin, frequencyMax);
         } catch (Exception e) {
@@ -98,15 +97,10 @@ public class VendorService {
         int ReleaseRate = configManager.getIntValue("ThreadTesting", "vendor", "ReleaseRate");
         int VendorFrequency = configManager.getIntValue("ThreadTesting", "vendor", "Frequency");
         try{
-            Event event = new Event(dataGenerator.generateRandomString("event"), PoolSize, TotalEventTickets);
-            event.setVendor(vendor);
-            event.setEventDateTime(dataGenerator.generateRandomDateTime());
-            event.setPhoto(dataGenerator.generateImageByte());
-            event.setDescription(dataGenerator.generateRandomString("description"));
-            Event savedEvent = eventService.addEvent(event); // Save the event first
+            Event savedEvent = createEventService.createNewEventForSimulation(vendor, PoolSize, TotalEventTickets);
             VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendor, savedEvent, ReleaseRate, VendorFrequency);
             vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
-            vendor.addEvent(event);
+            vendor.addEvent(savedEvent);
             addVendor(vendor);
             generateVendorEventAssociations(vendor, savedEvent, ReleaseRate, VendorFrequency);
         } catch (Exception e) {
@@ -133,7 +127,7 @@ public class VendorService {
 
                 Vendor vendorAssociation = vendorOptional.get(); // Extract the vendor
                 addedVendors.add(vendorAssociation); // Add it to the set
-                vendorAssociation.addEvent(event); // Manage the bidirectional relationship
+                vendorAssociation.addEventSimulation(event);
                 addVendor(vendorAssociation);
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendorAssociation, event, releaseRate, frequency);
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);
@@ -165,7 +159,7 @@ public class VendorService {
 
                 Vendor vendorAssociation = vendorOptional.get(); // Extract the vendor
                 addedVendors.add(vendorAssociation); // Add it to the set
-                vendorAssociation.addEvent(event); // Manage the bidirectional relationship
+                vendorAssociation.addEventSimulation(event); // Manage the bidirectional relationship
                 addVendor(vendorAssociation);
                 VendorEventAssociation vendorEventAssociation = new VendorEventAssociation(vendorAssociation, event, dataGenerator.generateRandomInt(releaseRateMin, releaseRateMax), dataGenerator.generateRandomInt(frequencyMin, frequencyMax));
                 vendorEventAssociationService.addVendorEventAssociation(vendorEventAssociation);

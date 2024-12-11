@@ -22,7 +22,6 @@ public class ApiServerApplication {
 		configManager.validateConfig();
 		ConfigurableApplicationContext context = SpringApplication.run(ApiServerApplication.class, args);
 		Util util = context.getBean(Util.class);
-		util.generateSimulatedUsers();
-		util.endProgram();
+		util.generateAdmin();
 	}
 }

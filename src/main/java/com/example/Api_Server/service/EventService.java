@@ -1,9 +1,7 @@
 package com.example.Api_Server.service;
 
-import com.example.Api_Server.entity.Customer;
-import com.example.Api_Server.entity.Event;
-import com.example.Api_Server.entity.Ticket;
-import com.example.Api_Server.entity.TicketStatus;
+import CLI.DataGenerator;
+import com.example.Api_Server.entity.*;
 import com.example.Api_Server.repository.*;
 import jakarta.persistence.Entity;
 import com.example.Api_Server.DTO.EventDTO;

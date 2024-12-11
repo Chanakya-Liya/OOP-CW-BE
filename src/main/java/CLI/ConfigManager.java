@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @Component
 public class ConfigManager {
-    private final String configFilePath = "src/main/java/CLI/Config/config.json";
+    private final String configFilePath = "src/main/resources/config/config.json";
 
     public int getIntValue(String category, String section, String key) {
         try (FileReader reader = new FileReader(configFilePath)) {

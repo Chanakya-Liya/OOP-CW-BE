@@ -129,8 +129,6 @@ public class DataGenerator {
             customer.setCustomerService(customerService);
             customers.add(customer);
         }
-        Customer customer = new Customer("admin", "admin", "admin", "chana123", "a@a");
-        customers.add(customer);
         return customers;
     }
 
