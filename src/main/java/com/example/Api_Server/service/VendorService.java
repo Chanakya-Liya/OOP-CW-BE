@@ -151,7 +151,7 @@ public class VendorService {
             for (int j = 0; j < vendorCount; j++) {
                 Optional<Vendor> vendorOptional;
                 do {
-                    vendorOptional = vendorRepository.findById(dataGenerator.generateRandomInt(1, vendorCount() - 5) + customerSize);
+                    vendorOptional = vendorRepository.findByIdWithEvents((long) dataGenerator.generateRandomInt(1, vendorCount() - 5) + customerSize);
                 } while (vendorOptional.isEmpty() || addedVendors.contains(vendorOptional.get()) || vendorOptional.get().getId() == vendor.getId());
 
                 Vendor vendorAssociation = vendorOptional.get(); // Extract the vendor
